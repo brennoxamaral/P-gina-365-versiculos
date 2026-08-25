@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #F2EBE3;
+    --surface: #FAF6F0;
+    --primary: #E1AD01;
+    --accent: #C79801;
+    --text: #4B3621;
+    --success: #2E7D32;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-hand: 'Caveat', cursive;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  h1, h2, h3, .font-serif, .serif {
+    font-family: var(--font-serif);
+  }
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.font-hand {
+  font-family: 'Caveat', cursive;
+}
+
+/* Artistic Flair Primary Button */
+.btn-primary {
+  background-color: var(--primary);
+  color: #2B1D12;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(225, 173, 1, 0.35);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(225, 173, 1, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Artistic Flair Verse Card with Cut Indicator */
+.verse-card-cut {
+  border: 2px dashed #D1C7BD;
+  background: white;
+  border-radius: 6px;
+  position: relative;
+}
+
+.verse-card-cut::before {
+  content: '✂';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 8px;
+  font-size: 13px;
+  color: #B5A89B;
+  font-weight: bold;
+}
+
+/* Custom dashed ticket borders & craft lines */
+.border-ticket-dashed {
+  border-style: dashed;
+  border-width: 1.5px;
+  border-color: #D3C5B4;
+}
+
+/* Subtle craft paper texture noise simulation */
+.bg-craft-subtle {
+  background-color: #FAF6F0;
+  background-image: radial-gradient(#E8DFD5 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+}
+
+/* Custom smooth shadow for craft cards */
+.shadow-craft {
+  box-shadow: 0 4px 20px -2px rgba(75, 54, 33, 0.06), 0 2px 6px -1px rgba(75, 54, 33, 0.04);
+}
+
+.shadow-craft-lg {
+  box-shadow: 0 10px 30px -4px rgba(75, 54, 33, 0.1), 0 4px 12px -2px rgba(75, 54, 33, 0.05);
+}
+
+.shadow-gold {
+  box-shadow: 0 8px 24px -4px rgba(225, 173, 1, 0.35);
+}
+
+

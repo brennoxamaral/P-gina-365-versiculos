@@ -1,0 +1,6 @@
+{
+  "name": "Kit 365 Versículos para Delivery",
+  "description": "Página de vendas de alta conversão do Kit 365 Versículos para Delivery pronto para imprimir em folha A4 e encantar clientes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
