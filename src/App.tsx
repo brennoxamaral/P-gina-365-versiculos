@@ -36,11 +36,11 @@ export default function App() {
         {/* 3. Dedicated Video Demonstration Section (Vertical 9:16) */}
         <VideoSection />
 
-        {/* 4. Dynamic Interactive Bible Verse Demonstrator */}
-        <VerseInteractiveDemo />
-
-        {/* 5. How It Works in 3 Steps */}
+        {/* 4. How It Works in 3 Steps */}
         <HowItWorks />
+
+        {/* 5. Dynamic Interactive Bible Verse Demonstrator */}
+        <VerseInteractiveDemo />
 
         {/* 6. Social Proof (Interactive Testimonials Carousel) */}
         <TestimonialsCarousel />

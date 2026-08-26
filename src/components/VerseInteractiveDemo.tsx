@@ -52,11 +52,11 @@ export const VerseInteractiveDemo: React.FC = () => {
   };
 
   return (
-    <section id="versiculos" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
+    <section id="versiculos" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
         
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
           <Sparkles className="w-3.5 h-3.5 text-[#C79801]" />
           <span>EXPERIMENTE NA PRÁTICA</span>
         </div>
@@ -76,7 +76,7 @@ export const VerseInteractiveDemo: React.FC = () => {
           <span className="font-semibold flex items-center gap-1">
             <Palette className="w-3.5 h-3.5 text-[#C79801]" /> Cor do papel:
           </span>
-          <div className="flex gap-1.5 p-1 bg-[#FAF6F0] rounded-full border border-[#E8DFD5]">
+          <div className="flex gap-1.5 p-1 bg-[#F2EBE3] rounded-full border border-[#E8DFD5]">
             <button
               type="button"
               onClick={() => setPaperStyle('kraft')}
@@ -125,7 +125,7 @@ export const VerseInteractiveDemo: React.FC = () => {
               <Scissors className="w-3.5 h-3.5 text-[#C79801]" />
               Linha pontilhada de corte
             </span>
-            <span className="font-semibold text-[11px] bg-[#FAF6F0] border border-[#E8DFD5] px-2 py-0.5 rounded-md text-[#8A6700]">
+            <span className="font-semibold text-[11px] bg-[#F2EBE3] border border-[#E8DFD5] px-2 py-0.5 rounded-md text-[#8A6700]">
               Versículo #{currentVerse.dailyNumber} de 365
             </span>
           </div>
@@ -178,7 +178,7 @@ export const VerseInteractiveDemo: React.FC = () => {
               type="button"
               onClick={handleRandomVerse}
               id="btn-sortear-versiculo"
-              className="px-5 py-2.5 rounded-xl bg-[#FAF6F0] hover:bg-[#FFFDF9] border border-[#E8DFD5] hover:border-[#C79801] text-[#2B1D12] font-bold text-sm shadow-xs hover:shadow-sm transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+              className="px-5 py-2.5 rounded-xl bg-[#F2EBE3] hover:bg-[#FFFDF9] border border-[#E8DFD5] hover:border-[#C79801] text-[#2B1D12] font-bold text-sm shadow-xs hover:shadow-sm transition-all flex items-center gap-2 cursor-pointer active:scale-95"
             >
               <Shuffle className="w-4 h-4 text-[#C79801]" />
               <span>Sortear outra bênção</span>

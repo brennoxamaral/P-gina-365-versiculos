@@ -27,7 +27,7 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="como-funciona" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]/50">
+    <section id="como-funciona" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}

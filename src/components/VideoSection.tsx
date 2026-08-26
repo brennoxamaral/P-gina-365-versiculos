@@ -27,11 +27,11 @@ export const VideoSection: React.FC = () => {
   };
 
   return (
-    <section id="demonstracao" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]/60">
+    <section id="demonstracao" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
         
         {/* Section Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
           <Film className="w-3.5 h-3.5 text-[#C79801]" />
           <span>DEMONSTRAÇÃO PRÁTICA</span>
         </div>

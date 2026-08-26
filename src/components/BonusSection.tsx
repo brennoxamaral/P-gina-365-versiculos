@@ -7,12 +7,12 @@ interface BonusSectionProps {
 
 export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) => {
   return (
-    <section id="bonus" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]/70">
+    <section id="bonus" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-5xl mx-auto">
         
         {/* Section Badge */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
             <Gift className="w-3.5 h-3.5 text-[#C79801]" />
             <span>PRESENTE ESPECIAL INCLUSO</span>
           </div>
