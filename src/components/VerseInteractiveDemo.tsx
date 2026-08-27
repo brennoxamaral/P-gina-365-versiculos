@@ -4,7 +4,7 @@ import { sampleVerses } from '../data/verses';
 
 export const VerseInteractiveDemo: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [paperStyle, setPaperStyle] = useState<'kraft' | 'pink' | 'blue' | 'white'>('kraft');
+  const [paperStyle, setPaperStyle] = useState<'kraft' | 'pink' | 'blue'>('kraft');
   const [isChanging, setIsChanging] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -34,27 +34,24 @@ export const VerseInteractiveDemo: React.FC = () => {
     kraft: 'bg-[#FAF6F0] border-[#D3C5B4] text-[#4B3621]',
     pink: 'bg-[#FCE7F3] border-[#F472B6]/60 text-[#831843]',
     blue: 'bg-[#E0F2FE] border-[#60A5FA]/60 text-[#1E3A8A]',
-    white: 'bg-white border-[#E2E8F0] text-[#1E293B]',
   };
 
   const paperAccentClasses = {
     kraft: 'text-[#8A6700] bg-[#E1AD01]/15',
     pink: 'text-[#9D174D] bg-[#F472B6]/20',
     blue: 'text-[#1D4ED8] bg-[#60A5FA]/20',
-    white: 'text-[#475569] bg-slate-100',
   };
 
   const stapleClasses = {
     kraft: 'bg-[#8C8275]',
     pink: 'bg-[#BE185D]',
     blue: 'bg-[#2563EB]',
-    white: 'bg-[#64748B]',
   };
 
   return (
     <section id="versiculos" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-        
+
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
           <Sparkles className="w-3.5 h-3.5 text-[#C79801]" />
@@ -80,45 +77,33 @@ export const VerseInteractiveDemo: React.FC = () => {
             <button
               type="button"
               onClick={() => setPaperStyle('kraft')}
-              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${
-                paperStyle === 'kraft' ? 'bg-[#E1AD01] text-[#2B1D12] font-bold shadow-2xs' : 'text-[#6B533E]'
-              }`}
+              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${paperStyle === 'kraft' ? 'bg-[#E1AD01] text-[#2B1D12] font-bold shadow-2xs' : 'text-[#6B533E]'
+                }`}
             >
               Kraft / Creme
             </button>
             <button
               type="button"
               onClick={() => setPaperStyle('pink')}
-              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${
-                paperStyle === 'pink' ? 'bg-[#F9A8D4] text-[#831843] font-bold shadow-2xs' : 'text-[#6B533E]'
-              }`}
+              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${paperStyle === 'pink' ? 'bg-[#F9A8D4] text-[#831843] font-bold shadow-2xs' : 'text-[#6B533E]'
+                }`}
             >
               Rosa
             </button>
             <button
               type="button"
               onClick={() => setPaperStyle('blue')}
-              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${
-                paperStyle === 'blue' ? 'bg-[#93C5FD] text-[#1E3A8A] font-bold shadow-2xs' : 'text-[#6B533E]'
-              }`}
+              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${paperStyle === 'blue' ? 'bg-[#93C5FD] text-[#1E3A8A] font-bold shadow-2xs' : 'text-[#6B533E]'
+                }`}
             >
               Azul
-            </button>
-            <button
-              type="button"
-              onClick={() => setPaperStyle('white')}
-              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${
-                paperStyle === 'white' ? 'bg-white text-slate-800 font-bold shadow-2xs' : 'text-[#6B533E]'
-              }`}
-            >
-              Branco
             </button>
           </div>
         </div>
 
         {/* Artisanal Ticket Card (with cut lines and realistic staple) */}
         <div className="relative w-full max-w-lg mx-auto">
-          
+
           {/* Top Scissors Cutting Guideline Indicator */}
           <div className="flex items-center justify-between text-xs text-[#8C7A6B] mb-2 px-2">
             <span className="flex items-center gap-1">
@@ -131,10 +116,9 @@ export const VerseInteractiveDemo: React.FC = () => {
           </div>
 
           {/* Ticket Body */}
-          <div 
-            className={`relative rounded-2xl border-2 border-dashed p-6 sm:p-8 shadow-craft-lg transition-all duration-300 transform ${
-              paperClasses[paperStyle]
-            } ${isChanging ? 'opacity-40 scale-98' : 'opacity-100 scale-100'}`}
+          <div
+            className={`relative rounded-2xl border-2 border-dashed p-6 sm:p-8 shadow-craft-lg transition-all duration-300 transform ${paperClasses[paperStyle]
+              } ${isChanging ? 'opacity-40 scale-98' : 'opacity-100 scale-100'}`}
           >
             {/* Realistic metallic staple at top corner */}
             <div className="absolute top-4 left-6 flex items-center gap-1.5">

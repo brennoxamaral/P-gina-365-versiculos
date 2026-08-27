@@ -117,9 +117,6 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#2B1D12]">
                 O combo perfeito para bombar seu Instagram
               </h3>
-              <p className="text-sm sm:text-base text-[#5A422D] leading-relaxed">
-                Junto com os 365 versículos, você leva o cartão de agradecimento estratégico que incentiva seus clientes a postarem fotos e vídeos do pedido, trazendo novos clientes orgânicos todos os dias.
-              </p>
             </div>
 
             {/* Checklist of what is inside the Bonus */}
