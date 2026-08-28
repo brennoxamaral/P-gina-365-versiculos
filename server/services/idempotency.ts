@@ -7,7 +7,9 @@ interface ProcessedEvent {
   customerEmail?: string;
 }
 
-const CACHE_FILE = path.join(process.cwd(), '.webhook_events.json');
+const CACHE_FILE = process.env.VERCEL
+  ? path.join('/tmp', '.webhook_events.json')
+  : path.join(process.cwd(), '.webhook_events.json');
 
 class IdempotencyManager {
   private processedEvents: Map<string, ProcessedEvent> = new Map();

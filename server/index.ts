@@ -26,14 +26,16 @@ app.get('/api/health', (_req, res) => {
 // Rotas de Webhook
 app.use('/api/webhook', webhookRouter);
 
-// Inicialização do servidor
-const PORT = config.port;
-app.listen(PORT, () => {
-  console.log(`\n============================================================`);
-  console.log(`🚀 Servidor de Webhooks AbacatePay rodando na porta ${PORT}`);
-  console.log(`📡 URL do Webhook Local: http://localhost:${PORT}/api/webhook/abacatepay?webhookSecret=${config.abacate.webhookSecret}`);
-  console.log(`💚 Healthcheck: http://localhost:${PORT}/api/health`);
-  console.log(`============================================================\n`);
-});
+// Inicialização do servidor (apenas para ambiente local ou servidor dedicado)
+if (!process.env.VERCEL) {
+  const PORT = config.port;
+  app.listen(PORT, () => {
+    console.log(`\n============================================================`);
+    console.log(`🚀 Servidor de Webhooks AbacatePay rodando na porta ${PORT}`);
+    console.log(`📡 URL do Webhook Local: http://localhost:${PORT}/api/webhook/abacatepay?webhookSecret=${config.abacate.webhookSecret}`);
+    console.log(`💚 Healthcheck: http://localhost:${PORT}/api/health`);
+    console.log(`============================================================\n`);
+  });
+}
 
 export default app;
