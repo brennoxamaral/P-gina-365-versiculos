@@ -9,17 +9,32 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Show when scrolled down past 450px
-      if (window.scrollY > 450) {
-        setVisible(true);
+    const checkVisibility = () => {
+      // Exibir APENAS depois que o usuário ultrapassar o botão principal na seção Hero
+      const heroBtn = document.getElementById('btn-hero-cta');
+      if (heroBtn) {
+        const rect = heroBtn.getBoundingClientRect();
+        // Visível somente se a borda inferior do botão do Hero já passou do topo da janela
+        setVisible(rect.bottom < 0);
       } else {
-        setVisible(false);
+        const heroSection = document.getElementById('hero-section');
+        if (heroSection) {
+          const rect = heroSection.getBoundingClientRect();
+          setVisible(rect.bottom < 0);
+        } else {
+          setVisible(window.scrollY > 800);
+        }
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility, { passive: true });
+    checkVisibility();
+
+    return () => {
+      window.removeEventListener('scroll', checkVisibility);
+      window.removeEventListener('resize', checkVisibility);
+    };
   }, []);
 
   if (!visible) return null;
@@ -53,11 +68,11 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
           type="button"
           onClick={onOpenCheckout}
           id="btn-sticky-cta"
-          className="py-2.5 px-5 sm:px-7 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center gap-2 cursor-pointer ml-auto"
+          className="py-2.5 px-4 sm:px-7 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-xs sm:text-base tracking-tight shadow-gold transition-all flex items-center gap-2 cursor-pointer ml-auto whitespace-nowrap"
         >
-          <Download className="w-4 h-4 text-[#2B1D12]" />
-          <span>GARANTIR POR R$ 19,90</span>
-          <ArrowRight className="w-4 h-4 text-[#2B1D12] hidden sm:inline" />
+          <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
+          <span className="whitespace-nowrap">GARANTIR POR R$ 19,90</span>
+          <ArrowRight className="w-4 h-4 text-[#2B1D12] hidden sm:inline shrink-0" />
         </button>
 
       </div>

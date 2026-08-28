@@ -26,7 +26,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F2EBE3] text-[#4B3621] flex flex-col selection:bg-[#E1AD01]/30 selection:text-[#2B1D12]">
       {/* 1. Header / Navbar */}
-      <Header />
+      <Header onOpenCheckout={handleOpenCheckout} />
 
       {/* Main Page Flow */}
       <main className="flex-1">

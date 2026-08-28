@@ -8,7 +8,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
   return (
-    <section className="relative pt-10 pb-16 md:pt-16 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="hero-section" className="relative pt-10 pb-16 md:pt-16 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
         
         {/* Top Badge: Centered */}
@@ -48,17 +48,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
           <HeroProductMockup />
         </div>
 
-        {/* Primary CTA Button (Positioned directly UNDER the product visual) */}
-        <div className="mt-8 flex flex-col items-center gap-3 w-full max-w-md">
+        {/* Primary CTA Button (Positioned directly UNDER the product visual - strictly single line) */}
+        <div className="mt-8 flex flex-col items-center gap-3 w-full max-w-lg">
           <button
             type="button"
             onClick={onOpenCheckout}
             id="btn-hero-cta"
-            className="w-full py-4 px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-lg sm:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer group"
+            className="w-full py-3.5 sm:py-4 px-3 sm:px-6 md:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
           >
-            <Download className="w-6 h-6 text-[#2B1D12] group-hover:-translate-y-0.5 transition-transform" />
-            <span>QUERO MEU KIT • APENAS R$ 19,90</span>
-            <ArrowRight className="w-5 h-5 text-[#2B1D12] group-hover:translate-x-1 transition-transform" />
+            <Download className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
+            <span className="whitespace-nowrap">QUERO MEU KIT • APENAS R$ 19,90</span>
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
 
           {/* Microcopy of security & confidence */}

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Heart, Menu, X, Sparkles } from 'lucide-react';
+import { Heart, Menu, X, Download } from 'lucide-react';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onOpenCheckout?: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onOpenCheckout }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -13,12 +17,12 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-[#F2EBE3]/90 backdrop-blur-md border-b border-[#E8DFD5] transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+    <header className="relative w-full bg-[#F2EBE3] border-b border-[#E8DFD5] transition-all duration-300">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
         {/* Brand Logo & Tag */}
-        <a 
-          href="#" 
-          className="flex items-center gap-3 group"
+        <a
+          href="#"
+          className="flex items-center gap-3 group shrink-0"
           id="nav-logo"
         >
           <div className="w-10 h-10 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] flex items-center justify-center shadow-sm text-[#C79801] group-hover:scale-105 transition-transform">
@@ -39,8 +43,8 @@ export const Header: React.FC = () => {
           </div>
         </a>
 
-        {/* Desktop Navigation Links (No Buy Button in Header per instructions) */}
-        <nav className="hidden md:flex items-center gap-7">
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -52,23 +56,37 @@ export const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* Mobile menu trigger */}
-        <div className="md:hidden">
+        {/* Header CTA Button & Mobile Menu Trigger */}
+        <div className="flex items-center gap-3">
+          {/* Desktop & Tablet CTA Button */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-[#4B3621] hover:bg-[#FAF6F0] border border-[#E8DFD5] transition-colors"
-            aria-label="Abrir menu"
-            id="btn-mobile-menu"
+            onClick={onOpenCheckout}
+            id="btn-header-cta"
+            className="hidden sm:inline-flex items-center gap-2 py-2.5 px-4 md:px-5 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-bold text-xs md:text-sm tracking-tight shadow-gold hover:shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
+            <span>Quero o Kit • R$ 19,90</span>
           </button>
+
+          {/* Mobile menu trigger */}
+          <div className="lg:hidden">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-[#4B3621] hover:bg-[#FAF6F0] border border-[#E8DFD5] transition-colors"
+              aria-label="Abrir menu"
+              id="btn-mobile-menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF6F0] border-b border-[#E8DFD5] px-4 py-4 space-y-3 animate-fadeIn">
+        <div className="lg:hidden bg-[#FAF6F0] border-b border-[#E8DFD5] px-4 py-4 space-y-3 animate-fadeIn">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -79,6 +97,21 @@ export const Header: React.FC = () => {
               {link.label}
             </a>
           ))}
+
+          <div className="pt-2 border-t border-[#E8DFD5]">
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenCheckout?.();
+              }}
+              id="btn-mobile-header-cta"
+              className="w-full py-3 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-sm tracking-tight shadow-gold flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
+              <span>QUERO MEU KIT • R$ 19,90</span>
+            </button>
+          </div>
         </div>
       )}
     </header>

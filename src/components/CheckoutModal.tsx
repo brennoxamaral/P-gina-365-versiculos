@@ -16,6 +16,10 @@ import {
   AlertCircle,
   Clock,
   Zap,
+  Mail,
+  Video,
+  ExternalLink,
+  FileText,
 } from 'lucide-react';
 import {
   createPixCharge,
@@ -590,61 +594,135 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
         {/* ETAPA 4: SUCESSO E DOWNLOAD IMEDIATO                               */}
         {/* ------------------------------------------------------------------ */}
         {step === 'SUCCESS' && (
-          <div className="text-center py-6 space-y-5 animate-fadeIn">
-            <div className="w-16 h-16 rounded-full bg-[#2E7D32]/15 text-[#2E7D32] flex items-center justify-center mx-auto shadow-sm">
-              <CheckCircle2 className="w-10 h-10" />
+          <div className="text-center py-4 space-y-4 animate-fadeIn">
+            {/* Ícone de Sucesso */}
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#2E7D32]/15 text-[#2E7D32] flex items-center justify-center mx-auto shadow-sm">
+              <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10" />
             </div>
 
+            {/* Título e Subtítulo */}
             <div className="space-y-1">
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#2B1D12]">
                 Parabéns! Pagamento Confirmado
               </h3>
-              <p className="text-sm text-[#5A422D]">
-                Seu acesso ao <strong className="text-[#2B1D12]">Kit 365 Versículos para Delivery</strong> já está liberado!
+              <p className="text-xs sm:text-sm text-[#5A422D]">
+                Seu acesso ao <strong className="text-[#2B1D12]">Kit 365 Versículos para Delivery</strong> e bônus está 100% liberado!
               </p>
             </div>
 
-            {/* Caixa de Downloads Liberados */}
-            <div className="p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] space-y-3 text-left">
-              <span className="text-xs font-bold text-[#8A6700] uppercase tracking-wider block">
-                Seus Arquivos Prontos para Download:
-              </span>
-              
-              <div className="flex items-center justify-between p-3 bg-white rounded-xl border border-[#E8DFD5]">
-                <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                  <Download className="w-4 h-4 text-[#C79801] shrink-0" />
+            {/* Aviso de Envio para o E-mail */}
+            <div className="p-4 rounded-2xl bg-[#E8F5E9] border border-[#A5D6A7] text-left flex items-start gap-3 shadow-xs">
+              <div className="w-9 h-9 rounded-xl bg-[#2E7D32] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-xs font-bold text-[#1B5E20]">
+                    Todos os materiais foram enviados para o seu e-mail!
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#2E7D32] text-white">
+                    ENVIO AUTOMÁTICO
+                  </span>
+                </div>
+                <p className="text-xs text-[#2E7D32] mt-1">
+                  Enviamos todos os links de acesso e arquivos diretamente para{' '}
+                  <strong className="text-[#1B5E20] font-bold underline decoration-green-400 underline-offset-2 break-all">
+                    {formData.email.trim() || 'o e-mail informado no pagamento'}
+                  </strong>
+                  . Verifique sua caixa de entrada e também a pasta de spam.
+                </p>
+              </div>
+            </div>
+
+            {/* Caixa com os Materiais e Botões de Acesso Imediato */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] space-y-3 text-left">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-[#8A6700] uppercase tracking-wider block">
+                  Acesso Imediato aos Materiais:
+                </span>
+                <span className="text-[10px] text-[#6B533E] font-medium">
+                  Clique para baixar ou acessar
+                </span>
+              </div>
+
+              {/* 1. PDF Kit 365 Versículos */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-white rounded-xl border border-[#E8DFD5] hover:border-[#E1AD01] transition-all gap-3 shadow-xs">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-lg bg-[#FAF3E8] border border-[#E1AD01]/30 text-[#8A6700] flex items-center justify-center shrink-0">
+                    <FileText className="w-5 h-5" />
+                  </div>
                   <div className="min-w-0">
-                    <h5 className="font-bold text-xs text-[#2B1D12] truncate">Kit_365_Versiculos_A4_HD.pdf</h5>
-                    <p className="text-[10px] text-[#6B533E]">Arquivo PDF Vetorial em 300 DPI</p>
+                    <h5 className="font-bold text-xs sm:text-sm text-[#2B1D12] truncate">
+                      Kit 365 Versículos (PDF Alta Resolução)
+                    </h5>
+                    <p className="text-[10px] sm:text-[11px] text-[#6B533E]">
+                      Arquivo PDF Vetorial em 300 DPI pronto para imprimir
+                    </p>
                   </div>
                 </div>
                 <a
-                  href="#download-pdf"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert("Download iniciado com sucesso! O arquivo PDF também foi enviado para o seu e-mail.");
-                  }}
-                  className="px-3 py-1.5 rounded-lg bg-[#E1AD01] text-[#2B1D12] font-bold text-xs hover:bg-[#C79801] shrink-0"
+                  href="https://drive.google.com/file/d/1Vz7G3yHps-yLjbbxvS6_NDMxvLntxhGX/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-black text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
                 >
-                  Baixar PDF
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Baixar PDF</span>
+                  <ExternalLink className="w-3 h-3 opacity-70" />
                 </a>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-white rounded-xl border border-[#E8DFD5]">
-                <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                  <Sparkles className="w-4 h-4 text-[#C79801] shrink-0" />
+              {/* 2. Template Cartão de Agradecimento Canva */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-white rounded-xl border border-[#E8DFD5] hover:border-[#E1AD01] transition-all gap-3 shadow-xs">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-lg bg-[#FAF3E8] border border-[#E1AD01]/30 text-[#8A6700] flex items-center justify-center shrink-0">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
                   <div className="min-w-0">
-                    <h5 className="font-bold text-xs text-[#2B1D12] truncate">Template_Cartao_Canva.link</h5>
-                    <p className="text-[10px] text-[#6B533E]">Link de Acesso Editável no Canva</p>
+                    <h5 className="font-bold text-xs sm:text-sm text-[#2B1D12] truncate">
+                      Template Cartão de Agradecimento
+                    </h5>
+                    <p className="text-[10px] sm:text-[11px] text-[#6B533E]">
+                      Bônus oficial 100% editável no Canva gratuito ou Pro
+                    </p>
                   </div>
                 </div>
                 <a
-                  href="https://canva.com"
+                  href="https://canva.link/cartao-de-agradecimento-estrategico"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-[#2B1D12] text-white font-bold text-xs hover:bg-black shrink-0"
+                  className="px-4 py-2 rounded-xl bg-[#2B1D12] hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
                 >
-                  Abrir no Canva
+                  <Sparkles className="w-3.5 h-3.5 text-[#E1AD01]" />
+                  <span>Abrir Template Canva</span>
+                  <ExternalLink className="w-3 h-3 opacity-70" />
+                </a>
+              </div>
+
+              {/* 3. Vídeo Aula Template Canva */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-white rounded-xl border border-[#E8DFD5] hover:border-[#E1AD01] transition-all gap-3 shadow-xs">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-lg bg-red-50 border border-red-200 text-red-600 flex items-center justify-center shrink-0">
+                    <Video className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <h5 className="font-bold text-xs sm:text-sm text-[#2B1D12] truncate">
+                      Vídeo Aula: Como Editar no Canva
+                    </h5>
+                    <p className="text-[10px] sm:text-[11px] text-[#6B533E]">
+                      Passo a passo prático para personalizar e imprimir
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                >
+                  <Video className="w-3.5 h-3.5" />
+                  <span>Assistir Vídeo Aula</span>
+                  <ExternalLink className="w-3 h-3 opacity-70" />
                 </a>
               </div>
             </div>
@@ -653,13 +731,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
               type="button"
               onClick={() => {
                 onClose();
-                // Opcional: resetar após fechar para permitir nova abertura limpa
+                // Resetar após fechar para permitir nova abertura limpa
                 setStep('FORM');
                 setPixData(null);
               }}
-              className="px-6 py-2.5 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] text-[#2B1D12] font-bold text-xs hover:bg-[#F2EBE3] cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] text-[#2B1D12] font-bold text-xs hover:bg-[#F2EBE3] transition-colors cursor-pointer"
             >
-              Fechar Janela
+              Concluir e Fechar
             </button>
           </div>
         )}
