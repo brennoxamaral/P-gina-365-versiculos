@@ -11,9 +11,10 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
   useEffect(() => {
     const checkVisibility = () => {
       // Exibir APENAS depois que o usuário ultrapassar o botão principal na seção Hero
-      const heroBtn = document.getElementById('btn-hero-cta');
-      if (heroBtn) {
-        const rect = heroBtn.getBoundingClientRect();
+      const heroBtns = Array.from(document.querySelectorAll<HTMLElement>('#btn-hero-cta, #btn-hero-cta-desktop'));
+      const visibleHeroBtn = heroBtns.find(btn => btn.offsetWidth > 0 || btn.offsetHeight > 0);
+      if (visibleHeroBtn) {
+        const rect = visibleHeroBtn.getBoundingClientRect();
         // Visível somente se a borda inferior do botão do Hero já passou do topo da janela
         setVisible(rect.bottom < 0);
       } else {

@@ -43,22 +43,51 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
           </div>
         </div>
 
+        {/* Primary CTA Button (Mobile Only: positioned before HeroProductMockup) */}
+        <div className="sm:hidden mb-6 flex flex-col items-center gap-3 w-full">
+          <button
+            type="button"
+            onClick={onOpenCheckout}
+            id="btn-hero-cta"
+            className="w-auto max-w-full min-h-[48px] py-3 px-4 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center gap-2 cursor-pointer group"
+          >
+            <Download className="w-4 h-4 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
+            <span className="whitespace-nowrap">QUERO MEU KIT • APENAS R$ 19,90</span>
+            <ArrowRight className="w-4 h-4 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
+          </button>
+
+          {/* Microcopy of security & confidence */}
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs text-[#6B533E] font-medium pt-1">
+            <span className="inline-flex items-center gap-1">
+              <Lock className="w-3.5 h-3.5 text-[#2E7D32]" /> Pagamento Único
+            </span>
+            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
+            <span className="inline-flex items-center gap-1">
+              <Zap className="w-3.5 h-3.5 text-[#C79801]" /> Envio Imediato no E-mail
+            </span>
+            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
+            <span className="inline-flex items-center gap-1">
+              <Shield className="w-3.5 h-3.5 text-[#2E7D32]" /> 7 Dias de Garantia
+            </span>
+          </div>
+        </div>
+
         {/* Product Visual Mockup (Integrated smoothly directly on #F2EBE3 background, not trapped in card) */}
         <div className="w-full my-4">
           <HeroProductMockup />
         </div>
 
-        {/* Primary CTA Button (Positioned directly UNDER the product visual - strictly single line) */}
-        <div className="mt-8 flex flex-col items-center gap-3 w-full">
+        {/* Primary CTA Button (Desktop Only: Positioned directly UNDER the product visual - strictly single line) */}
+        <div className="hidden sm:flex mt-8 flex-col items-center gap-3 w-full">
           <button
             type="button"
             onClick={onOpenCheckout}
-            id="btn-hero-cta"
-            className="w-auto max-w-full min-h-[48px] sm:min-h-[56px] py-3 sm:py-4 px-4 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group"
+            id="btn-hero-cta-desktop"
+            className="w-auto max-w-full min-h-[56px] py-4 px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center gap-3 cursor-pointer group"
           >
-            <Download className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
+            <Download className="w-5 h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
             <span className="whitespace-nowrap">QUERO MEU KIT • APENAS R$ 19,90</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
 
           {/* Microcopy of security & confidence */}

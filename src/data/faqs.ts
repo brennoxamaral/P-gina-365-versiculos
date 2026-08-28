@@ -4,7 +4,7 @@ export const faqs: FAQItem[] = [
   {
     id: "papel",
     question: "Que tipo de papel posso usar para imprimir?",
-    answer: "Você pode imprimir em papel sulfite comum A4 branco (75g ou 90g), folhas coloridas (rosa pastel, azul bebê, amarelo claro) ou papel kraft A4 (120g/180g) para um visual rústico artesanal super sofisticado."
+    answer: "Você pode imprimir normalmente em folha sulfite comum A4. Para a produção dos nossos bilhetes, nós utilizamos a folha Canson A4 150g para garantir um acabamento mais encorpado e sofisticado."
   },
   {
     id: "impressora",

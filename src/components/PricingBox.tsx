@@ -21,9 +21,9 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         {/* Top Urgency / Condition Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E1AD01]/20 border border-[#C79801]/30 text-xs sm:text-sm font-bold text-[#8A6700] mb-6">
-          <Clock className="w-4 h-4 text-[#C79801]" />
-          <span>OFERTA ESPECIAL DE LANÇAMENTO • PAGAMENTO ÚNICO</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E1AD01]/20 border border-[#C79801]/30 text-xs sm:text-sm font-bold text-[#8A6700] mb-6 whitespace-nowrap">
+          <Clock className="w-4 h-4 text-[#C79801] shrink-0" />
+          <span className="whitespace-nowrap">OFERTA ESPECIAL DE LANÇAMENTO</span>
         </div>
 
         {/* Pricing Card (Highlighted with mustard gold border & craft elegance) */}
