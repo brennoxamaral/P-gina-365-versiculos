@@ -74,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCheckout }) => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#4B3621] hover:bg-[#FAF6F0] border border-[#E8DFD5] transition-colors"
+              className="min-w-[44px] min-h-[44px] p-2.5 rounded-xl text-[#4B3621] hover:bg-[#FAF6F0] border border-[#E8DFD5] transition-colors flex items-center justify-center cursor-pointer"
               aria-label="Abrir menu"
               id="btn-mobile-menu"
             >

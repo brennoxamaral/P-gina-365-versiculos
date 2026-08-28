@@ -82,7 +82,7 @@ async function listWebhooks() {
  */
 async function testLocalWebhook(targetEmail?: string) {
   const port = process.env.PORT || '3001';
-  const testUrl = `http://localhost:${port}/api/webhook/abacatepay?webhookSecret=${encodeURIComponent(WEBHOOK_SECRET)}`;
+  const testUrl = `http://127.0.0.1:${port}/api/webhook/abacatepay?webhookSecret=${encodeURIComponent(WEBHOOK_SECRET)}`;
   const email = targetEmail || 'comprador.teste@gmail.com';
 
   console.log(`[Test] Enviando simulação de pagamento aprovado para: ${testUrl}`);

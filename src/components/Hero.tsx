@@ -49,12 +49,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
         </div>
 
         {/* Primary CTA Button (Positioned directly UNDER the product visual - strictly single line) */}
-        <div className="mt-8 flex flex-col items-center gap-3 w-full max-w-lg">
+        <div className="mt-8 flex flex-col items-center gap-3 w-full">
           <button
             type="button"
             onClick={onOpenCheckout}
             id="btn-hero-cta"
-            className="w-full py-3.5 sm:py-4 px-3 sm:px-6 md:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
+            className="w-auto max-w-full min-h-[48px] sm:min-h-[56px] py-3 sm:py-4 px-4 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group"
           >
             <Download className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
             <span className="whitespace-nowrap">QUERO MEU KIT • APENAS R$ 19,90</span>
@@ -62,16 +62,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
           </button>
 
           {/* Microcopy of security & confidence */}
-          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-[#6B533E] font-medium pt-1">
-            <span className="flex items-center gap-1">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs text-[#6B533E] font-medium pt-1">
+            <span className="inline-flex items-center gap-1">
               <Lock className="w-3.5 h-3.5 text-[#2E7D32]" /> Pagamento Único
             </span>
-            <span>•</span>
-            <span className="flex items-center gap-1">
+            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
+            <span className="inline-flex items-center gap-1">
               <Zap className="w-3.5 h-3.5 text-[#C79801]" /> Envio Imediato no E-mail
             </span>
-            <span>•</span>
-            <span className="flex items-center gap-1">
+            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
+            <span className="inline-flex items-center gap-1">
               <Shield className="w-3.5 h-3.5 text-[#2E7D32]" /> 7 Dias de Garantia
             </span>
           </div>

@@ -80,32 +80,32 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
               type="button"
               onClick={onOpenCheckout}
               id="btn-pricing-cta"
-              className="w-full py-4 px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-lg sm:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer group"
+              className="w-full py-3.5 sm:py-4 px-3 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
             >
-              <Download className="w-6 h-6 text-[#2B1D12] group-hover:-translate-y-0.5 transition-transform" />
-              <span>COMPRAR AGORA • R$ 19,90</span>
-              <ArrowRight className="w-5 h-5 text-[#2B1D12] group-hover:translate-x-1 transition-transform" />
+              <Download className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
+              <span className="whitespace-nowrap">COMPRAR AGORA • R$ 19,90</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
             </button>
 
             {/* Payment security badges */}
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-[#6B533E] font-medium pt-1">
-              <span className="flex items-center gap-1">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-[#6B533E] font-medium pt-1">
+              <span className="inline-flex items-center gap-1">
                 <Zap className="w-3.5 h-3.5 text-[#C79801]" /> PIX com Liberação Instantânea
               </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
+              <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
+              <span className="inline-flex items-center gap-1">
                 <Lock className="w-3.5 h-3.5 text-[#2E7D32]" /> Compra 100% Segura
               </span>
             </div>
           </div>
 
           {/* 7 Days Guarantee Box */}
-          <div className="mt-8 pt-6 border-t border-[#E8DFD5] flex flex-col sm:flex-row items-center justify-center gap-4 text-left">
+          <div className="mt-8 pt-6 border-t border-[#E8DFD5] flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
             <div className="w-14 h-14 rounded-2xl bg-[#2E7D32]/10 border border-[#2E7D32]/30 flex items-center justify-center text-[#2E7D32] shrink-0">
               <ShieldCheck className="w-8 h-8" />
             </div>
             <div>
-              <h5 className="font-bold text-sm text-[#2B1D12] flex items-center gap-1.5">
+              <h5 className="font-bold text-sm text-[#2B1D12] flex items-center justify-center sm:justify-start gap-1.5">
                 Garantia Incondicional de 7 Dias
               </h5>
               <p className="text-xs text-[#5A422D] max-w-sm mt-0.5 leading-relaxed">

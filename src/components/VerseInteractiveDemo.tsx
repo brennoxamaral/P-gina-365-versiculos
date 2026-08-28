@@ -69,15 +69,15 @@ export const VerseInteractiveDemo: React.FC = () => {
         </p>
 
         {/* Paper style selector */}
-        <div className="flex items-center gap-2 mb-6 text-xs text-[#6B533E]">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-6 text-xs text-[#6B533E]">
           <span className="font-semibold flex items-center gap-1">
             <Palette className="w-3.5 h-3.5 text-[#C79801]" /> Cor do papel:
           </span>
-          <div className="flex gap-1.5 p-1 bg-[#F2EBE3] rounded-full border border-[#E8DFD5]">
+          <div className="flex flex-wrap gap-1 p-1 bg-[#F2EBE3] rounded-full border border-[#E8DFD5]">
             <button
               type="button"
               onClick={() => setPaperStyle('kraft')}
-              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${paperStyle === 'kraft' ? 'bg-[#E1AD01] text-[#2B1D12] font-bold shadow-2xs' : 'text-[#6B533E]'
+              className={`px-3 py-1.5 min-h-[36px] rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center ${paperStyle === 'kraft' ? 'bg-[#E1AD01] text-[#2B1D12] shadow-2xs' : 'text-[#6B533E] hover:text-[#2B1D12]'
                 }`}
             >
               Kraft / Creme
@@ -85,7 +85,7 @@ export const VerseInteractiveDemo: React.FC = () => {
             <button
               type="button"
               onClick={() => setPaperStyle('pink')}
-              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${paperStyle === 'pink' ? 'bg-[#F9A8D4] text-[#831843] font-bold shadow-2xs' : 'text-[#6B533E]'
+              className={`px-3 py-1.5 min-h-[36px] rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center ${paperStyle === 'pink' ? 'bg-[#F9A8D4] text-[#831843] shadow-2xs' : 'text-[#6B533E] hover:text-[#2B1D12]'
                 }`}
             >
               Rosa
@@ -93,7 +93,7 @@ export const VerseInteractiveDemo: React.FC = () => {
             <button
               type="button"
               onClick={() => setPaperStyle('blue')}
-              className={`px-2.5 py-0.5 rounded-full font-medium transition-all ${paperStyle === 'blue' ? 'bg-[#93C5FD] text-[#1E3A8A] font-bold shadow-2xs' : 'text-[#6B533E]'
+              className={`px-3 py-1.5 min-h-[36px] rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center ${paperStyle === 'blue' ? 'bg-[#93C5FD] text-[#1E3A8A] shadow-2xs' : 'text-[#6B533E] hover:text-[#2B1D12]'
                 }`}
             >
               Azul
@@ -157,12 +157,12 @@ export const VerseInteractiveDemo: React.FC = () => {
           </div>
 
           {/* Action Buttons: Next / Random */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
             <button
               type="button"
               onClick={handleRandomVerse}
               id="btn-sortear-versiculo"
-              className="px-5 py-2.5 rounded-xl bg-[#F2EBE3] hover:bg-[#FFFDF9] border border-[#E8DFD5] hover:border-[#C79801] text-[#2B1D12] font-bold text-sm shadow-xs hover:shadow-sm transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+              className="w-full sm:w-auto min-h-[48px] px-5 py-2.5 rounded-xl bg-[#F2EBE3] hover:bg-[#FFFDF9] border border-[#E8DFD5] hover:border-[#C79801] text-[#2B1D12] font-bold text-sm shadow-xs hover:shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
             >
               <Shuffle className="w-4 h-4 text-[#C79801]" />
               <span>Sortear outra bênção</span>
@@ -172,7 +172,7 @@ export const VerseInteractiveDemo: React.FC = () => {
               type="button"
               onClick={handleNextVerse}
               id="btn-proximo-versiculo"
-              className="px-5 py-2.5 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-bold text-sm shadow-xs hover:shadow-md transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+              className="w-full sm:w-auto min-h-[48px] px-5 py-2.5 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-bold text-sm shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
             >
               <RefreshCw className={`w-4 h-4 text-[#2B1D12] ${isChanging ? 'animate-spin' : ''}`} />
               <span>Ver próximo versículo</span>

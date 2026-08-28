@@ -344,7 +344,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Ex: João da Silva"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-base sm:text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs"
                 />
               </div>
 
@@ -358,7 +358,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="seuemail@gmail.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-base sm:text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs"
                 />
               </div>
 
@@ -374,7 +374,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                     value={formData.taxId}
                     onChange={(e) => setFormData({ ...formData, taxId: maskCPF(e.target.value) })}
                     placeholder="000.000.000-00"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs font-mono"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-base sm:text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs font-mono"
                   />
                 </div>
 
@@ -389,7 +389,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                     value={formData.cellphone}
                     onChange={(e) => setFormData({ ...formData, cellphone: maskPhone(e.target.value) })}
                     placeholder="(11) 99999-9999"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E8DFD5] text-base sm:text-sm text-[#2B1D12] focus:outline-none focus:border-[#C79801] shadow-xs"
                   />
                 </div>
               </div>
@@ -664,7 +664,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   href="https://drive.google.com/file/d/1Vz7G3yHps-yLjbbxvS6_NDMxvLntxhGX/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-black text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                  className="w-full sm:w-auto min-h-[44px] px-4 py-2 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-black text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Baixar PDF</span>
@@ -691,7 +691,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   href="https://canva.link/cartao-de-agradecimento-estrategico"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-[#2B1D12] hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                  className="w-full sm:w-auto min-h-[44px] px-4 py-2 rounded-xl bg-[#2B1D12] hover:bg-black active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-[#E1AD01]" />
                   <span>Abrir Template Canva</span>
@@ -718,7 +718,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                  className="w-full sm:w-auto min-h-[44px] px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
                 >
                   <Video className="w-3.5 h-3.5" />
                   <span>Assistir Vídeo Aula</span>
@@ -735,7 +735,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                 setStep('FORM');
                 setPixData(null);
               }}
-              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] text-[#2B1D12] font-bold text-xs hover:bg-[#F2EBE3] transition-colors cursor-pointer"
+              className="w-full sm:w-auto min-h-[44px] px-8 py-3 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] text-[#2B1D12] font-bold text-xs hover:bg-[#F2EBE3] transition-colors cursor-pointer"
             >
               Concluir e Fechar
             </button>

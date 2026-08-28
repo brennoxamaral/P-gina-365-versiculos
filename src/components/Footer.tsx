@@ -3,7 +3,7 @@ import { Heart, ShieldCheck, Lock } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#2B1D12] text-[#D3C5B4] py-12 px-4 sm:px-6 lg:px-8 border-t border-[#3B291A]">
+    <footer className="bg-[#2B1D12] text-[#D3C5B4] pt-12 pb-28 sm:pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#3B291A]">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-6">
         
         {/* Brand */}

@@ -62,7 +62,7 @@ export const FAQSection: React.FC = () => {
 
         {/* WhatsApp support callout */}
         <div className="mt-10 p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] text-center flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-left">
+          <div className="text-center sm:text-left">
             <h4 className="font-bold text-sm text-[#2B1D12]">Ainda ficou com alguma dúvida?</h4>
             <p className="text-xs text-[#5A422D]">Nossa equipe de atendimento está pronta para te ajudar no WhatsApp.</p>
           </div>
@@ -70,7 +70,7 @@ export const FAQSection: React.FC = () => {
             href="https://wa.me/5511999999999?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20o%20Kit%20365%20Versículos%20para%20Delivery"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2E7D32] hover:bg-[#2563EB] text-white font-bold text-xs shadow-xs transition-colors shrink-0"
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#2563EB] text-white font-bold text-xs shadow-xs transition-colors shrink-0 active:scale-95"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Falar no WhatsApp</span>

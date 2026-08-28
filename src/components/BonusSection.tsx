@@ -27,8 +27,8 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
         {/* Highlight Bonus Card Container */}
         <div className="bg-[#FAF6F0] rounded-3xl border-2 border-[#E1AD01] p-6 sm:p-10 shadow-craft-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
           
-          {/* Top-Right Value Stamp */}
-          <div className="absolute top-4 right-4 bg-[#E1AD01] text-[#2B1D12] text-xs font-extrabold px-3 py-1 rounded-full shadow-xs uppercase tracking-wider">
+          {/* Top Value Stamp (Positioned safely above content on mobile, top-right on desktop) */}
+          <div className="lg:absolute lg:top-4 lg:right-4 z-20 bg-[#E1AD01] text-[#2B1D12] text-xs font-extrabold px-3.5 py-1 rounded-full shadow-xs uppercase tracking-wider self-center lg:self-auto justify-self-center lg:justify-self-end">
             100% Grátis com o Kit
           </div>
 
@@ -153,12 +153,12 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
             </div>
 
             {/* Price Anchor for Bonus */}
-            <div className="p-4 rounded-xl bg-[#F2EBE3] border border-[#E8DFD5] flex items-center justify-between">
+            <div className="p-4 rounded-xl bg-[#F2EBE3] border border-[#E8DFD5] flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left">
               <div>
                 <span className="text-xs text-[#6B533E] block">Valor deste template vendido separadamente:</span>
                 <span className="text-sm font-bold text-[#D32F2F] line-through">R$ 29,90</span>
               </div>
-              <span className="text-sm font-black text-[#2E7D32] bg-[#2E7D32]/10 px-3 py-1 rounded-full">
+              <span className="text-xs sm:text-sm font-black text-[#2E7D32] bg-[#2E7D32]/10 px-3.5 py-1.5 rounded-full whitespace-nowrap">
                 GRÁTIS HOJE (R$ 0,00)
               </span>
             </div>

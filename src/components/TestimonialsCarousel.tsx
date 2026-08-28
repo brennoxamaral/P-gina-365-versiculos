@@ -147,7 +147,7 @@ export const TestimonialsCarousel: React.FC = () => {
               <button
                 type="button"
                 onClick={prevSlide}
-                className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
                 aria-label="Print anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -179,7 +179,7 @@ export const TestimonialsCarousel: React.FC = () => {
               <button
                 type="button"
                 onClick={nextSlide}
-                className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
                 aria-label="Próximo print"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -203,32 +203,41 @@ export const TestimonialsCarousel: React.FC = () => {
 
       </div>
 
-      {/* Lightbox / Zoom Modal */}
+      {/* Lightbox / Zoom Modal (with same visual effect as checkout modal) */}
       {isZoomOpen && (
         <div 
-          className="fixed inset-0 z-50 bg-[#2B1D12]/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn"
           onClick={() => setIsZoomOpen(false)}
         >
           <div 
-            className="relative max-w-xl w-full max-h-[90vh] flex flex-col items-center justify-center"
+            className="relative max-w-lg w-full bg-[#FAF6F0] rounded-3xl border-2 border-[#E1AD01] shadow-2xl overflow-hidden p-4 sm:p-6 text-[#4B3621] max-h-[92vh] flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
+            {/* Close Button - Matching Checkout Modal */}
             <button
               type="button"
               onClick={() => setIsZoomOpen(false)}
-              className="absolute -top-12 right-0 p-2.5 rounded-full bg-[#FAF6F0] text-[#2B1D12] hover:bg-[#E1AD01] transition-all cursor-pointer shadow-lg active:scale-95"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full text-[#6B533E] hover:bg-[#F2EBE3] hover:text-[#2B1D12] transition-colors cursor-pointer z-10"
               aria-label="Fechar visualização"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {/* Modal Image */}
-            <img
-              src={currentPrint.image}
-              alt={currentPrint.alt}
-              className="w-auto h-auto max-h-[82vh] max-w-full rounded-2xl shadow-2xl border border-[#FAF6F0]/20 object-contain"
-            />
+            {/* Header info matching modal aesthetics */}
+            <div className="w-full text-center pb-2.5 border-b border-[#E8DFD5] mb-3">
+              <span className="text-[11px] font-bold text-[#8A6700] uppercase tracking-wider">
+                Depoimento Real no WhatsApp • Print {activeIndex + 1} de {customerFeedbackPrints.length}
+              </span>
+            </div>
+
+            {/* Modal Image Viewport */}
+            <div className="relative w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-2xl bg-[#111B21] border border-[#E8DFD5]">
+              <img
+                src={currentPrint.image}
+                alt={currentPrint.alt}
+                className="w-full h-auto max-h-[72vh] object-contain rounded-xl block"
+              />
+            </div>
           </div>
         </div>
       )}

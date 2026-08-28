@@ -12,11 +12,11 @@ export const HeroProductMockup: React.FC = () => {
           <Sparkles className="w-3.5 h-3.5 text-[#C79801]" />
           Visualizar papéis de impressão:
         </span>
-        <div className="inline-flex p-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs">
+        <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-1.5 p-1 rounded-2xl sm:rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs max-w-full">
           <button
             type="button"
             onClick={() => setActiveSheet('all')}
-            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${activeSheet === 'all'
+            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${activeSheet === 'all'
                 ? 'bg-[#2B1D12] text-white shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
@@ -26,7 +26,7 @@ export const HeroProductMockup: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSheet('kraft')}
-            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'kraft'
+            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'kraft'
                 ? 'bg-[#E1AD01] text-[#2B1D12] shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
@@ -37,7 +37,7 @@ export const HeroProductMockup: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSheet('pink')}
-            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'pink'
+            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'pink'
                 ? 'bg-[#F9A8D4] text-[#831843] shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
@@ -48,7 +48,7 @@ export const HeroProductMockup: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSheet('blue')}
-            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'blue'
+            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'blue'
                 ? 'bg-[#93C5FD] text-[#1E3A8A] shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
@@ -60,16 +60,16 @@ export const HeroProductMockup: React.FC = () => {
       </div>
 
       {/* Main Composition: Centered and Enlarged Fan of 3 A4 Sheets */}
-      <div className="relative w-full max-w-3xl lg:max-w-4xl h-[380px] sm:h-[450px] md:h-[500px] flex items-center justify-center mx-auto">
+      <div className="relative w-full max-w-3xl lg:max-w-4xl h-[350px] sm:h-[450px] md:h-[500px] flex items-center justify-center mx-auto">
 
         {/* SHEET 1: Pink Paper (Left Tilt) */}
         <div
           onClick={() => setActiveSheet('pink')}
-          className={`absolute w-[240px] sm:w-[290px] md:w-[330px] h-[340px] sm:h-[420px] md:h-[470px] rounded-xl p-3 sm:p-4 bg-[#FCE7F3] border border-[#F472B6]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'pink'
+          className={`absolute w-[215px] min-[390px]:w-[245px] sm:w-[290px] md:w-[330px] h-[320px] min-[390px]:h-[350px] sm:h-[420px] md:h-[470px] rounded-xl p-2.5 sm:p-4 bg-[#FCE7F3] border border-[#F472B6]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'pink'
               ? 'rotate-0 translate-x-0 scale-100 sm:scale-105 z-30 opacity-100 shadow-2xl'
               : activeSheet === 'all'
-                ? '-rotate-6 sm:-rotate-8 -translate-x-14 sm:-translate-x-28 md:-translate-x-44 scale-95 opacity-100 z-10 hover:z-30 hover:scale-100 shadow-xl'
-                : '-rotate-12 -translate-x-20 sm:-translate-x-40 md:-translate-x-60 scale-85 opacity-25 pointer-events-none shadow-md'
+                ? '-rotate-6 sm:-rotate-8 -translate-x-10 min-[390px]:-translate-x-14 sm:-translate-x-28 md:-translate-x-44 scale-95 opacity-100 z-10 hover:z-30 hover:scale-100 shadow-xl'
+                : '-rotate-12 -translate-x-16 sm:-translate-x-40 md:-translate-x-60 scale-85 opacity-25 pointer-events-none shadow-md'
             }`}
           style={{
             boxShadow: activeSheet === 'pink'
@@ -117,11 +117,11 @@ export const HeroProductMockup: React.FC = () => {
         {/* SHEET 2: Blue Pastel Paper (Right Tilt) */}
         <div
           onClick={() => setActiveSheet('blue')}
-          className={`absolute w-[240px] sm:w-[290px] md:w-[330px] h-[340px] sm:h-[420px] md:h-[470px] rounded-xl p-3 sm:p-4 bg-[#E0F2FE] border border-[#60A5FA]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'blue'
+          className={`absolute w-[215px] min-[390px]:w-[245px] sm:w-[290px] md:w-[330px] h-[320px] min-[390px]:h-[350px] sm:h-[420px] md:h-[470px] rounded-xl p-2.5 sm:p-4 bg-[#E0F2FE] border border-[#60A5FA]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'blue'
               ? 'rotate-0 translate-x-0 scale-100 sm:scale-105 z-30 opacity-100 shadow-2xl'
               : activeSheet === 'all'
-                ? 'rotate-6 sm:rotate-8 translate-x-14 sm:translate-x-28 md:translate-x-44 scale-95 opacity-100 z-10 hover:z-30 hover:scale-100 shadow-xl'
-                : 'rotate-12 translate-x-20 sm:translate-x-40 md:translate-x-60 scale-85 opacity-25 pointer-events-none shadow-md'
+                ? 'rotate-6 sm:rotate-8 translate-x-10 min-[390px]:translate-x-14 sm:translate-x-28 md:translate-x-44 scale-95 opacity-100 z-10 hover:z-30 hover:scale-100 shadow-xl'
+                : 'rotate-12 translate-x-16 sm:translate-x-40 md:translate-x-60 scale-85 opacity-25 pointer-events-none shadow-md'
             }`}
           style={{
             boxShadow: activeSheet === 'blue'
@@ -130,15 +130,15 @@ export const HeroProductMockup: React.FC = () => {
           }}
         >
           <div className="flex justify-between items-center pb-2 border-b border-[#60A5FA]/40 mb-2 sm:mb-3">
-            <span className="text-[9.5px] sm:text-[11px] font-bold text-[#1E40AF] uppercase tracking-wider font-sans">
+            <span className="text-[9px] min-[390px]:text-[9.5px] sm:text-[11px] font-bold text-[#1E40AF] uppercase tracking-wider font-sans">
               Folha A4 • Versículos 25 a 48
             </span>
-            <span className="text-[8.5px] sm:text-[10px] text-[#2563EB] font-semibold flex items-center gap-1 bg-white/60 px-1.5 py-0.5 rounded">
+            <span className="text-[8px] min-[390px]:text-[8.5px] sm:text-[10px] text-[#2563EB] font-semibold flex items-center gap-1 bg-white/60 px-1.5 py-0.5 rounded">
               <Scissors className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> Recorte Fácil
             </span>
           </div>
 
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 h-[82%] sm:h-[84%]">
+          <div className="grid grid-cols-3 gap-1 sm:gap-2 h-[82%] sm:h-[84%]">
             {[
               { ref: 'Isaías 41:10', text: 'Não temas, porque eu sou contigo e te sustento.' },
               { ref: 'Salmos 121:1', text: 'Elevo os olhos para os montes; o socorro vem de Deus.' },
@@ -152,10 +152,10 @@ export const HeroProductMockup: React.FC = () => {
             ].map((v, i) => (
               <div
                 key={i}
-                className="bg-white/85 rounded-md border border-dashed border-[#60A5FA]/70 p-1.5 sm:p-2 flex flex-col justify-between text-[7px] sm:text-[8.5px] md:text-[9.5px] leading-tight text-[#1E3A8A] shadow-2xs hover:bg-white transition-colors"
+                className="bg-white/85 rounded-md border border-dashed border-[#60A5FA]/70 p-1 min-[390px]:p-1.5 sm:p-2 flex flex-col justify-between text-[6.5px] min-[390px]:text-[7px] sm:text-[8.5px] md:text-[9.5px] leading-tight text-[#1E3A8A] shadow-2xs hover:bg-white transition-colors"
               >
                 <p className="font-serif italic font-medium line-clamp-3">"{v.text}"</p>
-                <div className="flex justify-between items-center pt-1 border-t border-blue-100 text-[6.5px] sm:text-[7.5px] md:text-[8px] font-bold text-[#1D4ED8]">
+                <div className="flex justify-between items-center pt-1 border-t border-blue-100 text-[6px] min-[390px]:text-[6.5px] sm:text-[7.5px] md:text-[8px] font-bold text-[#1D4ED8]">
                   <span>{v.ref}</span>
                   <Sparkles className="w-2 h-2 text-blue-500 shrink-0" />
                 </div>
@@ -167,7 +167,7 @@ export const HeroProductMockup: React.FC = () => {
         {/* SHEET 3: Main Kraft / Cream Paper (Center Stage - Prominent) */}
         <div
           onClick={() => setActiveSheet('kraft')}
-          className={`absolute w-[255px] sm:w-[310px] md:w-[350px] h-[360px] sm:h-[440px] md:h-[490px] rounded-xl p-3 sm:p-4 bg-[#FAF6F0] border-2 border-[#E8DFD5] transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'kraft'
+          className={`absolute w-[230px] min-[390px]:w-[260px] sm:w-[310px] md:w-[350px] h-[335px] min-[390px]:h-[370px] sm:h-[440px] md:h-[490px] rounded-xl p-2.5 sm:p-4 bg-[#FAF6F0] border-2 border-[#E8DFD5] transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'kraft'
               ? 'rotate-0 translate-x-0 scale-100 sm:scale-105 z-30 opacity-100 shadow-2xl'
               : activeSheet === 'all'
                 ? 'rotate-0 translate-x-0 scale-100 z-20 hover:scale-102 shadow-2xl'
@@ -205,18 +205,18 @@ export const HeroProductMockup: React.FC = () => {
             ].map((v, i) => (
               <div
                 key={i}
-                className="group relative bg-[#FFFDF9] rounded-md border-2 border-dashed border-[#D3C5B4] hover:border-[#C79801] p-1.5 sm:p-2 flex flex-col justify-between text-[7.5px] sm:text-[9px] md:text-[10px] leading-tight text-[#4B3621] shadow-2xs hover:shadow-sm transition-all"
+                className="group relative bg-[#FFFDF9] rounded-md border-2 border-dashed border-[#D3C5B4] hover:border-[#C79801] p-1 min-[390px]:p-1.5 sm:p-2 flex flex-col justify-between text-[7px] min-[390px]:text-[7.5px] sm:text-[9px] md:text-[10px] leading-tight text-[#4B3621] shadow-2xs hover:shadow-sm transition-all"
               >
                 {/* Mini staple visual simulator at top-left */}
-                <div className="w-2.5 sm:w-3 h-0.5 sm:h-1 bg-[#8C8275] rounded-xs mb-0.5 self-start"></div>
+                <div className="w-2 sm:w-3 h-0.5 sm:h-1 bg-[#8C8275] rounded-xs mb-0.5 self-start"></div>
 
                 <p className="font-serif italic font-medium line-clamp-3 text-[#2B1D12]">
                   "{v.text}"
                 </p>
 
-                <div className="flex justify-between items-center pt-1 border-t border-[#E8DFD5] text-[6.5px] sm:text-[7.5px] md:text-[8.5px] font-bold text-[#8A6700]">
+                <div className="flex justify-between items-center pt-0.5 min-[390px]:pt-1 border-t border-[#E8DFD5] text-[6px] min-[390px]:text-[6.5px] sm:text-[7.5px] md:text-[8.5px] font-bold text-[#8A6700]">
                   <span>{v.ref}</span>
-                  <span className="text-[6px] sm:text-[7px] px-1 py-0.2 bg-[#FAF6F0] rounded text-[#6B533E] font-medium">
+                  <span className="text-[5.5px] min-[390px]:text-[6px] sm:text-[7px] px-0.5 min-[390px]:px-1 py-0.2 bg-[#FAF6F0] rounded text-[#6B533E] font-medium">
                     {v.cat}
                   </span>
                 </div>
@@ -228,18 +228,18 @@ export const HeroProductMockup: React.FC = () => {
       </div>
 
       {/* Floating feature pills underneath mockup (Centered below the fan) */}
-      <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 text-xs sm:text-sm text-[#4B3621]">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#C79801]/40 transition-colors">
+      <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 text-xs sm:text-sm text-[#4B3621]">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#C79801]/40 transition-colors">
           <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C79801] shrink-0" />
-          <span className="font-medium">Rendimento máximo por folha A4</span>
+          <span className="font-medium text-xs sm:text-sm">Rendimento máximo por folha A4</span>
         </div>
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#C79801]/40 transition-colors">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#C79801]/40 transition-colors">
           <Scissors className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C79801] shrink-0" />
-          <span className="font-medium">Guia pontilhado para corte rápido</span>
+          <span className="font-medium text-xs sm:text-sm">Guia pontilhado para corte rápido</span>
         </div>
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#2E7D32]/40 transition-colors">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#2E7D32]/40 transition-colors">
           <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2E7D32] shrink-0" />
-          <span className="font-medium">PDF em 300 DPI Vetorial</span>
+          <span className="font-medium text-xs sm:text-sm">PDF em 300 DPI Vetorial</span>
         </div>
       </div>
     </div>

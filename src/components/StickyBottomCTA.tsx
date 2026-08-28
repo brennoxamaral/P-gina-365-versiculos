@@ -40,8 +40,11 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
   if (!visible) return null;
 
   return (
-    <aside aria-label="Aviso de compra rápida" className="fixed bottom-0 left-0 right-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-t border-[#E8DFD5] py-3 px-4 shadow-craft-lg animate-fadeIn">
-      <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
+    <aside
+      aria-label="Aviso de compra rápida"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-t border-[#E8DFD5] pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] px-4 shadow-craft-lg animate-fadeIn"
+    >
+      <div className="max-w-4xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
         
         {/* Product and Price label */}
         <div className="hidden sm:flex flex-col">
@@ -58,9 +61,9 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
         </div>
 
         {/* Price on mobile */}
-        <div className="sm:hidden flex flex-col">
-          <span className="text-[10px] text-[#6B533E] font-medium">Pagamento único</span>
-          <span className="font-serif font-black text-lg text-[#2B1D12] leading-none">R$ 19,90</span>
+        <div className="sm:hidden flex flex-col shrink-0">
+          <span className="text-[10px] text-[#6B533E] font-medium leading-none mb-0.5">Pagamento único</span>
+          <span className="font-serif font-black text-lg text-[#2B1D12] leading-tight">R$ 19,90</span>
         </div>
 
         {/* CTA Button */}
@@ -68,7 +71,7 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
           type="button"
           onClick={onOpenCheckout}
           id="btn-sticky-cta"
-          className="py-2.5 px-4 sm:px-7 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-xs sm:text-base tracking-tight shadow-gold transition-all flex items-center gap-2 cursor-pointer ml-auto whitespace-nowrap"
+          className="min-h-[44px] py-2.5 px-3.5 sm:px-7 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-xs sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ml-auto whitespace-nowrap"
         >
           <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
           <span className="whitespace-nowrap">GARANTIR POR R$ 19,90</span>
