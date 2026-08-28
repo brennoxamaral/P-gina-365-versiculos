@@ -1,135 +1,237 @@
-import React, { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, MessageSquareHeart, Quote, Store, TrendingUp } from 'lucide-react';
-import { testimonials } from '../data/testimonials';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { ChevronLeft, ChevronRight, MessageCircleHeart, ZoomIn, X } from 'lucide-react';
+import { customerFeedbackPrints } from '../data/testimonials';
 
 export const TestimonialsCarousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  // Preload all testimonial images upfront
+  useEffect(() => {
+    customerFeedbackPrints.forEach((print) => {
+      const img = new Image();
+      img.src = print.image;
+    });
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setActiveIndex((prev) => (prev === 0 ? customerFeedbackPrints.length - 1 : prev - 1));
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setActiveIndex((prev) => (prev === customerFeedbackPrints.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'Escape') setIsZoomOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [prevSlide, nextSlide]);
+
+  // Touch swipe support for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
   };
 
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
   };
 
-  const current = testimonials[activeIndex];
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const currentPrint = customerFeedbackPrints[activeIndex];
 
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
+    <section id="depoimentos" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
-            <MessageSquareHeart className="w-3.5 h-3.5 text-[#C79801]" />
-            <span>RESULTADOS DE QUEM JÁ APLICA</span>
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
+            <MessageCircleHeart className="w-3.5 h-3.5 text-[#C79801]" />
+            <span>REAÇÃO DOS CLIENTES</span>
           </div>
+
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3">
-            O carinho que vira postagem no Instagram e clientes fiéis
+            O carinho na embalagem que emociona e fideliza clientes
           </h2>
+
           <p className="text-sm sm:text-base text-[#5A422D] leading-relaxed">
-            Veja o que outros donos de delivery estão vivenciando em suas entregas diárias.
+            Veja mensagens reais enviadas no WhatsApp do nosso delivery por quem recebeu um versículo na sacola.
           </p>
         </div>
 
-        {/* Carousel Viewport */}
-        <div className="relative max-w-3xl mx-auto">
+        {/* Carousel Layout: Clean Floating Card with Side Navigation */}
+        <div className="relative max-w-xl mx-auto flex items-center justify-center gap-3 sm:gap-5 md:gap-6">
           
-          {/* Main Testimonial Card */}
-          <div className="bg-[#FAF6F0] rounded-3xl border border-[#E8DFD5] p-6 sm:p-10 shadow-craft-lg transition-all duration-300 relative">
+          {/* Desktop Left Nav Button */}
+          <button
+            type="button"
+            onClick={prevSlide}
+            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#FAF6F0] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
+            aria-label="Print anterior"
+          >
+            <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
+          </button>
+
+          {/* Main Card Viewport */}
+          <div className="w-full max-w-lg">
             
-            {/* Top Stars & Impact Tag */}
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#E1AD01] text-[#C79801]" />
+            {/* Native Slider Card (Zero nested boxes, edge-to-edge screenshot) */}
+            <div 
+              className="relative w-full rounded-2xl sm:rounded-3xl border border-[#E8DFD5] shadow-craft-lg overflow-hidden bg-[#111B21] group select-none transition-all duration-300"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Horizontal Sliding Track */}
+              <div 
+                className="flex transition-transform duration-500 ease-out"
+                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+              >
+                {customerFeedbackPrints.map((print) => (
+                  <div
+                    key={print.id}
+                    onClick={() => setIsZoomOpen(true)}
+                    className="w-full shrink-0 relative flex items-center justify-center cursor-zoom-in bg-[#111B21]"
+                  >
+                    <img
+                      src={print.image}
+                      alt={print.alt}
+                      className="w-full h-auto object-contain block select-none pointer-events-none"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </div>
                 ))}
-                <span className="text-xs font-bold text-[#2B1D12] ml-1.5">5.0 / 5.0</span>
               </div>
-              <span className="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full bg-[#2E7D32]/10 text-[#2E7D32]">
-                <TrendingUp className="w-3.5 h-3.5" />
-                {current.impactTag}
-              </span>
+
+              {/* Floating Zoom Pill */}
+              <button
+                type="button"
+                onClick={() => setIsZoomOpen(true)}
+                className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#2B1D12]/85 backdrop-blur-md text-white text-xs font-medium shadow-md transition-all hover:bg-[#2B1D12] cursor-pointer"
+                aria-label="Ampliar imagem do depoimento"
+              >
+                <ZoomIn className="w-3.5 h-3.5 text-[#E1AD01]" />
+                <span>Ampliar</span>
+              </button>
             </div>
 
-            {/* Testimonial Quote */}
-            <div className="mb-6 relative">
-              <Quote className="w-8 h-8 text-[#E1AD01]/30 absolute -top-4 -left-2 -z-0" />
-              <p className="text-base sm:text-lg text-[#2B1D12] font-medium leading-relaxed relative z-10">
-                "{current.message}"
-              </p>
-            </div>
+            {/* Bottom Controls (Dots & Mobile Arrows) */}
+            <div className="flex items-center justify-between sm:justify-center gap-4 mt-5 px-2">
+              
+              {/* Mobile Prev Button */}
+              <button
+                type="button"
+                onClick={prevSlide}
+                className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                aria-label="Print anterior"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
 
-            {/* Client Real Reaction Bubble (Sub-card style) */}
-            <div className="p-4 rounded-xl bg-[#F2EBE3] border border-[#E8DFD5] mb-6 text-sm text-[#4B3621]">
-              <span className="text-[11px] font-bold text-[#8A6700] uppercase tracking-wider block mb-1">
-                💬 Mensagem recebida no WhatsApp do cliente:
-              </span>
-              <p className="italic text-[#2B1D12] font-serif text-sm">
-                {current.customerFeedback}
-              </p>
-            </div>
-
-            {/* Owner & Business Info */}
-            <div className="flex items-center justify-between border-t border-[#E8DFD5] pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#E1AD01]/20 border border-[#C79801]/30 flex items-center justify-center font-bold text-sm text-[#8A6700]">
-                  {current.ownerName.charAt(0)}
+              {/* Dots & Indicator */}
+              <div className="flex flex-col items-center gap-1.5">
+                <div className="flex items-center gap-2">
+                  {customerFeedbackPrints.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setActiveIndex(idx)}
+                      className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        activeIndex === idx 
+                          ? 'w-8 bg-[#C79801] shadow-xs' 
+                          : 'w-2.5 bg-[#D3C5B4] hover:bg-[#B5A89B]'
+                      }`}
+                      aria-label={`Ir para print ${idx + 1}`}
+                    />
+                  ))}
                 </div>
-                <div>
-                  <h4 className="font-bold text-sm text-[#2B1D12]">{current.businessName}</h4>
-                  <p className="text-xs text-[#6B533E]">{current.segment} • {current.city}</p>
-                </div>
+                <span className="text-[11px] font-bold text-[#8A6700] uppercase tracking-wider">
+                  Print {activeIndex + 1} de {customerFeedbackPrints.length}
+                </span>
               </div>
 
-              <div className="hidden sm:flex items-center gap-1 text-xs font-semibold text-[#8A6700]">
-                <Store className="w-3.5 h-3.5 text-[#C79801]" />
-                <span>{current.ownerName}</span>
-              </div>
+              {/* Mobile Next Button */}
+              <button
+                type="button"
+                onClick={nextSlide}
+                className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                aria-label="Próximo print"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
             </div>
 
           </div>
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between mt-6 px-2">
-            <button
-              type="button"
-              onClick={prevSlide}
-              className="p-2.5 rounded-full bg-[#FAF6F0] hover:bg-[#FFFDF9] border border-[#E8DFD5] text-[#4B3621] hover:text-[#C79801] shadow-xs transition-all cursor-pointer"
-              aria-label="Depoimento anterior"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            {/* Dots */}
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setActiveIndex(idx)}
-                  className={`h-2 rounded-full transition-all cursor-pointer ${
-                    activeIndex === idx ? 'w-6 bg-[#C79801]' : 'w-2 bg-[#D3C5B4]'
-                  }`}
-                  aria-label={`Ir para depoimento ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={nextSlide}
-              className="p-2.5 rounded-full bg-[#FAF6F0] hover:bg-[#FFFDF9] border border-[#E8DFD5] text-[#4B3621] hover:text-[#C79801] shadow-xs transition-all cursor-pointer"
-              aria-label="Próximo depoimento"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          {/* Desktop Right Nav Button */}
+          <button
+            type="button"
+            onClick={nextSlide}
+            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#FAF6F0] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
+            aria-label="Próximo print"
+          >
+            <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
+          </button>
 
         </div>
 
       </div>
+
+      {/* Lightbox / Zoom Modal */}
+      {isZoomOpen && (
+        <div 
+          className="fixed inset-0 z-50 bg-[#2B1D12]/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300"
+          onClick={() => setIsZoomOpen(false)}
+        >
+          <div 
+            className="relative max-w-xl w-full max-h-[90vh] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setIsZoomOpen(false)}
+              className="absolute -top-12 right-0 p-2.5 rounded-full bg-[#FAF6F0] text-[#2B1D12] hover:bg-[#E1AD01] transition-all cursor-pointer shadow-lg active:scale-95"
+              aria-label="Fechar visualização"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Image */}
+            <img
+              src={currentPrint.image}
+              alt={currentPrint.alt}
+              className="w-auto h-auto max-h-[82vh] max-w-full rounded-2xl shadow-2xl border border-[#FAF6F0]/20 object-contain"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

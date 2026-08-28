@@ -6,6 +6,13 @@ export interface Verse {
   dailyNumber: number;
 }
 
+export interface CustomerFeedbackPrint {
+  id: number;
+  image: string;
+  alt: string;
+  clientName: string;
+}
+
 export interface Testimonial {
   id: number;
   businessName: string;
