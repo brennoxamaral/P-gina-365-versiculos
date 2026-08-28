@@ -8,15 +8,15 @@ export const HeroProductMockup: React.FC = () => {
     <div className="relative w-full max-w-4xl mx-auto py-4 sm:py-6 px-2 sm:px-4 select-none">
       {/* Visual filter / paper preview selector pill */}
       <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-        <span className="text-xs text-[#6B533E] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+        <span className="text-xs text-[#6B533E] font-semibold uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap">
           <Sparkles className="w-3.5 h-3.5 text-[#C79801]" />
           Visualizar papéis de impressão:
         </span>
-        <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-1.5 p-1 rounded-2xl sm:rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs max-w-full">
+        <div className="inline-flex items-center p-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs whitespace-nowrap max-w-full">
           <button
             type="button"
             onClick={() => setActiveSheet('all')}
-            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${activeSheet === 'all'
+            className={`px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all cursor-pointer whitespace-nowrap ${activeSheet === 'all'
                 ? 'bg-[#2B1D12] text-white shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
@@ -26,34 +26,34 @@ export const HeroProductMockup: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSheet('kraft')}
-            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'kraft'
+            className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${activeSheet === 'kraft'
                 ? 'bg-[#E1AD01] text-[#2B1D12] shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FAF6F0] border border-[#D3C5B4]"></span>
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FAF6F0] border border-[#D3C5B4]"></span>
             Kraft / Creme
           </button>
           <button
             type="button"
             onClick={() => setActiveSheet('pink')}
-            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'pink'
+            className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${activeSheet === 'pink'
                 ? 'bg-[#F9A8D4] text-[#831843] shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FCE7F3] border border-[#F472B6]"></span>
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FCE7F3] border border-[#F472B6]"></span>
             Rosa Pastel
           </button>
           <button
             type="button"
             onClick={() => setActiveSheet('blue')}
-            className={`px-2.5 sm:px-3 py-1 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${activeSheet === 'blue'
+            className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${activeSheet === 'blue'
                 ? 'bg-[#93C5FD] text-[#1E3A8A] shadow-xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#E0F2FE] border border-[#60A5FA]"></span>
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#E0F2FE] border border-[#60A5FA]"></span>
             Azul Suave
           </button>
         </div>

@@ -437,10 +437,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
               <button
                 type="submit"
                 id="btn-confirm-payment"
-                className="w-full py-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-black text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-2 cursor-pointer mt-4"
+                className="w-full min-h-[48px] sm:min-h-[52px] py-3 sm:py-4 px-2 sm:px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-black text-xs min-[360px]:text-[13px] min-[400px]:text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer mt-4 whitespace-nowrap"
               >
-                <Sparkles className="w-5 h-5 text-[#2B1D12]" />
-                <span>GERAR PIX PARA PAGAMENTO • R$ 19,90</span>
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0" />
+                <span className="whitespace-nowrap">GERAR PIX PARA PAGAMENTO • R$ 19,90</span>
               </button>
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-[#6B533E] pt-1">
@@ -529,17 +529,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   <button
                     type="button"
                     onClick={handleCopyPix}
-                    className="w-full py-3 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-black text-xs tracking-wide shadow-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
+                    className="w-full py-3 px-3 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-black text-xs min-[380px]:text-sm tracking-wide shadow-xs flex items-center justify-center gap-2 transition-all cursor-pointer whitespace-nowrap"
                   >
                     {copiedPix ? (
                       <>
-                        <Check className="w-4 h-4 text-[#2E7D32]" />
-                        <span>CHAVE PIX COPIADA COM SUCESSO!</span>
+                        <Check className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                        <span className="whitespace-nowrap">CHAVE PIX COPIADA COM SUCESSO!</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="w-4 h-4" />
-                        <span>COPIAR CÓDIGO PIX (COPIA E COLA)</span>
+                        <Copy className="w-4 h-4 shrink-0" />
+                        <span className="whitespace-nowrap">COPIAR CÓDIGO PIX (COPIA E COLA)</span>
                       </>
                     )}
                   </button>
