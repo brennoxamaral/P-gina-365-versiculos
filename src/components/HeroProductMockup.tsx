@@ -5,7 +5,7 @@ export const HeroProductMockup: React.FC = () => {
   const [activeSheet, setActiveSheet] = useState<'all' | 'kraft' | 'blue' | 'pink'>('all');
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto py-4 sm:py-6 px-2 sm:px-4 select-none">
+    <div className="relative w-full max-w-4xl mx-auto pt-4 pb-3 sm:pt-6 sm:pb-4 px-2 sm:px-4 select-none">
       {/* Visual filter / paper preview selector pill */}
       <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
         <span className="text-xs text-[#6B533E] font-semibold uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap">

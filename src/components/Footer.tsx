@@ -3,12 +3,12 @@ import { Heart, ShieldCheck, Lock } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#2B1D12] text-[#D3C5B4] pt-12 pb-28 sm:pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#3B291A]">
+    <footer className="bg-[#2B1D12] text-[#D3C5B4] pt-14 pb-32 sm:pb-16 px-4 sm:px-6 lg:px-8 border-t border-[#3B291A]">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-6">
         
         {/* Brand */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#FAF6F0] flex items-center justify-center text-[#C79801]">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-[#FAF6F0] flex items-center justify-center text-[#C79801] shadow-xs">
             <Heart className="w-4 h-4 fill-[#E1AD01] text-[#C79801]" />
           </div>
           <span className="font-serif font-bold text-lg text-white">
@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Security badges */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#E8DFD5]">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-[#E8DFD5]">
           <span className="flex items-center gap-1.5">
             <Lock className="w-3.5 h-3.5 text-[#E1AD01]" /> Ambiente Criptografado SSL 256 bits
           </span>

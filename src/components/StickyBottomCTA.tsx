@@ -43,7 +43,7 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
   return (
     <aside
       aria-label="Aviso de compra rápida"
-      className="fixed bottom-0 left-0 right-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-t border-[#E8DFD5] pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] px-4 shadow-craft-lg animate-fadeIn"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-t border-[#E8DFD5] pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] px-4 sm:px-6 shadow-craft-lg animate-fadeIn"
     >
       <div className="max-w-4xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
         
@@ -72,7 +72,7 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
           type="button"
           onClick={onOpenCheckout}
           id="btn-sticky-cta"
-          className="min-h-[44px] py-2.5 px-3.5 sm:px-7 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-xs sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ml-auto whitespace-nowrap"
+          className="min-h-[46px] py-2.5 px-4 sm:px-7 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ml-auto whitespace-nowrap"
         >
           <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
           <span className="whitespace-nowrap">GARANTIR POR R$ 19,90</span>

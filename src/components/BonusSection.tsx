@@ -11,8 +11,8 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
       <div className="max-w-5xl mx-auto">
         
         {/* Section Badge */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
             <Gift className="w-3.5 h-3.5 text-[#C79801]" />
             <span>PRESENTE ESPECIAL INCLUSO</span>
           </div>
@@ -25,7 +25,7 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
         </div>
 
         {/* Highlight Bonus Card Container */}
-        <div className="bg-[#FAF6F0] rounded-3xl border-2 border-[#E1AD01] p-6 sm:p-10 shadow-craft-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
+        <div className="bg-[#FAF6F0] rounded-3xl border-2 border-[#E1AD01] p-6 sm:p-8 lg:p-10 shadow-craft-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
           
           {/* Top Value Stamp (Positioned safely above content on mobile, top-right on desktop) */}
           <div className="lg:absolute lg:top-4 lg:right-4 z-20 bg-[#E1AD01] text-[#2B1D12] text-xs font-extrabold px-3.5 py-1 rounded-full shadow-xs uppercase tracking-wider self-center lg:self-auto justify-self-center lg:justify-self-end">

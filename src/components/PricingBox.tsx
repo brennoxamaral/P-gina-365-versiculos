@@ -27,25 +27,25 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
         </div>
 
         {/* Pricing Card (Highlighted with mustard gold border & craft elegance) */}
-        <div className="w-full max-w-2xl bg-[#FAF6F0] rounded-3xl border-3 border-[#E1AD01] p-6 sm:p-10 shadow-craft-lg relative text-center">
+        <div className="w-full max-w-2xl bg-[#FAF6F0] rounded-3xl border-2 sm:border-[3px] border-[#E1AD01] p-6 sm:p-8 md:p-10 shadow-craft-lg relative text-center">
           
           {/* Top Ribbons */}
-          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#2B1D12] text-[#E1AD01] text-xs font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-md flex items-center gap-1.5">
+          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#2B1D12] text-[#E1AD01] text-[10px] min-[360px]:text-[11px] sm:text-xs font-black uppercase tracking-widest px-3.5 sm:px-4 py-1 rounded-full shadow-md flex items-center gap-1.5 whitespace-nowrap">
             <Sparkles className="w-3.5 h-3.5" />
-            ACESSO IMEDIATO & VITALÍCIO
+            <span>ACESSO IMEDIATO & VITALÍCIO</span>
           </div>
 
-          <div className="mt-4 mb-6">
+          <div className="mt-3 sm:mt-4 mb-6">
             <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#2B1D12]">
               Kit 365 Versículos para Delivery
             </h3>
-            <p className="text-sm text-[#5A422D] mt-1 font-medium">
+            <p className="text-sm text-[#5A422D] mt-1.5 font-medium">
               O investimento que se paga no primeiro cliente fidelizado.
             </p>
           </div>
 
           {/* Pricing Numbers */}
-          <div className="my-6 p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] inline-flex flex-col items-center justify-center w-full">
+          <div className="my-6 p-4 sm:p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] inline-flex flex-col items-center justify-center w-full">
             <div className="text-xs text-[#6B533E] font-semibold line-through">
               De R$ 47,00 por apenas
             </div>
@@ -61,9 +61,9 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
           </div>
 
           {/* Inclusions List */}
-          <div className="space-y-3 text-left mb-8 max-w-lg mx-auto">
+          <div className="space-y-3 sm:space-y-3.5 text-left mb-8 max-w-lg mx-auto">
             {inclusions.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 text-sm">
+              <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm">
                 <div className="w-5 h-5 rounded-full bg-[#2E7D32]/15 text-[#2E7D32] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
@@ -80,7 +80,7 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
               type="button"
               onClick={onOpenCheckout}
               id="btn-pricing-cta"
-              className="w-full py-3.5 sm:py-4 px-3 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-extrabold text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
+              className="w-full min-h-[52px] sm:min-h-[58px] py-3.5 sm:py-4 px-4 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-black text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
             >
               <Download className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
               <span className="whitespace-nowrap">COMPRAR AGORA • R$ 19,90</span>

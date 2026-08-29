@@ -18,15 +18,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCheckout }) => {
 
   return (
     <header className="relative w-full bg-[#F2EBE3] border-b border-[#E8DFD5] transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
         {/* Brand Logo & Tag */}
         <a
           href="#"
-          className="flex items-center gap-3 group shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
           id="nav-logo"
         >
-          <div className="w-10 h-10 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] flex items-center justify-center shadow-sm text-[#C79801] group-hover:scale-105 transition-transform">
-            <Heart className="w-5 h-5 fill-[#E1AD01] text-[#C79801]" />
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] flex items-center justify-center shadow-xs text-[#C79801] group-hover:scale-105 transition-transform">
+            <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-[#E1AD01] text-[#C79801]" />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">

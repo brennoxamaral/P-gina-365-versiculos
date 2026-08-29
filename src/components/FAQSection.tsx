@@ -14,8 +14,8 @@ export const FAQSection: React.FC = () => {
       <div className="max-w-3xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
             <HelpCircle className="w-3.5 h-3.5 text-[#C79801]" />
             <span>TIRE SUAS DÚVIDAS</span>
           </div>
@@ -39,7 +39,7 @@ export const FAQSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => toggleFaq(faq.id)}
-                  className="w-full py-4 px-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#2B1D12] hover:text-[#C79801] transition-colors cursor-pointer"
+                  className="w-full py-4 px-5 sm:px-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#2B1D12] hover:text-[#C79801] transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <span>{faq.question}</span>
@@ -51,7 +51,7 @@ export const FAQSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-5 pt-1 text-sm text-[#5A422D] leading-relaxed border-t border-[#E8DFD5]/60 animate-fadeIn">
+                  <div className="px-5 sm:px-6 pb-5 pt-1 text-sm text-[#5A422D] leading-relaxed border-t border-[#E8DFD5]/60 animate-fadeIn">
                     {faq.answer}
                   </div>
                 )}
@@ -61,18 +61,18 @@ export const FAQSection: React.FC = () => {
         </div>
 
         {/* WhatsApp support callout */}
-        <div className="mt-10 p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] text-center flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-10 sm:mt-12 p-5 sm:p-6 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="text-center sm:text-left">
-            <h4 className="font-bold text-sm text-[#2B1D12]">Ainda ficou com alguma dúvida?</h4>
-            <p className="text-xs text-[#5A422D]">Nossa equipe de atendimento está pronta para te ajudar no WhatsApp.</p>
+            <h4 className="font-bold text-sm sm:text-base text-[#2B1D12]">Ainda ficou com alguma dúvida?</h4>
+            <p className="text-xs sm:text-sm text-[#5A422D] mt-0.5">Nossa equipe de atendimento está pronta para te ajudar no WhatsApp.</p>
           </div>
           <a
             href="https://wa.me/5511999999999?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20o%20Kit%20365%20Versículos%20para%20Delivery"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#2563EB] text-white font-bold text-xs shadow-xs transition-colors shrink-0 active:scale-95"
+            className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#246328] text-white font-bold text-xs sm:text-sm shadow-xs transition-colors shrink-0 active:scale-95 whitespace-nowrap"
           >
-            <MessageCircle className="w-4 h-4" />
+            <MessageCircle className="w-4 h-4 shrink-0" />
             <span>Falar no WhatsApp</span>
           </a>
         </div>

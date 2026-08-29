@@ -68,7 +68,7 @@ export const TestimonialsCarousel: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
             <MessageCircleHeart className="w-3.5 h-3.5 text-[#C79801]" />
             <span>REAÇÃO DOS CLIENTES</span>

@@ -31,8 +31,8 @@ export const HowItWorks: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
             <span>PASSO A PASSO SIMPLES</span>
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3">
@@ -51,7 +51,7 @@ export const HowItWorks: React.FC = () => {
             return (
               <div 
                 key={step.number}
-                className="relative bg-[#FAF6F0] rounded-2xl border border-[#E8DFD5] p-6 sm:p-7 shadow-craft hover:shadow-craft-lg transition-all duration-300 flex flex-col justify-between group"
+                className="relative bg-[#FAF6F0] rounded-2xl border border-[#E8DFD5] p-6 sm:p-7 shadow-craft hover:shadow-craft-lg transition-all duration-300 flex flex-col justify-between h-full group"
               >
                 {/* Step indicator header */}
                 <div className="flex items-center justify-between mb-5">
@@ -64,7 +64,7 @@ export const HowItWorks: React.FC = () => {
                 </div>
 
                 {/* Content */}
-                <div className="space-y-2 mb-4">
+                <div className="space-y-2 mb-6">
                   <h3 className="font-serif text-xl font-bold text-[#2B1D12]">
                     {step.title}
                   </h3>
@@ -74,7 +74,7 @@ export const HowItWorks: React.FC = () => {
                 </div>
 
                 {/* Footer icon line */}
-                <div className="pt-4 border-t border-[#E8DFD5] flex items-center text-xs text-[#8A6700] font-semibold gap-1.5">
+                <div className="pt-4 mt-auto border-t border-[#E8DFD5] flex items-center text-xs text-[#8A6700] font-semibold gap-1.5">
                   <IconComponent className="w-4 h-4 text-[#C79801]" />
                   <span>Passo {step.number} de 3</span>
                 </div>

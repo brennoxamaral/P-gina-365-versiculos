@@ -53,7 +53,7 @@ export const VerseInteractiveDemo: React.FC = () => {
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
 
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
           <Sparkles className="w-3.5 h-3.5 text-[#C79801]" />
           <span>EXPERIMENTE NA PRÁTICA</span>
         </div>
@@ -64,7 +64,7 @@ export const VerseInteractiveDemo: React.FC = () => {
         </h2>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base text-[#5A422D] max-w-xl mb-8 leading-relaxed">
+        <p className="text-sm sm:text-base text-[#5A422D] max-w-xl mb-6 sm:mb-8 leading-relaxed">
           Cada bilhete foi cuidadosamente selecionado com mensagens edificantes e de fé. Teste o sorteador interativo abaixo:
         </p>
 

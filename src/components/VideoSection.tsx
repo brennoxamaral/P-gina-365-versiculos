@@ -9,7 +9,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ youtubeVideoId = '' 
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section id="demonstracao" className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
+    <section id="demonstracao" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
@@ -23,7 +23,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ youtubeVideoId = '' 
             </div>
 
             {/* Section Title */}
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2B1D12] tracking-tight mb-4 leading-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3 sm:mb-4 leading-tight">
               Veja como é simples aplicar no seu delivery
             </h2>
 
