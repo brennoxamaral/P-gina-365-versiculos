@@ -24,7 +24,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ youtubeVideoId = '' 
 
             {/* Section Title */}
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2B1D12] tracking-tight mb-4 leading-tight">
-              Veja como é simples aplicar na sua bancada
+              Veja como é simples aplicar no seu delivery
             </h2>
 
             {/* Subtitle */}

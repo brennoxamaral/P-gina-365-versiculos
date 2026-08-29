@@ -232,13 +232,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-[#FAF6F0] rounded-3xl border-2 border-[#E1AD01] shadow-2xl overflow-hidden p-6 sm:p-8 text-[#4B3621] max-h-[92vh] overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-[#FAF6F0] rounded-3xl border-2 border-[#E1AD01] shadow-2xl overflow-hidden p-5 sm:p-8 text-[#4B3621] max-h-[92vh] overflow-y-auto">
         
         {/* Botão de Fechar */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full text-[#6B533E] hover:bg-[#F2EBE3] hover:text-[#2B1D12] transition-colors cursor-pointer"
+          className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-20 p-2 rounded-full text-[#6B533E] hover:bg-[#F2EBE3] hover:text-[#2B1D12] transition-colors cursor-pointer"
           aria-label="Fechar"
         >
           <X className="w-5 h-5" />
@@ -250,9 +250,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
         {step === 'FORM' && (
           <div>
             {/* Cabeçalho */}
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E1AD01]/20 text-xs font-bold text-[#8A6700] mb-2">
-                <Lock className="w-3 h-3 text-[#2E7D32]" />
+            <div className="text-center mb-6 pt-3 sm:pt-0 px-2 sm:px-0">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E1AD01]/20 text-[10px] min-[370px]:text-[11px] sm:text-xs font-bold text-[#8A6700] mb-2">
+                <Lock className="w-3 h-3 text-[#2E7D32] shrink-0" />
                 <span>CHECKOUT SEGURO SSL 256-BIT • ABACATEPAY</span>
               </div>
               <h3 className="font-serif text-2xl font-bold text-[#2B1D12]">
@@ -476,7 +476,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
         {step === 'PAYMENT_PENDING' && pixData && (
           <div className="space-y-5 animate-fadeIn">
             {/* Header da Tela de Pagamento */}
-            <div className="text-center">
+            <div className="text-center pt-2 sm:pt-0">
               <button
                 type="button"
                 onClick={handleBackToForm}

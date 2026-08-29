@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, ArrowRight, Lock, Zap, Shield, Sparkles, Download } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Sparkles, Download } from 'lucide-react';
 import { HeroProductMockup } from './HeroProductMockup';
 
 interface HeroProps {
@@ -55,21 +55,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
             <span className="whitespace-nowrap">QUERO MEU KIT • APENAS R$ 19,90</span>
             <ArrowRight className="w-4 h-4 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
-
-          {/* Microcopy of security & confidence */}
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs text-[#6B533E] font-medium pt-1">
-            <span className="inline-flex items-center gap-1">
-              <Lock className="w-3.5 h-3.5 text-[#2E7D32]" /> Pagamento Único
-            </span>
-            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
-            <span className="inline-flex items-center gap-1">
-              <Zap className="w-3.5 h-3.5 text-[#C79801]" /> Envio Imediato no E-mail
-            </span>
-            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
-            <span className="inline-flex items-center gap-1">
-              <Shield className="w-3.5 h-3.5 text-[#2E7D32]" /> 7 Dias de Garantia
-            </span>
-          </div>
         </div>
 
         {/* Product Visual Mockup (Integrated smoothly directly on #F2EBE3 background, not trapped in card) */}
@@ -89,21 +74,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
             <span className="whitespace-nowrap">QUERO MEU KIT • APENAS R$ 19,90</span>
             <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
-
-          {/* Microcopy of security & confidence */}
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs text-[#6B533E] font-medium pt-1">
-            <span className="inline-flex items-center gap-1">
-              <Lock className="w-3.5 h-3.5 text-[#2E7D32]" /> Pagamento Único
-            </span>
-            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
-            <span className="inline-flex items-center gap-1">
-              <Zap className="w-3.5 h-3.5 text-[#C79801]" /> Envio Imediato no E-mail
-            </span>
-            <span className="hidden min-[400px]:inline text-[#C79801]">•</span>
-            <span className="inline-flex items-center gap-1">
-              <Shield className="w-3.5 h-3.5 text-[#2E7D32]" /> 7 Dias de Garantia
-            </span>
-          </div>
         </div>
 
       </div>
