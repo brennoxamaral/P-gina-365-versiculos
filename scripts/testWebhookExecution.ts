@@ -1,5 +1,4 @@
-import webhookHandler from '../api/webhook/abacatepay';
-import { config } from '../server/config';
+import webhookHandler from '../api/webhook';
 
 async function testFullWebhook() {
   console.log('--- TEST: Webhook Payment Completed Simulation ---');
@@ -49,7 +48,7 @@ async function testFullWebhook() {
   const reqMock = {
     method: 'POST',
     query: {
-      webhookSecret: config.abacate.webhookSecret,
+      webhookSecret: 'batata_mania_365_versiculos_prod_secret_2026',
     },
     body: payload,
     headers: {},

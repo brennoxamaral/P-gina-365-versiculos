@@ -1,9 +1,10 @@
 import healthHandler from '../api/health';
-import webhookHandler from '../api/webhook/abacatepay';
+import webhookHandler from '../api/webhook';
+import abacatepayHandler from '../api/webhook/abacatepay';
 import indexHandler from '../api/index';
 
 async function runTests() {
-  console.log('--- TEST 1: Healthcheck Handler ---');
+  console.log('--- TEST 1: Healthcheck Handler (/api/health) ---');
   let lastStatus = 0;
   let lastData: any = null;
   const resMock = {
@@ -11,25 +12,30 @@ async function runTests() {
     headers: {} as Record<string, string>,
     setHeader(k: string, v: string) { this.headers[k] = v; },
     status(code: number) { lastStatus = code; return this; },
-    json(data: any) { lastData = data; return this; }
+    json(data: any) { lastData = data; return this; },
+    end() { return this; }
   };
 
   await healthHandler({ method: 'GET' }, resMock);
   console.log(`[Health] Status: ${lastStatus}, Output:`, lastData);
 
-  console.log('\n--- TEST 2: Webhook GET Check ---');
+  console.log('\n--- TEST 2: Webhook GET Check (/api/webhook) ---');
   await webhookHandler({ method: 'GET' }, resMock);
   console.log(`[Webhook GET] Status: ${lastStatus}, Output:`, lastData);
 
-  console.log('\n--- TEST 3: Webhook POST Unauthorized Secret Check ---');
+  console.log('\n--- TEST 3: AbacatePay Subpath GET Check (/api/webhook/abacatepay) ---');
+  await abacatepayHandler({ method: 'GET' }, resMock);
+  console.log(`[AbacatePay GET] Status: ${lastStatus}, Output:`, lastData);
+
+  console.log('\n--- TEST 4: Unauthorized Webhook Check ---');
   await webhookHandler({ method: 'POST', query: { webhookSecret: 'wrong_secret' }, body: {} }, resMock);
   console.log(`[Webhook Unauthorized] Status: ${lastStatus}, Output:`, lastData);
 
-  console.log('\n--- TEST 4: Index Root Handler ---');
+  console.log('\n--- TEST 5: API Index (/api) ---');
   await indexHandler({ method: 'GET' }, resMock);
   console.log(`[API Index] Status: ${lastStatus}, Output:`, lastData);
 
-  console.log('\n✅ Todos os handlers serverless foram testados e executados com sucesso!');
+  console.log('\n✅ Todos os handlers autocontidos foram testados com sucesso!');
 }
 
 runTests().catch(err => {
