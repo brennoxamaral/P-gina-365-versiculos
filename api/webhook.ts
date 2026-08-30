@@ -1,8 +1,8 @@
-import { processAbacateWebhook } from '../../server/services/processWebhook';
+import { processAbacateWebhook } from '../server/services/processWebhook';
 
 /**
  * Webhook Serverless Handler para Vercel
- * Rota: /api/webhook/abacatepay
+ * Rota: /api/webhook (e sub-rotas)
  */
 export default async function handler(req: any, res: any) {
   res.setHeader('Content-Type', 'application/json');
@@ -17,7 +17,7 @@ export default async function handler(req: any, res: any) {
 
     return res.status(result.statusCode).json(result.data);
   } catch (error: any) {
-    console.error('[Handler] Erro não tratado na rota /api/webhook/abacatepay:', error);
+    console.error('[Handler] Erro não tratado na rota /api/webhook:', error);
     return res.status(500).json({
       error: 'Internal Server Error',
       message: error?.message || 'Erro inesperado no servidor.',

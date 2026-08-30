@@ -5,7 +5,7 @@ import { generateDeliveryEmail, EmailTemplateData } from '../templates/deliveryE
 
 export interface SendEmailResult {
   success: boolean;
-  provider: 'resend' | 'smtp' | 'dev-simulation';
+  provider: 'resend' | 'resend-fetch' | 'smtp' | 'dev-simulation';
   id?: string;
   error?: string;
 }
@@ -15,17 +15,16 @@ export class EmailService {
   private smtpTransporter: nodemailer.Transporter | null = null;
 
   constructor() {
-    // Inicializa Resend se API Key estiver configurada
-    if (config.email.resendApiKey && config.email.resendApiKey.startsWith('re_')) {
+    const resendKey = process.env.RESEND_API_KEY || config.email.resendApiKey;
+    if (resendKey && resendKey.startsWith('re_')) {
       try {
-        this.resendClient = new Resend(config.email.resendApiKey);
+        this.resendClient = new Resend(resendKey);
         console.log('[EmailService] Provedor Resend inicializado com sucesso.');
       } catch (err) {
         console.error('[EmailService] Erro ao inicializar Resend:', err);
       }
     }
 
-    // Inicializa SMTP se host estiver configurado
     if (!this.resendClient && config.email.smtp.host && config.email.smtp.user) {
       try {
         this.smtpTransporter = nodemailer.createTransport({
@@ -50,41 +49,71 @@ export class EmailService {
   public async sendDeliveryEmail(data: EmailTemplateData): Promise<SendEmailResult> {
     const { customerEmail, customerName } = data;
     const { subject, html, text } = generateDeliveryEmail(data);
+    const resendKey = process.env.RESEND_API_KEY || config.email.resendApiKey;
+    const fromAddress = process.env.EMAIL_FROM || config.email.from;
 
-    // 1. Envio via RESEND (Provedor Principal)
-    if (this.resendClient || (config.email.resendApiKey && config.email.resendApiKey.startsWith('re_'))) {
-      const client = this.resendClient || new Resend(config.email.resendApiKey);
+    // 1. Envio via RESEND SDK ou Fetch Direto
+    if (resendKey && resendKey.startsWith('re_')) {
       try {
         console.log(`[EmailService] Enviando e-mail via Resend para: ${customerEmail}`);
-        const response = await client.emails.send({
-          from: config.email.from,
-          to: [customerEmail],
-          subject,
-          html,
-          text,
+        
+        // Tenta primeiro via fetch direto (100% à prova de falhas em ambientes serverless)
+        const fetchRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${resendKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: fromAddress,
+            to: [customerEmail],
+            subject,
+            html,
+            text,
+          }),
         });
 
-        if (response.error) {
-          console.error('[EmailService] Resend retornou erro:', response.error);
+        const resData: any = await fetchRes.json();
+
+        if (fetchRes.ok && resData?.id) {
+          console.log(`[EmailService] E-mail entregue com sucesso via Resend HTTP API! ID: ${resData.id}`);
+          return {
+            success: true,
+            provider: 'resend-fetch',
+            id: resData.id,
+          };
+        } else {
+          console.warn('[EmailService] Resend HTTP retornou aviso/erro:', resData);
+          // Tenta via SDK se o fetch retornar erro
+          if (this.resendClient) {
+            const sdkRes = await this.resendClient.emails.send({
+              from: fromAddress,
+              to: [customerEmail],
+              subject,
+              html,
+              text,
+            });
+            if (sdkRes.data?.id) {
+              return {
+                success: true,
+                provider: 'resend',
+                id: sdkRes.data.id,
+              };
+            }
+          }
+
           return {
             success: false,
             provider: 'resend',
-            error: response.error.message || 'Falha no envio com Resend',
+            error: resData?.message || 'Falha ao enviar e-mail via Resend',
           };
         }
-
-        console.log(`[EmailService] E-mail entregue com sucesso via Resend! ID: ${response.data?.id}`);
-        return {
-          success: true,
-          provider: 'resend',
-          id: response.data?.id,
-        };
       } catch (err: any) {
         console.error('[EmailService] Exceção ao enviar via Resend:', err);
         return {
           success: false,
           provider: 'resend',
-          error: err.message || 'Erro inesperado no Resend',
+          error: err?.message || 'Erro inesperado no Resend',
         };
       }
     }
@@ -94,7 +123,7 @@ export class EmailService {
       try {
         console.log(`[EmailService] Enviando e-mail via SMTP para: ${customerEmail}`);
         const info = await this.smtpTransporter.sendMail({
-          from: config.email.from,
+          from: fromAddress,
           to: customerEmail,
           subject,
           html,
@@ -126,7 +155,7 @@ export class EmailService {
     console.log(` - PDF Drive: ${config.materials.kitPdfUrl}`);
     console.log(` - Canva Bonus: ${config.materials.canvaBonusUrl}`);
     console.log(` - Vídeo Aula: ${config.materials.videoClassUrl}`);
-    console.log('💡 DICA: Para enviar e-mails reais, configure RESEND_API_KEY no seu arquivo .env');
+    console.log('💡 DICA: Para enviar e-mails reais, configure RESEND_API_KEY no painel da Vercel ou no .env');
     console.log('============================================================\n');
 
     return {
