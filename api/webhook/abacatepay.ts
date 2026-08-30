@@ -1,41 +1,61 @@
-import { Router, Request, Response } from 'express';
-import { verifyAbacateSignature, verifyWebhookSecret } from '../security/signature';
-import { idempotency } from '../services/idempotency';
-import { emailService } from '../services/emailService';
-
-export const webhookRouter = Router();
-
-interface CustomRequest extends Request {
-  rawBody?: string | Buffer;
-}
+import { verifyAbacateSignature, verifyWebhookSecret } from '../../server/security/signature';
+import { idempotency } from '../../server/services/idempotency';
+import { emailService } from '../../server/services/emailService';
 
 /**
- * Endpoint de Webhook da AbacatePay
- * GET /api/webhook/abacatepay (Status)
- * POST /api/webhook/abacatepay?webhookSecret=... (Recebimento)
+ * Webhook Serverless Endpoint para Vercel
+ * POST /api/webhook/abacatepay?webhookSecret=...
  */
-webhookRouter.get('/abacatepay', (_req: Request, res: Response) => {
-  res.json({
-    status: 'active',
-    message: 'Endpoint de webhook da AbacatePay está ativo e pronto para receber requisições POST.',
-    timestamp: new Date().toISOString(),
-  });
-});
+export default async function handler(req: any, res: any) {
+  res.setHeader('Content-Type', 'application/json');
 
-webhookRouter.post('/abacatepay', async (req: CustomRequest, res: Response) => {
-  const secretFromQuery = req.query.webhookSecret as string | undefined;
-  const signatureFromHeader = req.headers['x-webhook-signature'] as string | undefined;
-  const rawBody = req.rawBody || JSON.stringify(req.body);
+  // Suporte a GET para verificação rápida de status no navegador
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      status: 'active',
+      message: 'Endpoint de webhook da AbacatePay está ativo e pronto para receber requisições POST.',
+      timestamp: new Date().toISOString(),
+    });
+  }
 
-  console.log(`\n[Webhook] Recebida notificação da AbacatePay às ${new Date().toISOString()}`);
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
 
-  // 1. Validação de Segurança: Secret na Query String
+  const secretFromQuery = (req.query?.webhookSecret as string | undefined) || undefined;
+  const signatureFromHeader = (req.headers?.['x-webhook-signature'] as string | undefined) || undefined;
+
+  console.log(`\n[Webhook] Notificação recebida da AbacatePay às ${new Date().toISOString()}`);
+
+  // 1. Obtenção do corpo da requisição de forma segura
+  let bodyPayload = req.body;
+  let rawBody: string = '';
+
+  if (typeof bodyPayload === 'string') {
+    rawBody = bodyPayload;
+    try {
+      bodyPayload = JSON.parse(bodyPayload);
+    } catch {
+      // Se não for JSON válido, segue como string
+    }
+  } else if (Buffer.isBuffer(bodyPayload)) {
+    rawBody = bodyPayload.toString('utf8');
+    try {
+      bodyPayload = JSON.parse(rawBody);
+    } catch {
+      // continua
+    }
+  } else if (bodyPayload && typeof bodyPayload === 'object') {
+    rawBody = JSON.stringify(bodyPayload);
+  }
+
+  // 2. Validação de Segurança: Secret na Query String
   if (secretFromQuery && !verifyWebhookSecret(secretFromQuery)) {
     console.warn('[Webhook] Secret inválido na URL:', secretFromQuery);
     return res.status(401).json({ error: 'Unauthorized: Secret inválido' });
   }
 
-  // 2. Validação de Segurança: Assinatura HMAC no Header
+  // 3. Validação de Segurança: Assinatura HMAC no Header
   if (signatureFromHeader) {
     const isValidSignature = verifyAbacateSignature(rawBody, signatureFromHeader);
     if (!isValidSignature) {
@@ -46,15 +66,14 @@ webhookRouter.post('/abacatepay', async (req: CustomRequest, res: Response) => {
     console.warn('[Webhook] Aviso: Header X-Webhook-Signature não informado. Prosseguindo com validação de secret.');
   }
 
-  // 3. Leitura do corpo do evento
-  const payload = req.body;
-  if (!payload || !payload.event) {
+  // 4. Leitura do evento
+  if (!bodyPayload || !bodyPayload.event) {
     console.warn('[Webhook] Payload vazio ou sem propriedade event');
     return res.status(400).json({ error: 'Bad Request: Payload inválido' });
   }
 
-  const eventType: string = payload.event;
-  const eventId: string = payload.id || `evt_${Date.now()}`;
+  const eventType: string = bodyPayload.event;
+  const eventId: string = bodyPayload.id || `evt_${Date.now()}`;
   console.log(`[Webhook] Evento identificado: "${eventType}" (ID: ${eventId})`);
 
   // Filtra apenas eventos de pagamento aprovado
@@ -67,7 +86,7 @@ webhookRouter.post('/abacatepay', async (req: CustomRequest, res: Response) => {
   }
 
   // Extração dos dados do comprador e do pedido
-  const data = payload.data || {};
+  const data = bodyPayload.data || {};
   const customer = data.customer || {};
   const transparent = data.transparent || {};
   const checkout = data.checkout || {};
@@ -87,7 +106,7 @@ webhookRouter.post('/abacatepay', async (req: CustomRequest, res: Response) => {
     });
   }
 
-  // 4. Controle de Idempotência (Evita envios duplicados em caso de retentativas)
+  // 5. Controle de Idempotência (Evita envios duplicados)
   const uniqueKey = `${orderId}_${customerEmail}`;
   if (idempotency.has(uniqueKey) || idempotency.has(eventId)) {
     console.log(`[Webhook] Cobrança/Evento já processado anteriormente (${uniqueKey}). Respondendo 200 OK.`);
@@ -98,10 +117,10 @@ webhookRouter.post('/abacatepay', async (req: CustomRequest, res: Response) => {
     });
   }
 
-  // 5. Envio do E-mail com os materiais
+  // 6. Envio do E-mail com os materiais
   try {
     console.log(`[Webhook] Disparando e-mail de entrega para ${customerName} (${customerEmail})...`);
-    
+
     const emailResult = await emailService.sendDeliveryEmail({
       customerName,
       customerEmail,
@@ -123,10 +142,9 @@ webhookRouter.post('/abacatepay', async (req: CustomRequest, res: Response) => {
     });
   } catch (error: any) {
     console.error('[Webhook] Falha ao processar e enviar e-mail:', error);
-    // Retorna 500 para a AbacatePay reter se houve falha temporária
     return res.status(500).json({
       error: 'Internal Server Error ao processar webhook',
       message: error.message,
     });
   }
-});
+}
