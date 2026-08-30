@@ -18,7 +18,7 @@ export const config = {
     publicKey:
       process.env.ABACATEPAY_PUBLIC_KEY ||
       't9dXRhHHo3yDEj5pVDYz0frf7q6bMKyMRmxxCPIPp3RCplBfXRxqlC6ZpiWmOqj4L63qEaeUOtrCI8P0VMUgo6iIga2ri9ogaHFs0WIIywSMg0q7RmBfybe1E5XJcfC4IW3alNqym0tXoAKkzvfEjZxV6bE0oG2zJrNNYmUCKZyV0KZ3JS8Votf9EAWWYdiDkMkpbMdPggfh1EqHlVkMiTady6jOR3hyzGEHrIz2Ret0xHKMbiqkr9HS1JhNHDX9',
-    webhookSecret: process.env.WEBHOOK_SECRET || 'batata_mania_365_secret_2026',
+    webhookSecret: process.env.WEBHOOK_SECRET || 'batata_mania_365_versiculos_prod_secret_2026',
   },
 
   // E-mail (Resend & SMTP)
