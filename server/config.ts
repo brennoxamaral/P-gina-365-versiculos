@@ -48,6 +48,6 @@ export const config = {
       'https://youtube.com',
     supportWhatsapp:
       process.env.SUPPORT_WHATSAPP ||
-      'https://wa.me/5511999999999?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda',
+      'https://wa.me/5567998659405?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda',
   },
 };

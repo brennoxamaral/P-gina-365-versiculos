@@ -3,9 +3,13 @@ import { Heart, Menu, X, Download } from 'lucide-react';
 
 interface HeaderProps {
   onOpenCheckout?: () => void;
+  onNavigateHome?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenCheckout }) => {
+export const Header: React.FC<HeaderProps> = ({
+  onOpenCheckout,
+  onNavigateHome,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -16,12 +20,32 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCheckout }) => {
     { label: 'Dúvidas', href: '#duvidas' },
   ];
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (onNavigateHome) {
+      e.preventDefault();
+      onNavigateHome();
+    }
+  };
+
+  const handleNavLinkClick = (e: React.MouseEvent, href: string) => {
+    if (onNavigateHome) {
+      onNavigateHome();
+    }
+    // Allow smooth scroll to anchor
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      e.preventDefault();
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="relative w-full bg-[#F2EBE3] border-b border-[#E8DFD5] transition-all duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
         {/* Brand Logo & Tag */}
         <a
-          href="#"
+          href="/"
+          onClick={handleLogoClick}
           className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
           id="nav-logo"
         >
@@ -49,6 +73,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCheckout }) => {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavLinkClick(e, link.href)}
               className="text-sm font-medium text-[#4B3621] hover:text-[#C79801] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#C79801] hover:after:w-full after:transition-all after:duration-300"
             >
               {link.label}
@@ -91,7 +116,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCheckout }) => {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleNavLinkClick(e, link.href);
+              }}
               className="block text-base font-medium text-[#4B3621] hover:text-[#C79801] px-2 py-1.5 rounded-md hover:bg-[#F2EBE3] transition-colors"
             >
               {link.label}

@@ -67,7 +67,7 @@ export const FAQSection: React.FC = () => {
             <p className="text-xs sm:text-sm text-[#5A422D] mt-0.5">Nossa equipe de atendimento está pronta para te ajudar no WhatsApp.</p>
           </div>
           <a
-            href="https://wa.me/5511999999999?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20o%20Kit%20365%20Versículos%20para%20Delivery"
+            href="https://wa.me/5567998659405?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Kit%20365%20Vers%C3%ADculos%20para%20Delivery"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#246328] text-white font-bold text-xs sm:text-sm shadow-xs transition-colors shrink-0 active:scale-95 whitespace-nowrap"
