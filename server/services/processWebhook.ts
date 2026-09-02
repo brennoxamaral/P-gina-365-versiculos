@@ -94,16 +94,40 @@ export async function processAbacateWebhook(
       };
     }
 
-    // 4. Validação do Evento
-    if (!bodyPayload || !bodyPayload.event) {
-      console.warn('[Webhook] Payload vazio ou sem propriedade event:', bodyPayload);
+    // 4. Validação e Normalização do Evento
+    const rawEvent =
+      bodyPayload?.event ||
+      bodyPayload?.type ||
+      bodyPayload?.eventType ||
+      bodyPayload?.event_type ||
+      bodyPayload?.action ||
+      bodyPayload?.name ||
+      bodyPayload?.data?.event ||
+      bodyPayload?.data?.status ||
+      bodyPayload?.status;
+
+    // Se o payload for de teste/verificação/ping ou vazio (ao criar webhook na AbacatePay)
+    if (
+      !rawEvent ||
+      rawEvent === 'ping' ||
+      rawEvent === 'test' ||
+      rawEvent === 'webhook.test' ||
+      rawEvent === 'webhook.created' ||
+      rawEvent === 'webhook.verify' ||
+      rawEvent === 'healthcheck'
+    ) {
+      console.log('[Webhook] Ping/Teste ou verificação de webhook recebido com sucesso:', bodyPayload);
       return {
-        statusCode: 400,
-        data: { error: 'Bad Request', message: 'Payload inválido ou sem evento informado.' },
+        statusCode: 200,
+        data: {
+          ok: true,
+          status: 'active',
+          message: 'Webhook da AbacatePay validado e ativo com sucesso.',
+        },
       };
     }
 
-    const eventType: string = String(bodyPayload.event).toLowerCase();
+    const eventType: string = String(rawEvent).toLowerCase().trim();
     const eventId: string = bodyPayload.id || `evt_${Date.now()}`;
     console.log(`[Webhook] Evento identificado: "${eventType}" (ID: ${eventId})`);
 
@@ -112,21 +136,29 @@ export async function processAbacateWebhook(
       'transparent.completed',
       'checkout.completed',
       'billing.paid',
+      'billing.completed',
       'charge.completed',
       'charge.paid',
       'pix.completed',
       'payment.completed',
+      'paid',
+      'completed',
+      'subscription.completed',
+      'subscription.renewed',
     ];
 
-    const isPaymentApproved = approvedEvents.includes(eventType);
+    const isPaymentApproved =
+      approvedEvents.includes(eventType) ||
+      bodyPayload?.data?.status === 'PAID' ||
+      bodyPayload?.data?.billing?.status === 'PAID';
 
     if (!isPaymentApproved) {
-      console.log(`[Webhook] Evento "${eventType}" ignorado (não é confirmação de pagamento concluído).`);
+      console.log(`[Webhook] Evento "${eventType}" recebido (não é confirmação de pagamento). Respondendo 200 OK.`);
       return {
         statusCode: 200,
         data: {
           ok: true,
-          message: `Evento ${eventType} recebido e ignorado com sucesso (apenas pagamentos aprovados disparam materiais).`,
+          message: `Evento "${eventType}" recebido e registrado com sucesso.`,
         },
       };
     }

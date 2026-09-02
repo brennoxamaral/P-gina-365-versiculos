@@ -23,7 +23,14 @@ async function createWebhook(customUrl?: string) {
     name: 'Envio Kit 365 Versículos',
     endpoint: endpoint,
     secret: WEBHOOK_SECRET,
-    events: ['transparent.completed', 'checkout.completed'],
+    events: [
+      'transparent.completed',
+      'checkout.completed',
+      'billing.paid',
+      'pix.completed',
+      'charge.completed',
+      'charge.paid',
+    ],
   };
 
   try {

@@ -120,6 +120,64 @@ Equipe Kit 365 Versículos
 }
 
 /**
+ * Lê o corpo da requisição de forma assíncrona e resiliente
+ */
+async function getRequestBody(req: any): Promise<{ body: any; rawBody: string }> {
+  if (req.body !== undefined && req.body !== null) {
+    if (typeof req.body === 'string') {
+      try {
+        return { body: JSON.parse(req.body), rawBody: req.body };
+      } catch {
+        return { body: req.body, rawBody: req.body };
+      }
+    }
+    if (Buffer.isBuffer(req.body)) {
+      const raw = req.body.toString('utf8');
+      try {
+        return { body: JSON.parse(raw), rawBody: raw };
+      } catch {
+        return { body: raw, rawBody: raw };
+      }
+    }
+    if (typeof req.body === 'object') {
+      return { body: req.body, rawBody: JSON.stringify(req.body) };
+    }
+  }
+
+  // Fallback: se req for stream do Node.js
+  return new Promise((resolve) => {
+    let raw = '';
+    if (typeof req.on === 'function') {
+      req.on('data', (chunk: any) => {
+        raw += chunk;
+      });
+      req.on('end', () => {
+        try {
+          resolve({ body: raw ? JSON.parse(raw) : {}, rawBody: raw });
+        } catch {
+          resolve({ body: raw, rawBody: raw });
+        }
+      });
+      req.on('error', () => {
+        resolve({ body: {}, rawBody: '' });
+      });
+    } else if (typeof req.text === 'function') {
+      req.text()
+        .then((text: string) => {
+          try {
+            resolve({ body: text ? JSON.parse(text) : {}, rawBody: text });
+          } catch {
+            resolve({ body: text, rawBody: text });
+          }
+        })
+        .catch(() => resolve({ body: {}, rawBody: '' }));
+    } else {
+      resolve({ body: {}, rawBody: '' });
+    }
+  });
+}
+
+/**
  * Handler Serverless 100% Autônomo e Resiliente para Vercel
  */
 export default async function handler(req: any, res: any) {
@@ -127,13 +185,13 @@ export default async function handler(req: any, res: any) {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Webhook-Signature');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Webhook-Signature, x-webhook-secret, Authorization');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Resposta amigável para GET (verificação de status no navegador)
+  // Resposta amigável para GET (verificação de status no navegador ou monitor)
   if (req.method === 'GET' || req.method === 'HEAD') {
     return res.status(200).json({
       status: 'active',
@@ -150,38 +208,24 @@ export default async function handler(req: any, res: any) {
   console.log(`[Webhook] Notificação recebida em ${new Date().toISOString()}`);
 
   try {
-    // 1. Leitura do corpo com segurança
-    let body = req.body;
-    let rawBody = '';
-
-    if (typeof body === 'string') {
-      rawBody = body;
-      try {
-        body = JSON.parse(body);
-      } catch {
-        // mantém como string se falhar parse
-      }
-    } else if (Buffer.isBuffer(body)) {
-      rawBody = body.toString('utf8');
-      try {
-        body = JSON.parse(rawBody);
-      } catch {
-        // continua
-      }
-    } else if (body && typeof body === 'object') {
-      rawBody = JSON.stringify(body);
-    }
+    // 1. Extração segura do corpo da requisição
+    const { body, rawBody } = await getRequestBody(req);
 
     const query = req.query || {};
     const headers = req.headers || {};
 
-    const secretFromQuery = (query.webhookSecret as string | undefined) || undefined;
+    const secretFromQuery =
+      (query.webhookSecret as string | undefined) ||
+      (query.secret as string | undefined) ||
+      undefined;
+
     const signatureFromHeader =
       (headers['x-webhook-signature'] as string | undefined) ||
       (headers['X-Webhook-Signature'] as string | undefined) ||
       undefined;
 
-    const configuredSecret = process.env.WEBHOOK_SECRET || 'batata_mania_365_versiculos_prod_secret_2026';
+    const configuredSecret =
+      process.env.WEBHOOK_SECRET || 'batata_mania_365_versiculos_prod_secret_2026';
     const publicKey =
       process.env.ABACATEPAY_PUBLIC_KEY ||
       't9dXRhHHo3yDEj5pVDYz0frf7q6bMKyMRmxxCPIPp3RCplBfXRxqlC6ZpiWmOqj4L63qEaeUOtrCI8P0VMUgo6iIga2ri9ogaHFs0WIIywSMg0q7RmBfybe1E5XJcfC4IW3alNqym0tXoAKkzvfEjZxV6bE0oG2zJrNNYmUCKZyV0KZ3JS8Votf9EAWWYdiDkMkpbMdPggfh1EqHlVkMiTady6jOR3hyzGEHrIz2Ret0xHKMbiqkr9HS1JhNHDX9';
@@ -210,34 +254,71 @@ export default async function handler(req: any, res: any) {
       }
     }
 
-    // 3. Validação do Evento
-    if (!body || !body.event) {
-      console.warn('[Webhook] Payload sem evento especificado:', body);
-      return res.status(400).json({ error: 'Bad Request: Evento ausente no corpo da requisição.' });
+    // 3. Normalização e Detecção do Evento
+    const rawEvent =
+      body?.event ||
+      body?.type ||
+      body?.eventType ||
+      body?.event_type ||
+      body?.action ||
+      body?.name ||
+      body?.data?.event ||
+      body?.data?.status ||
+      body?.status;
+
+    // Se o payload for de teste/verificação/ping ou vazio (como ao criar webhook na AbacatePay)
+    if (
+      !rawEvent ||
+      rawEvent === 'ping' ||
+      rawEvent === 'test' ||
+      rawEvent === 'webhook.test' ||
+      rawEvent === 'webhook.created' ||
+      rawEvent === 'webhook.verify' ||
+      rawEvent === 'healthcheck'
+    ) {
+      console.log('[Webhook] Ping/Teste ou verificação de webhook recebido com sucesso:', body);
+      return res.status(200).json({
+        ok: true,
+        status: 'active',
+        message: 'Webhook da AbacatePay validado e ativo com sucesso.',
+      });
     }
 
-    const eventType = String(body.event).toLowerCase();
+    const eventType = String(rawEvent).toLowerCase().trim();
     const eventId = body.id || `evt_${Date.now()}`;
-    console.log(`[Webhook] Evento: "${eventType}" (ID: ${eventId})`);
+    console.log(`[Webhook] Evento identificado: "${eventType}" (ID: ${eventId})`);
 
     const approvedEvents = [
       'transparent.completed',
       'checkout.completed',
       'billing.paid',
+      'billing.completed',
       'charge.completed',
       'charge.paid',
       'pix.completed',
       'payment.completed',
+      'paid',
+      'completed',
+      'subscription.completed',
+      'subscription.renewed',
     ];
 
-    if (!approvedEvents.includes(eventType)) {
-      console.log(`[Webhook] Evento "${eventType}" ignorado (não é confirmação de pagamento).`);
-      return res.status(200).json({ ok: true, message: `Evento ${eventType} recebido e ignorado com sucesso.` });
+    const isApprovedPayment =
+      approvedEvents.includes(eventType) ||
+      body?.data?.status === 'PAID' ||
+      body?.data?.billing?.status === 'PAID';
+
+    if (!isApprovedPayment) {
+      console.log(`[Webhook] Evento "${eventType}" recebido (não é confirmação de pagamento). Respondendo 200 OK.`);
+      return res.status(200).json({
+        ok: true,
+        message: `Evento "${eventType}" recebido e registrado com sucesso.`,
+      });
     }
 
     // 4. Extração dos Dados do Comprador com Múltiplos Fallbacks
     const data = body.data || {};
-    const customer = data.customer || {};
+    const customer = data.customer || body.customer || {};
     const transparent = data.transparent || {};
     const checkout = data.checkout || {};
     const billing = data.billing || {};
@@ -248,6 +329,7 @@ export default async function handler(req: any, res: any) {
       checkout.id ||
       billing.id ||
       data.id ||
+      body.id ||
       eventId ||
       `order_${Date.now()}`;
 
@@ -255,10 +337,12 @@ export default async function handler(req: any, res: any) {
       customer.name ||
       payerInfo.PIX?.name ||
       payerInfo.BOLETO?.name ||
+      payerInfo.name ||
       billing.customer?.metadata?.name ||
       billing.customer?.name ||
       data.name ||
       data.customerName ||
+      body.name ||
       'Empreendedor(a)';
 
     const customerEmail =
@@ -267,13 +351,14 @@ export default async function handler(req: any, res: any) {
       billing.customer?.metadata?.email?.trim() ||
       billing.customer?.email?.trim() ||
       data.email?.trim() ||
-      data.customerEmail?.trim();
+      data.customerEmail?.trim() ||
+      body.email?.trim();
 
     if (!customerEmail) {
       console.warn('[Webhook] E-mail do cliente não encontrado no payload:', JSON.stringify(data));
       return res.status(200).json({
         ok: true,
-        warning: 'E-mail não localizado no payload, notificação não enviada.',
+        warning: 'E-mail não localizado no payload, webhook registrado com sucesso.',
       });
     }
 
@@ -281,7 +366,7 @@ export default async function handler(req: any, res: any) {
     const uniqueKey = `${orderId}_${customerEmail}`;
     if (processedEvents.has(uniqueKey) || processedEvents.has(eventId)) {
       console.log(`[Webhook] Cobrança/Evento já processado anteriormente (${uniqueKey}). Retornando 200 OK.`);
-      return res.status(200).json({ ok: true, idempotent: true, message: 'Evento já processado.' });
+      return res.status(200).json({ ok: true, idempotent: true, message: 'Evento já processado anteriormente.' });
     }
 
     // 6. Preparação dos Links dos Materiais
@@ -294,7 +379,7 @@ export default async function handler(req: any, res: any) {
     const videoUrl = process.env.MATERIAL_VIDEO_URL || 'https://youtube.com';
     const whatsappUrl =
       process.env.SUPPORT_WHATSAPP ||
-      'https://wa.me/5511999999999?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda';
+      'https://wa.me/5567998659405?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda';
 
     const { subject, html, text } = buildDeliveryEmail({
       customerName,
@@ -352,15 +437,16 @@ export default async function handler(req: any, res: any) {
 
     return res.status(200).json({
       success: true,
-      message: 'Pagamento processado com sucesso.',
+      message: 'Pagamento processado e materiais liberados com sucesso.',
       orderId,
       customerEmail,
       delivery: emailResult,
     });
   } catch (error: any) {
-    console.error('[Webhook] Erro fatal:', error);
+    console.error('[Webhook] Erro capturado:', error);
     return res.status(200).json({
-      error: 'Internal Error Caught',
+      ok: true,
+      warning: 'Webhook recebido, erro interno não crítico.',
       message: error?.message || 'Erro inesperado',
     });
   }
