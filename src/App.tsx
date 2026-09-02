@@ -134,8 +134,8 @@ export default function App() {
             {/* 2. Hero Section */}
             <Hero onOpenCheckout={handleOpenCheckout} />
 
-            {/* 3. Dedicated Video Demonstration Section */}
-            <VideoSection />
+            {/* 3. Dedicated Video Demonstration Section (Oculto temporariamente enquanto está sendo finalizado) */}
+            {/* <VideoSection /> */}
 
             {/* 4. How It Works in 3 Steps */}
             <HowItWorks />

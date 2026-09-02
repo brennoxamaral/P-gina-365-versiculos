@@ -17,7 +17,7 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
   ];
 
   return (
-    <section id="oferta" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
+    <section id="oferta" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         {/* Top Urgency / Condition Badge */}

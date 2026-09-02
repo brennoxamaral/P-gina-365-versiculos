@@ -64,12 +64,12 @@ export const TestimonialsCarousel: React.FC = () => {
   const currentPrint = customerFeedbackPrints[activeIndex];
 
   return (
-    <section id="depoimentos" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
+    <section id="depoimentos" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
             <MessageCircleHeart className="w-3.5 h-3.5 text-[#C79801]" />
             <span>REAÇÃO DOS CLIENTES</span>
           </div>
@@ -90,7 +90,7 @@ export const TestimonialsCarousel: React.FC = () => {
           <button
             type="button"
             onClick={prevSlide}
-            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#FAF6F0] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
+            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#F2EBE3] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
             aria-label="Print anterior"
           >
             <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
@@ -147,7 +147,7 @@ export const TestimonialsCarousel: React.FC = () => {
               <button
                 type="button"
                 onClick={prevSlide}
-                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#F2EBE3] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
                 aria-label="Print anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -179,7 +179,7 @@ export const TestimonialsCarousel: React.FC = () => {
               <button
                 type="button"
                 onClick={nextSlide}
-                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#F2EBE3] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
                 aria-label="Próximo print"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -193,7 +193,7 @@ export const TestimonialsCarousel: React.FC = () => {
           <button
             type="button"
             onClick={nextSlide}
-            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#FAF6F0] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
+            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#F2EBE3] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
             aria-label="Próximo print"
           >
             <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
