@@ -65,7 +65,7 @@ export const VerseInteractiveDemo: React.FC = () => {
 
         {/* Subtitle */}
         <p className="text-sm sm:text-base text-[#5A422D] max-w-xl mb-6 sm:mb-8 leading-relaxed">
-          Cada bilhete foi cuidadosamente selecionado com mensagens edificantes e de fé. Teste o sorteador interativo abaixo:
+          Teste o sorteador interativo abaixo:
         </p>
 
         {/* Paper style selector */}
