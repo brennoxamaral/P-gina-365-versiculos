@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Scissors, Sparkles, Heart, ShieldCheck, Printer } from 'lucide-react';
+import { Scissors, Sparkles, Heart } from 'lucide-react';
 
 export const HeroProductMockup: React.FC = () => {
   const [activeSheet, setActiveSheet] = useState<'all' | 'kraft' | 'blue' | 'pink'>('all');
@@ -227,21 +227,6 @@ export const HeroProductMockup: React.FC = () => {
 
       </div>
 
-      {/* Floating feature pills underneath mockup (Centered below the fan) */}
-      <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 text-xs sm:text-sm text-[#4B3621]">
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#C79801]/40 transition-colors">
-          <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C79801] shrink-0" />
-          <span className="font-medium text-xs sm:text-sm">Rendimento máximo por folha A4</span>
-        </div>
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#C79801]/40 transition-colors">
-          <Scissors className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C79801] shrink-0" />
-          <span className="font-medium text-xs sm:text-sm">Guia pontilhado para corte rápido</span>
-        </div>
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs hover:border-[#2E7D32]/40 transition-colors">
-          <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2E7D32] shrink-0" />
-          <span className="font-medium text-xs sm:text-sm">PDF em 300 DPI Vetorial</span>
-        </div>
-      </div>
     </div>
   );
 };

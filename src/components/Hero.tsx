@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
-            <span>Custo de centavos por entrega</span>
+            <span>Bônus: Template de cartão de agradecimento</span>
           </div>
         </div>
 
