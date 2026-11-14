@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, MessageCircle } from 'lucide-react';
+import { HelpCircle, ChevronDown, MessageCircle, ArrowRight } from 'lucide-react';
 import { faqs } from '../data/faqs';
 
 export const FAQSection: React.FC = () => {
@@ -60,21 +60,40 @@ export const FAQSection: React.FC = () => {
           })}
         </div>
 
-        {/* WhatsApp support callout */}
-        <div className="mt-10 sm:mt-12 p-5 sm:p-6 rounded-2xl bg-[#F2EBE3]/65 border border-[#E8DFD5] text-center flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <h4 className="font-sans font-semibold text-sm sm:text-base text-[#2B1D12]">Ainda ficou com alguma dúvida?</h4>
-            <p className="text-xs sm:text-sm text-[#5A422D] mt-0.5">Nossa equipe de atendimento está pronta para te ajudar no WhatsApp.</p>
+        {/* Editorial WhatsApp Closing Moment */}
+        <div className="mt-14 sm:mt-16 pt-12 sm:pt-14 border-t border-[#E8DFD5] text-center flex flex-col items-center">
+          {/* Live status micro-badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-medium text-[#8A6700] mb-4 shadow-2xs">
+            <span className="h-2 w-2 rounded-full bg-[#2E7D32]" />
+            <span>ATENDIMENTO HUMANO • SEM ROBÔS</span>
           </div>
-          <a
-            href="https://wa.me/5567981326047?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Kit%20365%20Vers%C3%ADculos%20para%20Delivery"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#246328] text-white font-semibold text-xs sm:text-sm shadow-2xs transition-colors shrink-0 active:scale-95 whitespace-nowrap"
-          >
-            <MessageCircle className="w-4 h-4 shrink-0" />
-            <span>Falar no WhatsApp</span>
-          </a>
+
+          {/* Brown & Yellow Editorial Headline */}
+          <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-[#2B1D12] tracking-tight leading-[1.15] text-balance max-w-xl mx-auto">
+            Ainda restou alguma dúvida?{' '}
+            <span className="block sm:inline italic text-[#C79801]">
+              Converse direto com a gente.
+            </span>
+          </h3>
+
+          {/* Concise microcopy */}
+          <p className="text-sm sm:text-base text-[#5A422D] max-w-md mx-auto mt-3 leading-relaxed">
+            Nossa equipe responde rapidinho no WhatsApp para te ajudar com o que precisar.
+          </p>
+
+          {/* Solid Green WhatsApp Button */}
+          <div className="mt-6 sm:mt-7 w-full sm:w-auto flex justify-center">
+            <a
+              href="https://wa.me/5567981326047?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Kit%20365%20Vers%C3%ADculos%20para%20Delivery"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-xs sm:w-auto sm:max-w-full min-h-[48px] sm:min-h-[52px] py-3.5 px-6 sm:px-8 rounded-2xl bg-[#2E7D32] hover:bg-[#246328] active:scale-98 text-white font-semibold text-sm sm:text-base tracking-tight shadow-craft transition-all duration-300 inline-flex items-center justify-center gap-2.5 group"
+            >
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
+              <span className="whitespace-nowrap">Chamar no WhatsApp agora</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
         </div>
 
       </div>
