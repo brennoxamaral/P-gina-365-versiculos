@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navLinks = [
     { label: 'Como Funciona', href: '#como-funciona' },
-    { label: 'Versículos', href: '#versiculos' },
+    { label: 'Depoimentos', href: '#depoimentos' },
     { label: 'Bônus', href: '#bonus' },
     { label: 'Dúvidas', href: '#duvidas' },
   ];
@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="hidden sm:inline-flex items-center gap-2 py-2.5 px-4 md:px-5 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-bold text-xs md:text-sm tracking-tight shadow-gold hover:shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap"
           >
             <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
-            <span>Quero o Kit • R$ 19,90</span>
+            <span>Quero o meu PDF</span>
           </button>
 
           {/* Mobile menu trigger */}
@@ -136,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="w-full py-3 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-sm tracking-tight shadow-gold flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
-              <span>QUERO MEU KIT • R$ 19,90</span>
+              <span>QUERO O MEU PDF</span>
             </button>
           </div>
         </div>

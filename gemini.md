@@ -71,3 +71,10 @@ Este arquivo define os princípios mandatórios, diretrizes visuais, regras de c
 | **Tons quentes**, bege artesanal e marrom terroso | Fundos brancos hospitalares ou cinzas frios |
 | **Tipografia estrita** (`Playfair Display` + `Plus Jakarta Sans`) | Fontes decorativas aleatórias ou genéricas (ex: Arial, Comic) |
 | **Micro-interações suaves** e feedback visual em hovers/cliques | Animações pesadas que causem lentidão ou distração |
+
+---
+
+## 6. Fluxo de Entrega e Conferência
+
+- **Link do Localhost Obrigatório após Edições no Frontend:**  
+  Sempre que qualquer alteração for feita no frontend da página de vendas, a IA deve garantir que o servidor de desenvolvimento esteja rodando e **entregar explicitamente o link do `localhost`** (ex.: `http://localhost:5173`) na resposta para que o usuário possa conferir o resultado imediatamente.

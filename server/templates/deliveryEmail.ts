@@ -21,7 +21,6 @@ export function generateDeliveryEmail(data: EmailTemplateData): {
 
   const pdfUrl = config.materials.kitPdfUrl;
   const canvaUrl = config.materials.canvaBonusUrl;
-  const videoUrl = config.materials.videoClassUrl;
   const whatsappUrl = config.materials.supportWhatsapp;
 
   const html = `
@@ -137,17 +136,6 @@ export function generateDeliveryEmail(data: EmailTemplateData): {
       padding: 12px 18px;
       border-radius: 10px;
     }
-    .btn-red {
-      display: block;
-      background-color: #D32F2F;
-      color: #FFFFFF !important;
-      font-size: 13px;
-      font-weight: 800;
-      text-align: center;
-      text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-    }
     .guide-box {
       background-color: #F2EBE3;
       border-radius: 14px;
@@ -220,17 +208,6 @@ export function generateDeliveryEmail(data: EmailTemplateData): {
           </a>
         </div>
 
-        <!-- Material 3: Vídeo Aula -->
-        <div class="item-card">
-          <h3 class="item-title">🎥 Vídeo Aula: Como Editar e Imprimir</h3>
-          <p class="item-desc">
-            Passo a passo rápido mostrando a bancada, o corte e a montagem na prática para otimizar o tempo na sua cozinha.
-          </p>
-          <a href="${videoUrl}" target="_blank" class="btn-red">
-            ▶️ ASSISTIR VÍDEO AULA
-          </a>
-        </div>
-
         <!-- Passo a Passo Rápido -->
         <div class="guide-box">
           <h4>💡 Como aplicar no seu delivery hoje mesmo:</h4>
@@ -272,9 +249,6 @@ ${pdfUrl}
 
 2. 🎁 Super Bônus - Template Cartão de Agradecimento (Canva Editável):
 ${canvaUrl}
-
-3. 🎥 Vídeo Aula Prática - Como Editar e Imprimir:
-${videoUrl}
 
 COMO USAR NO SEU DELIVERY:
 1. Imprima o PDF em folha A4 comum ou kraft.

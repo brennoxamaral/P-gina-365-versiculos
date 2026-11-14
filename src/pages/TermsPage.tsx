@@ -38,7 +38,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({
   };
 
   const handleCopyPhone = () => {
-    navigator.clipboard.writeText('(67) 99865-9405');
+    navigator.clipboard.writeText('(67) 98132-6047');
     setCopiedPhone(true);
     setTimeout(() => setCopiedPhone(false), 2500);
   };
@@ -133,7 +133,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({
               </h2>
             </div>
             <p className="text-[#6B533E]">
-              O presente Termo de Uso e Condições de Venda regula a comercialização e utilização do produto digital <strong>Kit 365 Versículos para Delivery</strong>, disponibilizado pela <strong>Batata Mania</strong>, pessoa jurídica inscrita no CNPJ sob o nº <span className="font-bold text-[#2B1D12] bg-[#E8DFD5]/50 px-1.5 py-0.5 rounded text-xs sm:text-sm inline-block">67.183.172/0001-19</span>, com canais de atendimento no e-mail <a href="mailto:batatamaniacassi@gmail.com" className="text-[#C79801] font-semibold underline break-all">batatamaniacassi@gmail.com</a> e telefone/WhatsApp <a href="tel:+5567998659405" className="text-[#C79801] font-semibold underline whitespace-nowrap">(67) 99865-9405</a>.
+              O presente Termo de Uso e Condições de Venda regula a comercialização e utilização do produto digital <strong>Kit 365 Versículos para Delivery</strong>, disponibilizado pela <strong>Batata Mania</strong>, pessoa jurídica inscrita no CNPJ sob o nº <span className="font-bold text-[#2B1D12] bg-[#E8DFD5]/50 px-1.5 py-0.5 rounded text-xs sm:text-sm inline-block">67.183.172/0001-19</span>, com canais de atendimento no e-mail <a href="mailto:batatamaniacassi@gmail.com" className="text-[#C79801] font-semibold underline break-all">batatamaniacassi@gmail.com</a> e telefone/WhatsApp <a href="tel:+5567981326047" className="text-[#C79801] font-semibold underline whitespace-nowrap">(67) 98132-6047</a>.
             </p>
             <p className="text-[#6B533E]">
               Ao adquirir o Kit ou navegar neste site, você (doravante denominado <strong>"Usuário"</strong> ou <strong>"Comprador"</strong>) declara ter lido, compreendido e aceito integralmente estes termos.
@@ -161,10 +161,6 @@ export const TermsPage: React.FC<TermsPageProps> = ({
               <li className="flex items-start gap-2.5 text-xs sm:text-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0 mt-0.5 sm:mt-1" />
                 <span><strong>Bônus Exclusivo:</strong> Template editável de Cartão de Agradecimento Estratégico na plataforma Canva.</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0 mt-0.5 sm:mt-1" />
-                <span><strong>Videoaula Prática:</strong> Guia de como personalizar, colocar logomarca e imprimir em qualquer impressora convencional.</span>
               </li>
             </ul>
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#F2EBE3] border border-[#E8DFD5] text-xs sm:text-sm text-[#6B533E] flex items-start gap-2.5">
@@ -244,7 +240,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({
               Em total respeito ao <strong>Artigo 49 do Código de Defesa do Consumidor (Lei nº 8.078/90)</strong> e prezando pela máxima satisfação de nossos parceiros comerciais, oferecemos uma <strong>Garantia Incondicional de 7 (sete) dias corridos</strong> a contar da data de confirmação do pagamento.
             </p>
             <p className="text-[#6B533E]">
-              Caso o material não atenda às suas expectativas, basta enviar uma mensagem para o nosso e-mail <a href="mailto:batatamaniacassi@gmail.com" className="text-[#C79801] font-semibold underline break-all">batatamaniacassi@gmail.com</a> ou acionar o WhatsApp de suporte <a href="https://wa.me/5567998659405" target="_blank" rel="noopener noreferrer" className="text-[#C79801] font-semibold underline whitespace-nowrap">(67) 99865-9405</a> informando o e-mail ou comprovante da compra, e devolveremos 100% do valor pago via PIX, sem questionamentos ou burocracia.
+              Caso o material não atenda às suas expectativas, basta enviar uma mensagem para o nosso e-mail <a href="mailto:batatamaniacassi@gmail.com" className="text-[#C79801] font-semibold underline break-all">batatamaniacassi@gmail.com</a> ou acionar o WhatsApp de suporte <a href="https://wa.me/5567981326047" target="_blank" rel="noopener noreferrer" className="text-[#C79801] font-semibold underline whitespace-nowrap">(67) 98132-6047</a> informando o e-mail ou comprovante da compra, e devolveremos 100% do valor pago via PIX, sem questionamentos ou burocracia.
             </p>
           </section>
 
@@ -342,10 +338,10 @@ export const TermsPage: React.FC<TermsPageProps> = ({
                     Telefone de Contato
                   </span>
                   <a
-                    href="tel:+5567998659405"
+                    href="tel:+5567981326047"
                     className="text-xs sm:text-sm font-bold text-[#2B1D12] hover:text-[#C79801] truncate block"
                   >
-                    (67) 99865-9405
+                    (67) 98132-6047
                   </a>
                 </div>
               </div>
@@ -376,13 +372,13 @@ export const TermsPage: React.FC<TermsPageProps> = ({
                     WhatsApp Comercial
                   </span>
                   <span className="text-xs sm:text-sm font-bold text-[#2B1D12] block truncate">
-                    (67) 99865-9405
+                    (67) 98132-6047
                   </span>
                 </div>
               </div>
 
               <a
-                href="https://wa.me/5567998659405?text=Ol%C3%A1%2C+estou+com+uma+d%C3%BAvida+sobre+os+Termos+de+Uso+do+Kit+365+Vers%C3%ADculos"
+                href="https://wa.me/5567981326047?text=Ol%C3%A1%2C+estou+com+uma+d%C3%BAvida+sobre+os+Termos+de+Uso+do+Kit+365+Vers%C3%ADculos"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-2 px-3 sm:px-3.5 rounded-xl bg-[#2E7D32] hover:bg-[#256829] text-white text-xs font-bold transition-all shadow-xs shrink-0 cursor-pointer text-center"

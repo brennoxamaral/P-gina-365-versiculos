@@ -10,7 +10,6 @@ function buildDeliveryEmail(params: {
   customerName: string;
   pdfUrl: string;
   canvaUrl: string;
-  videoUrl: string;
   whatsappUrl: string;
 }) {
   const firstName = params.customerName.trim().split(' ')[0] || 'Empreendedor(a)';
@@ -38,7 +37,6 @@ function buildDeliveryEmail(params: {
     .item-desc { font-size: 12px; color: #6B533E; margin: 0 0 14px 0; }
     .btn-gold { display: block; background-color: #E1AD01; color: #2B1D12 !important; font-size: 13px; font-weight: 800; text-align: center; text-decoration: none; padding: 12px 18px; border-radius: 10px; }
     .btn-dark { display: block; background-color: #2B1D12; color: #FFFFFF !important; font-size: 13px; font-weight: 800; text-align: center; text-decoration: none; padding: 12px 18px; border-radius: 10px; }
-    .btn-red { display: block; background-color: #D32F2F; color: #FFFFFF !important; font-size: 13px; font-weight: 800; text-align: center; text-decoration: none; padding: 12px 18px; border-radius: 10px; }
     .guide-box { background-color: #F2EBE3; border-radius: 14px; padding: 20px; margin: 28px 0; border-left: 4px solid #E1AD01; }
     .guide-box h4 { margin: 0 0 10px 0; font-size: 14px; color: #2B1D12; font-weight: 800; }
     .guide-step { font-size: 12px; color: #5A422D; margin-bottom: 6px; }
@@ -68,12 +66,6 @@ function buildDeliveryEmail(params: {
           <h3 class="item-title">🎁 Super Bônus: Cartão de Agradecimento Editável</h3>
           <p class="item-desc">Template no Canva (100% editável no plano Gratuito ou Pro). Adicione sua marca e WhatsApp.</p>
           <a href="${params.canvaUrl}" target="_blank" class="btn-dark">🎨 ABRIR TEMPLATE NO CANVA</a>
-        </div>
-
-        <div class="item-card">
-          <h3 class="item-title">🎥 Vídeo Aula: Como Editar e Imprimir</h3>
-          <p class="item-desc">Passo a passo rápido mostrando o corte e montagem na prática para agilizar na cozinha.</p>
-          <a href="${params.videoUrl}" target="_blank" class="btn-red">▶️ ASSISTIR VÍDEO AULA</a>
         </div>
 
         <div class="guide-box">
@@ -109,7 +101,6 @@ Seu pagamento foi confirmado com sucesso e seus materiais do Kit 365 Versículos
 Seus links de acesso direto:
 1. PDF dos 365 Versículos: ${params.pdfUrl}
 2. Bônus Template Canva: ${params.canvaUrl}
-3. Vídeo Aula: ${params.videoUrl}
 
 Suporte WhatsApp: ${params.whatsappUrl}
 
@@ -376,16 +367,14 @@ export default async function handler(req: any, res: any) {
     const canvaUrl =
       process.env.MATERIAL_CANVA_BONUS_URL ||
       'https://canva.link/cartao-de-agradecimento-estrategico';
-    const videoUrl = process.env.MATERIAL_VIDEO_URL || 'https://youtube.com';
     const whatsappUrl =
       process.env.SUPPORT_WHATSAPP ||
-      'https://wa.me/5567998659405?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda';
+      'https://wa.me/5567981326047?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda';
 
     const { subject, html, text } = buildDeliveryEmail({
       customerName,
       pdfUrl,
       canvaUrl,
-      videoUrl,
       whatsappUrl,
     });
 

@@ -3,27 +3,27 @@ import { FAQItem } from '../types';
 export const faqs: FAQItem[] = [
   {
     id: "papel",
-    question: "Que tipo de papel posso usar para imprimir?",
-    answer: "Você pode imprimir normalmente em folha sulfite comum A4. Para a produção dos nossos bilhetes, nós utilizamos a folha Canson A4 150g para garantir um acabamento mais encorpado e sofisticado."
+    question: "Qual papel posso usar para imprimir?",
+    answer: "Qualquer folha A4, inclusive sulfite comum. Nós usamos papel Canson A4 150g para um acabamento mais firme."
   },
   {
     id: "impressora",
-    question: "Preciso de impressora profissional ou gráfica?",
-    answer: "Não! O arquivo foi diagramado especificamente para qualquer impressora doméstica comum (jato de tinta ou laser). Você também pode levar o PDF em uma gráfica rápida ou papelaria do seu bairro."
+    question: "Preciso de impressora profissional?",
+    answer: "Não. Funciona em qualquer impressora comum (jato de tinta ou laser), em casa ou na gráfica."
   },
   {
     id: "entrega",
-    question: "Como e quando recebo o arquivo após o pagamento?",
-    answer: "O envio é 100% imediato e automático. Assim que seu pagamento for aprovado (no PIX ou Cartão), o link de download direto do PDF de alta resolução e dos bônus chega no seu e-mail e no WhatsApp cadastrado."
+    question: "Como e quando recebo o arquivo?",
+    answer: "Na hora! Assim que o pagamento (PIX ou cartão) for aprovado, o link do PDF e dos bônus chega no seu e-mail e WhatsApp."
   },
   {
     id: "quantidade",
-    question: "Quantos bilhetes vêm no arquivo PDF?",
-    answer: "São 365 versículos bíblicos diferentes (um para cada dia do ano), organizados em páginas A4 com linhas pontilhadas de corte que maximizam o aproveitamento do papel e facilitam o corte com tesoura ou estilete."
+    question: "Quantos bilhetes vêm no PDF?",
+    answer: "São 365 versículos diferentes em folhas A4 com linhas pontilhadas para cortar rápido."
   },
   {
     id: "bonus-canva",
-    question: "Como funciona o bônus do Cartão de Agradecimento no Canva?",
-    answer: "Você recebe o link direto do template 100% editável no Canva gratuito. Você pode alterar seu @ do Instagram, colocar seu logotipo, personalizar o QR Code e as cores direto pelo celular ou computador em menos de 2 minutos."
+    question: "Como funciona o bônus do Canva?",
+    answer: "Você recebe o link do modelo gratuito para editar sua logo, @ do Instagram e QR Code em menos de 2 minutos pelo celular ou PC."
   }
 ];

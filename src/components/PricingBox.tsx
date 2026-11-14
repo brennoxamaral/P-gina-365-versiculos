@@ -7,17 +7,14 @@ interface PricingBoxProps {
 
 export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
   const inclusions = [
-    { text: 'Kit Completo com 365 Versículos Bíblicos em PDF de Alta Resolução', highlight: true },
-    { text: 'Diagramação A4 com Guias Pontilhadas para Corte Rápido', highlight: true },
-    { text: 'BÔNUS: Template Oficial do Cartão de Agradecimento com QR Code no Canva', highlight: true },
-    { text: 'BÔNUS: Videoaula Passo a Passo de Edição e Impressão', highlight: false },
-    { text: 'Guia de Papéis Recomendados (Sulfite, Kraft, Color Plus)', highlight: false },
-    { text: 'Acesso Vitalício + Atualizações Futuras Gratuitas', highlight: false },
-    { text: 'Garantia Incondicional de 7 Dias ou seu Dinheiro de Volta', highlight: false },
+    { text: 'PDF com 365 versículos bíblicos prontos para A4', highlight: true },
+    { text: 'Linhas pontilhadas para corte rápido', highlight: true },
+    { text: 'BÔNUS: Cartão de agradecimento editável no Canva', highlight: true },
+    { text: 'Acesso vitalício + garantia de 7 dias', highlight: false },
   ];
 
   return (
-    <section id="oferta" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
+    <section id="oferta" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         {/* Top Urgency / Condition Badge */}
@@ -40,7 +37,7 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
               Kit 365 Versículos para Delivery
             </h3>
             <p className="text-sm text-[#5A422D] mt-1.5 font-medium">
-              O investimento que se paga no primeiro cliente fidelizado.
+              Tudo pronto para imprimir e encantar seus clientes.
             </p>
           </div>
 
@@ -109,7 +106,7 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
                 Garantia Incondicional de 7 Dias
               </h5>
               <p className="text-xs text-[#5A422D] max-w-sm mt-0.5 leading-relaxed">
-                Se você baixar os arquivos e achar que não agregou valor ao seu delivery, basta enviar um e-mail em até 7 dias que devolvemos 100% do seu dinheiro. Sem perguntas.
+                Não gostou? Devolvemos 100% do seu dinheiro em até 7 dias, sem perguntas.
               </p>
             </div>
           </div>

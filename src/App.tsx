@@ -2,28 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { VideoSection } from './components/VideoSection';
-import { VerseInteractiveDemo } from './components/VerseInteractiveDemo';
 import { HowItWorks } from './components/HowItWorks';
 import { TestimonialsCarousel } from './components/TestimonialsCarousel';
 import { BonusSection } from './components/BonusSection';
 import { PricingBox } from './components/PricingBox';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
-import { CheckoutModal } from './components/CheckoutModal';
 import { StickyBottomCTA } from './components/StickyBottomCTA';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
+import { CheckoutPage } from './pages/CheckoutPage';
 
-export type PageRoute = 'home' | 'terms' | 'privacy';
+export type PageRoute = 'home' | 'terms' | 'privacy' | 'checkout';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageRoute>('home');
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [returnPage, setReturnPage] = useState<Exclude<PageRoute, 'checkout'>>('home');
 
   // Determina a rota com base no pathname ou hash atual
   const resolveRouteFromUrl = (): PageRoute => {
     const path = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
+
+    if (
+      path.includes('checkout') ||
+      hash.includes('checkout')
+    ) {
+      return 'checkout';
+    }
 
     if (
       path.includes('termos') ||
@@ -63,7 +69,7 @@ export default function App() {
     };
   }, []);
 
-  const navigateTo = (page: PageRoute, updateHistory = true) => {
+  const navigateTo = (page: PageRoute, updateHistory = true, instantScroll = false) => {
     setCurrentPage(page);
 
     if (updateHistory) {
@@ -72,25 +78,34 @@ export default function App() {
         targetPath = '/termos-de-uso';
       } else if (page === 'privacy') {
         targetPath = '/privacidade';
+      } else if (page === 'checkout') {
+        targetPath = '/checkout';
       }
 
       window.history.pushState({ page }, '', targetPath);
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: instantScroll ? 'auto' : 'smooth' });
   };
 
   const handleOpenCheckout = () => {
-    setIsCheckoutOpen(true);
+    if (currentPage !== 'checkout') {
+      setReturnPage(currentPage);
+    }
+    navigateTo('checkout', true, true);
   };
 
   const handleCloseCheckout = () => {
-    setIsCheckoutOpen(false);
+    navigateTo(returnPage, true, true);
   };
 
   return (
     <div className="min-h-screen bg-[#F2EBE3] text-[#4B3621] flex flex-col selection:bg-[#E1AD01]/30 selection:text-[#2B1D12]">
-      {/* Visualização de Subpáginas ou Página Principal */}
+      {/* Visualização em Tela Cheia de Checkout ou Subpáginas */}
+      {currentPage === 'checkout' && (
+        <CheckoutPage onBack={handleCloseCheckout} />
+      )}
+
       {currentPage === 'terms' && (
         <>
           <TermsPage
@@ -140,19 +155,16 @@ export default function App() {
             {/* 4. How It Works in 3 Steps */}
             <HowItWorks />
 
-            {/* 5. Dynamic Interactive Bible Verse Demonstrator */}
-            <VerseInteractiveDemo />
-
-            {/* 6. Social Proof (Interactive Testimonials Carousel) */}
+            {/* 5. Social Proof (Interactive Testimonials Carousel) */}
             <TestimonialsCarousel />
 
-            {/* 7. Super Exclusive Bonus */}
+            {/* 6. Super Exclusive Bonus */}
             <BonusSection onOpenCheckout={handleOpenCheckout} />
 
-            {/* 8. Pricing Box */}
+            {/* 7. Pricing Box */}
             <PricingBox onOpenCheckout={handleOpenCheckout} />
 
-            {/* 9. FAQ Accordion */}
+            {/* 8. FAQ Accordion */}
             <FAQSection />
           </main>
 
@@ -165,17 +177,9 @@ export default function App() {
           />
 
           {/* Sticky Bottom Bar for Mobile & Quick CTA */}
-          {!isCheckoutOpen && (
-            <StickyBottomCTA onOpenCheckout={handleOpenCheckout} />
-          )}
+          <StickyBottomCTA onOpenCheckout={handleOpenCheckout} />
         </>
       )}
-
-      {/* Seamless Checkout & Download Modal */}
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={handleCloseCheckout}
-      />
     </div>
   );
 }

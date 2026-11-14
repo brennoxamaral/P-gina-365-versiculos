@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({
   const handleCopyPhone = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    navigator.clipboard.writeText('(67) 99865-9405');
+    navigator.clipboard.writeText('(67) 98132-6047');
     setCopiedPhone(true);
     setTimeout(() => setCopiedPhone(false), 2500);
   };
@@ -161,11 +161,11 @@ export const Footer: React.FC<FooterProps> = ({
                       Telefone de Contato
                     </span>
                     <a
-                      href="tel:+5567998659405"
+                      href="tel:+5567981326047"
                       className="text-xs font-semibold text-[#F2EBE3] hover:text-[#E1AD01] truncate block transition-colors"
                       title="Ligar para suporte"
                     >
-                      (67) 99865-9405
+                      (67) 98132-6047
                     </a>
                   </div>
                 </div>
@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/5567998659405?text=Ol%C3%A1%2C+preciso+de+ajuda+com+o+Kit+365+Vers%C3%ADculos"
+                href="https://wa.me/5567981326047?text=Ol%C3%A1%2C+preciso+de+ajuda+com+o+Kit+365+Vers%C3%ADculos"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-[#2E7D32]/20 hover:bg-[#2E7D32]/30 border border-[#2E7D32]/40 flex items-center justify-between gap-2 group transition-all"
@@ -201,7 +201,7 @@ export const Footer: React.FC<FooterProps> = ({
                       WhatsApp Oficial
                     </span>
                     <span className="text-xs font-semibold text-white truncate block">
-                      (67) 99865-9405
+                      (67) 98132-6047
                     </span>
                   </div>
                 </div>
@@ -227,11 +227,11 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <a
-                  href="/#versiculos"
+                  href="/#depoimentos"
                   onClick={handleHomeClick}
                   className="text-[#D3C5B4] hover:text-[#E1AD01] transition-colors flex items-center gap-1.5 py-0.5"
                 >
-                  <span>•</span> Exemplos de Versículos
+                  <span>•</span> Depoimentos Reais
                 </a>
               </li>
               <li>

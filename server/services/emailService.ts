@@ -154,7 +154,6 @@ export class EmailService {
     console.log(`Links no E-mail:`);
     console.log(` - PDF Drive: ${config.materials.kitPdfUrl}`);
     console.log(` - Canva Bonus: ${config.materials.canvaBonusUrl}`);
-    console.log(` - Vídeo Aula: ${config.materials.videoClassUrl}`);
     console.log('💡 DICA: Para enviar e-mails reais, configure RESEND_API_KEY no painel da Vercel ou no .env');
     console.log('============================================================\n');
 

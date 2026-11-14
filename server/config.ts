@@ -43,11 +43,8 @@ export const config = {
     canvaBonusUrl:
       process.env.MATERIAL_CANVA_BONUS_URL ||
       'https://canva.link/cartao-de-agradecimento-estrategico',
-    videoClassUrl:
-      process.env.MATERIAL_VIDEO_URL ||
-      'https://youtube.com',
     supportWhatsapp:
       process.env.SUPPORT_WHATSAPP ||
-      'https://wa.me/5567998659405?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda',
+      'https://wa.me/5567981326047?text=Ol%C3%A1%2C+comprei+o+Kit+365+Vers%C3%ADculos+e+preciso+de+ajuda',
   },
 };

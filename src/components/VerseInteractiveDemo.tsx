@@ -60,12 +60,12 @@ export const VerseInteractiveDemo: React.FC = () => {
 
         {/* Title */}
         <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3">
-          Sinta a emoção que seu cliente vai receber
+          Veja os bilhetes na prática
         </h2>
 
         {/* Subtitle */}
         <p className="text-sm sm:text-base text-[#5A422D] max-w-xl mb-6 sm:mb-8 leading-relaxed">
-          Teste o sorteador interativo abaixo:
+          Teste abaixo como os versículos ficam para o seu cliente:
         </p>
 
         {/* Paper style selector */}
@@ -180,7 +180,7 @@ export const VerseInteractiveDemo: React.FC = () => {
           </div>
 
           <p className="mt-3 text-xs text-[#8C7A6B]">
-            São 365 mensagens diferentes no arquivo PDF — você nunca repetirá o mesmo versículo.
+            365 versículos diferentes no PDF — um para cada dia do ano.
           </p>
 
         </div>

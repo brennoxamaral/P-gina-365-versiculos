@@ -75,11 +75,11 @@ export const TestimonialsCarousel: React.FC = () => {
           </div>
 
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3">
-            O carinho na embalagem que emociona e fideliza clientes
+            Quem recebe, se emociona e volta
           </h2>
 
           <p className="text-sm sm:text-base text-[#5A422D] leading-relaxed">
-            Veja mensagens reais enviadas no WhatsApp do nosso delivery por quem recebeu um versículo na sacola.
+            Mensagens reais recebidas no WhatsApp do nosso delivery.
           </p>
         </div>
 

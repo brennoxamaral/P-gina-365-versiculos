@@ -38,7 +38,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({
   };
 
   const handleCopyPhone = () => {
-    navigator.clipboard.writeText('(67) 99865-9405');
+    navigator.clipboard.writeText('(67) 98132-6047');
     setCopiedPhone(true);
     setTimeout(() => setCopiedPhone(false), 2500);
   };
@@ -136,7 +136,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({
               A entidade controladora responsável pelas operações de tratamento de dados pessoais realizadas através desta plataforma é a <strong>Batata Mania</strong>, pessoa jurídica inscrita no CNPJ/MF sob o nº <span className="font-bold text-[#2B1D12] bg-[#E8DFD5]/50 px-1.5 py-0.5 rounded text-xs sm:text-sm inline-block">67.183.172/0001-19</span>.
             </p>
             <p className="text-[#6B533E]">
-              Para assuntos relacionados à privacidade e exercício de direitos da LGPD, disponibilizamos o canal oficial do Encarregado de Dados (DPO) através do e-mail: <a href="mailto:batatamaniacassi@gmail.com" className="text-[#C79801] font-semibold underline break-all">batatamaniacassi@gmail.com</a> ou pelo telefone <a href="tel:+5567998659405" className="text-[#C79801] font-semibold underline whitespace-nowrap">(67) 99865-9405</a>.
+              Para assuntos relacionados à privacidade e exercício de direitos da LGPD, disponibilizamos o canal oficial do Encarregado de Dados (DPO) através do e-mail: <a href="mailto:batatamaniacassi@gmail.com" className="text-[#C79801] font-semibold underline break-all">batatamaniacassi@gmail.com</a> ou pelo telefone <a href="tel:+5567981326047" className="text-[#C79801] font-semibold underline whitespace-nowrap">(67) 98132-6047</a>.
             </p>
           </section>
 
@@ -345,10 +345,10 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({
                     Telefone de Contato
                   </span>
                   <a
-                    href="tel:+5567998659405"
+                    href="tel:+5567981326047"
                     className="text-xs sm:text-sm font-bold text-[#2B1D12] hover:text-[#C79801] truncate block"
                   >
-                    (67) 99865-9405
+                    (67) 98132-6047
                   </a>
                 </div>
               </div>
@@ -379,13 +379,13 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({
                     WhatsApp de Suporte
                   </span>
                   <span className="text-xs sm:text-sm font-bold text-[#2B1D12] block truncate">
-                    (67) 99865-9405
+                    (67) 98132-6047
                   </span>
                 </div>
               </div>
 
               <a
-                href="https://wa.me/5567998659405?text=Ol%C3%A1%2C+estou+com+uma+d%C3%BAvida+sobre+a+Pol%C3%ADtica+de+Privacidade+do+Kit+365+Vers%C3%ADculos"
+                href="https://wa.me/5567981326047?text=Ol%C3%A1%2C+estou+com+uma+d%C3%BAvida+sobre+a+Pol%C3%ADtica+de+Privacidade+do+Kit+365+Vers%C3%ADculos"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-2 px-3 sm:px-3.5 rounded-xl bg-[#2E7D32] hover:bg-[#256829] text-white text-xs font-bold transition-all shadow-xs shrink-0 cursor-pointer text-center"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gift, Sparkles, Check, QrCode, PlayCircle, Smartphone, Edit3, ArrowRight } from 'lucide-react';
+import { Gift, Sparkles, Check } from 'lucide-react';
 
 interface BonusSectionProps {
   onOpenCheckout: () => void;
@@ -7,20 +7,20 @@ interface BonusSectionProps {
 
 export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) => {
   return (
-    <section id="bonus" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
+    <section id="bonus" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-5xl mx-auto">
         
         {/* Section Badge */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
             <Gift className="w-3.5 h-3.5 text-[#C79801]" />
-            <span>PRESENTE ESPECIAL INCLUSO</span>
+            <span>BÔNUS INCLUSO</span>
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3">
-            Super Bônus: Cartão de Agradecimento Editável no Canva
+            Bônus: Cartão Editável no Canva
           </h2>
           <p className="text-sm sm:text-base text-[#5A422D] leading-relaxed">
-            Além dos 365 versículos, você recebe gratuitamente o template oficial do cartão com QR Code para incentivar seus clientes a postarem fotos do pedido no Instagram.
+            Cartão com QR Code para seus clientes marcarem sua loja no Instagram.
           </p>
         </div>
 
@@ -112,10 +112,10 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
             
             <div className="space-y-2">
               <span className="text-xs font-bold text-[#8A6700] uppercase tracking-wider">
-                BÔNUS DE ALTO VALOR • INCLUSO GRATUITAMENTE
+                INCLUSO GRATUITAMENTE
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#2B1D12]">
-                O combo perfeito para bombar seu Instagram
+                Mais divulgação gratuita no Instagram
               </h3>
             </div>
 
@@ -126,8 +126,8 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
                   <Check className="w-4 h-4" />
                 </div>
                 <div>
-                  <h5 className="font-bold text-sm text-[#2B1D12]">Template no Canva Gratuito</h5>
-                  <p className="text-xs text-[#5A422D]">Altere seu @ do Instagram, seu logotipo e as cores do seu delivery em segundos pelo celular ou PC.</p>
+                  <h5 className="font-bold text-sm text-[#2B1D12]">Editável no Canva Gratuito</h5>
+                  <p className="text-xs text-[#5A422D]">Troque o @, sua logo e as cores pelo celular ou PC.</p>
                 </div>
               </div>
 
@@ -136,18 +136,8 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
                   <Check className="w-4 h-4" />
                 </div>
                 <div>
-                  <h5 className="font-bold text-sm text-[#2B1D12]">Gerador de QR Code do Seu Insta</h5>
-                  <p className="text-xs text-[#5A422D]">Passo a passo simples para colocar o QR Code que leva direto para o perfil da sua loja.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-[#2E7D32]/15 text-[#2E7D32] flex items-center justify-center shrink-0 mt-0.5">
-                  <Check className="w-4 h-4" />
-                </div>
-                <div>
-                  <h5 className="font-bold text-sm text-[#2B1D12]">Videoaula Prática de Edição</h5>
-                  <p className="text-xs text-[#5A422D]">Tutorial rápido ensinando como imprimir em folha A4 e montar na sua embalagem.</p>
+                  <h5 className="font-bold text-sm text-[#2B1D12]">QR Code para seu Instagram</h5>
+                  <p className="text-xs text-[#5A422D]">Leva o cliente direto para o perfil da sua loja.</p>
                 </div>
               </div>
             </div>
@@ -155,11 +145,11 @@ export const BonusSection: React.FC<BonusSectionProps> = ({ onOpenCheckout }) =>
             {/* Price Anchor for Bonus */}
             <div className="p-4 rounded-xl bg-[#F2EBE3] border border-[#E8DFD5] flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left">
               <div>
-                <span className="text-xs text-[#6B533E] block">Valor deste template vendido separadamente:</span>
+                <span className="text-xs text-[#6B533E] block">Vendido separado por:</span>
                 <span className="text-sm font-bold text-[#D32F2F] line-through">R$ 29,90</span>
               </div>
               <span className="text-xs sm:text-sm font-black text-[#2E7D32] bg-[#2E7D32]/10 px-3.5 py-1.5 rounded-full whitespace-nowrap">
-                GRÁTIS HOJE (R$ 0,00)
+                GRÁTIS HOJE
               </span>
             </div>
 

@@ -1,87 +1,115 @@
-import React from 'react';
-import { Download, Printer, Paperclip, CheckCircle2, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Download, Printer, Scissors, Image as ImageIcon, LucideIcon } from 'lucide-react';
+
+interface StepItem {
+  number: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  image: string;
+  imageAlt: string;
+}
+
+const STEPS: StepItem[] = [
+  {
+    number: '1',
+    title: 'Baixe o PDF',
+    description: 'Receba o arquivo na hora no seu e-mail e WhatsApp.',
+    icon: Download,
+    image: '/how-it-works/passo-1.jpg',
+    imageAlt: 'Celular e computador exibindo o PDF de 365 versículos pronto para download',
+  },
+  {
+    number: '2',
+    title: 'Imprima em A4',
+    description: 'Em casa ou na gráfica, no papel que preferir.',
+    icon: Printer,
+    image: '/how-it-works/passo-2.jpg',
+    imageAlt: 'Folhas A4 coloridas e kraft impressas com os bilhetes de versículos',
+  },
+  {
+    number: '3',
+    title: 'Corte e Grampeie',
+    description: 'Recorte nas linhas e prenda na embalagem do pedido.',
+    icon: Scissors,
+    image: '/how-it-works/passo-3.jpg',
+    imageAlt: 'Bilhete de versículo grampeado em uma sacola kraft de delivery',
+  },
+];
 
 export const HowItWorks: React.FC = () => {
-  const steps = [
-    {
-      number: '1',
-      title: 'Baixe o PDF',
-      description: 'Receba o link de download imediato no seu e-mail e WhatsApp logo após a aprovação.',
-      icon: Download,
-      badge: 'Envio Imediato'
-    },
-    {
-      number: '2',
-      title: 'Imprima em A4',
-      description: 'Imprima na sua impressora comum em folhas brancas, coloridas ou kraft nobre.',
-      icon: Printer,
-      badge: 'Qualquer Impressora'
-    },
-    {
-      number: '3',
-      title: 'Corte e Grampeie',
-      description: 'Corte nas linhas pontilhadas e grampeie na sacola ou embalagem do seu cliente.',
-      icon: Paperclip,
-      badge: 'Pronto em Segundos'
-    }
-  ];
+  const [missingImages, setMissingImages] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (stepNumber: string) => {
+    setMissingImages((prev) =>
+      prev[stepNumber] ? prev : { ...prev, [stepNumber]: true }
+    );
+  };
 
   return (
     <section id="como-funciona" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
       <div className="max-w-5xl mx-auto">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
-            <span>PASSO A PASSO SIMPLES</span>
+            <span>PASSO A PASSO</span>
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3">
-            Como funciona na sua rotina de delivery
+            Como funciona na prática
           </h2>
           <p className="text-sm sm:text-base text-[#5A422D] leading-relaxed">
-            Sem processos complicados ou maquinário caro. Você só precisa de uma tesoura e um grampeador.
+            Sem complicação: só precisa de impressora, tesoura e grampeador.
           </p>
         </div>
 
         {/* 3 Steps Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-          
-          {steps.map((step, idx) => {
+          {STEPS.map((step) => {
             const IconComponent = step.icon;
-            return (
-              <div 
-                key={step.number}
-                className="relative bg-[#FAF6F0] rounded-2xl border border-[#E8DFD5] p-6 sm:p-7 shadow-craft hover:shadow-craft-lg transition-all duration-300 flex flex-col justify-between h-full group"
-              >
-                {/* Step indicator header */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-[#E1AD01] text-[#2B1D12] font-black text-lg flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-                    {step.number}
-                  </div>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-[#8A6700]">
-                    {step.badge}
-                  </span>
-                </div>
+            const isMissing = Boolean(missingImages[step.number]);
 
-                {/* Content */}
-                <div className="space-y-2 mb-6">
-                  <h3 className="font-serif text-xl font-bold text-[#2B1D12]">
+            return (
+              <article
+                key={step.number}
+                className="bg-[#FAF6F0] rounded-2xl border border-[#E8DFD5] p-4 sm:p-5 shadow-craft hover:shadow-craft-lg transition-all duration-300 flex flex-col group"
+              >
+                {isMissing ? (
+                  <div className="media w-full aspect-[4/3] rounded-xl bg-[#F2EBE3]/70 border border-dashed border-[#D3C5B4] mb-4 flex flex-col items-center justify-center gap-2 text-[#6B533E] transition-colors group-hover:border-[#C79801]/60">
+                    <div className="w-11 h-11 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] flex items-center justify-center shadow-2xs">
+                      <IconComponent className="w-5 h-5 text-[#8A6700]" aria-hidden="true" />
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#6B533E]">
+                      <ImageIcon className="w-3.5 h-3.5 text-[#8A6700]" aria-hidden="true" />
+                      Imagem do Passo {step.number}
+                    </span>
+                  </div>
+                ) : (
+                  <img
+                    src={step.image}
+                    alt={step.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    onError={() => handleImageError(step.number)}
+                    className="w-full aspect-[4/3] object-cover rounded-xl border border-[#E8DFD5] mb-4 group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                )}
+
+                <header className="flex items-center gap-2.5 mb-1.5">
+                  <span className="w-7 h-7 rounded-lg bg-[#E1AD01] text-[#2B1D12] font-black text-xs flex items-center justify-center shrink-0 shadow-2xs">
+                    {step.number}
+                  </span>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#2B1D12]">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-[#5A422D] leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
+                </header>
 
-                {/* Footer icon line */}
-                <div className="pt-4 mt-auto border-t border-[#E8DFD5] flex items-center text-xs text-[#8A6700] font-semibold gap-1.5">
-                  <IconComponent className="w-4 h-4 text-[#C79801]" />
-                  <span>Passo {step.number} de 3</span>
-                </div>
-              </div>
+                <p className="text-sm text-[#5A422D] leading-relaxed">
+                  {step.description}
+                </p>
+              </article>
             );
           })}
-
         </div>
 
       </div>
