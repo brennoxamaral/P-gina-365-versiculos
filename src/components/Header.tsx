@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 
 interface HeaderProps {
   onOpenCheckout?: () => void;
@@ -40,40 +40,31 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="relative w-full bg-[#F2EBE3] border-b border-[#E8DFD5] transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
-        {/* Brand Logo & Tag */}
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+        {/* Brand Wordmark Structured */}
         <a
           href="/"
           onClick={handleLogoClick}
-          className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
+          className="inline-flex flex-col items-start justify-center leading-none group shrink-0"
           id="nav-logo"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FAF6F0] border border-[#E8DFD5] flex items-center justify-center shadow-xs text-[#C79801] group-hover:scale-105 transition-transform">
-            <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-[#E1AD01] text-[#C79801]" />
-          </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="font-serif font-bold text-lg text-[#2B1D12] tracking-tight">
-                Batata Mania
-              </span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-[#E1AD01]/15 text-[#8A6700] font-semibold tracking-wide">
-                OFICIAL
-              </span>
-            </div>
-            <span className="text-xs text-[#6B533E] font-medium">
-              Kit 365 Versículos para Delivery
-            </span>
-          </div>
+          <span className="font-serif text-xl sm:text-[22px] font-medium text-[#2B1D12] tracking-tight group-hover:text-[#4B3621] transition-colors">
+            365 Versículos
+          </span>
+          <span className="text-[11px] text-[#6B533E] tracking-wide mt-1">
+            <span className="font-serif italic font-normal text-[#8C7A6B]">by</span>{' '}
+            <span className="font-medium text-[#4B3621]">Batata Mania</span>
+          </span>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavLinkClick(e, link.href)}
-              className="text-sm font-medium text-[#4B3621] hover:text-[#C79801] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#C79801] hover:after:w-full after:transition-all after:duration-300"
+              className="text-sm font-medium text-[#4B3621] hover:text-[#2B1D12] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C79801] hover:after:w-full after:transition-all after:duration-300"
             >
               {link.label}
             </a>
@@ -87,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onOpenCheckout}
             id="btn-header-cta"
-            className="hidden sm:inline-flex items-center gap-2 py-2.5 px-4 md:px-5 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-bold text-xs md:text-sm tracking-tight shadow-gold hover:shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap"
+            className="hidden sm:inline-flex items-center gap-2 py-2.5 px-4 md:px-5 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-xs md:text-sm tracking-tight shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap"
           >
             <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
             <span>Quero o meu PDF</span>
@@ -110,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#FAF6F0] border-b border-[#E8DFD5] px-4 py-4 space-y-3 animate-fadeIn">
+        <div className="lg:hidden bg-[#FAF6F0] border-b border-[#E8DFD5] px-5 py-4 space-y-2.5 animate-fadeIn">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -119,13 +110,13 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 handleNavLinkClick(e, link.href);
               }}
-              className="block text-base font-medium text-[#4B3621] hover:text-[#C79801] px-2 py-1.5 rounded-md hover:bg-[#F2EBE3] transition-colors"
+              className="block text-base font-medium text-[#4B3621] hover:text-[#2B1D12] px-2 py-1.5 rounded-lg hover:bg-[#F2EBE3] transition-colors"
             >
               {link.label}
             </a>
           ))}
 
-          <div className="pt-2 border-t border-[#E8DFD5]">
+          <div className="pt-2.5 border-t border-[#E8DFD5]">
             <button
               type="button"
               onClick={() => {
@@ -133,10 +124,10 @@ export const Header: React.FC<HeaderProps> = ({
                 onOpenCheckout?.();
               }}
               id="btn-mobile-header-cta"
-              className="w-full py-3 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-extrabold text-sm tracking-tight shadow-gold flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full py-3 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-sm tracking-tight shadow-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Download className="w-4 h-4 text-[#2B1D12] shrink-0" />
-              <span>QUERO O MEU PDF</span>
+              <span>Quero o meu PDF</span>
             </button>
           </div>
         </div>

@@ -14,45 +14,45 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
   ];
 
   return (
-    <section id="oferta" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
-      <div className="max-w-4xl mx-auto flex flex-col items-center">
+    <section id="oferta" className="py-16 sm:py-20 md:py-24 px-5 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
+      <div className="max-w-5xl mx-auto flex flex-col items-center">
         
         {/* Top Urgency / Condition Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E1AD01]/20 border border-[#C79801]/30 text-xs sm:text-sm font-bold text-[#8A6700] mb-6 whitespace-nowrap">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E1AD01]/20 border border-[#C79801]/30 text-xs sm:text-sm font-medium text-[#8A6700] mb-8 whitespace-nowrap">
           <Clock className="w-4 h-4 text-[#C79801] shrink-0" />
           <span className="whitespace-nowrap">OFERTA ESPECIAL DE LANÇAMENTO</span>
         </div>
 
-        {/* Pricing Card (Highlighted with mustard gold border & craft elegance) */}
-        <div className="w-full max-w-2xl bg-[#FAF6F0] rounded-3xl border-2 sm:border-[3px] border-[#E1AD01] p-6 sm:p-8 md:p-10 shadow-craft-lg relative text-center">
+        {/* Pricing Card */}
+        <div className="w-full max-w-2xl bg-[#FAF6F0] rounded-3xl border-2 border-[#E1AD01] p-6 sm:p-8 md:p-10 shadow-craft-lg relative text-center">
           
           {/* Top Ribbons */}
-          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#2B1D12] text-[#E1AD01] text-[10px] min-[360px]:text-[11px] sm:text-xs font-black uppercase tracking-widest px-3.5 sm:px-4 py-1 rounded-full shadow-md flex items-center gap-1.5 whitespace-nowrap">
+          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#2B1D12] text-[#E1AD01] text-[10px] min-[360px]:text-[11px] sm:text-xs font-semibold uppercase tracking-widest px-3.5 sm:px-4 py-1 rounded-full shadow-md flex items-center gap-1.5 whitespace-nowrap">
             <Sparkles className="w-3.5 h-3.5" />
             <span>ACESSO IMEDIATO & VITALÍCIO</span>
           </div>
 
           <div className="mt-3 sm:mt-4 mb-6">
-            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#2B1D12]">
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-[#2B1D12]">
               Kit 365 Versículos para Delivery
             </h3>
-            <p className="text-sm text-[#5A422D] mt-1.5 font-medium">
+            <p className="text-sm sm:text-base text-[#5A422D] mt-1.5 font-normal">
               Tudo pronto para imprimir e encantar seus clientes.
             </p>
           </div>
 
           {/* Pricing Numbers */}
-          <div className="my-6 p-4 sm:p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] inline-flex flex-col items-center justify-center w-full">
-            <div className="text-xs text-[#6B533E] font-semibold line-through">
+          <div className="my-6 p-5 sm:p-6 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] inline-flex flex-col items-center justify-center w-full">
+            <div className="text-xs sm:text-[13px] text-[#6B533E] font-medium line-through">
               De R$ 47,00 por apenas
             </div>
-            <div className="flex items-baseline gap-1 my-1">
-              <span className="text-xl sm:text-2xl font-bold text-[#2B1D12]">R$</span>
-              <span className="font-serif text-5xl sm:text-6xl font-black text-[#2B1D12] tracking-tight">
+            <div className="flex items-baseline gap-1 my-1.5">
+              <span className="text-xl sm:text-2xl font-medium text-[#2B1D12]">R$</span>
+              <span className="font-serif text-5xl sm:text-6xl font-medium text-[#2B1D12] tracking-tight">
                 19<span className="text-3xl sm:text-4xl">,90</span>
               </span>
             </div>
-            <span className="text-xs font-bold text-[#2E7D32] bg-[#2E7D32]/10 px-3 py-1 rounded-full">
+            <span className="text-xs font-semibold text-[#2E7D32] bg-[#2E7D32]/10 px-3 py-1 rounded-full">
               PAGAMENTO ÚNICO • SEM MENSALIDADES
             </span>
           </div>
@@ -60,11 +60,11 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
           {/* Inclusions List */}
           <div className="space-y-3 sm:space-y-3.5 text-left mb-8 max-w-lg mx-auto">
             {inclusions.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm">
-                <div className="w-5 h-5 rounded-full bg-[#2E7D32]/15 text-[#2E7D32] flex items-center justify-center shrink-0 mt-0.5">
+              <div key={idx} className="flex items-start gap-3 text-xs sm:text-[15px] md:text-base">
+                <div className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-[#2E7D32]/15 text-[#2E7D32] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
-                <span className={`leading-tight ${item.highlight ? 'font-bold text-[#2B1D12]' : 'text-[#5A422D]'}`}>
+                <span className={`leading-snug ${item.highlight ? 'font-semibold text-[#2B1D12]' : 'text-[#5A422D]'}`}>
                   {item.text}
                 </span>
               </div>
@@ -77,15 +77,15 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
               type="button"
               onClick={onOpenCheckout}
               id="btn-pricing-cta"
-              className="w-full min-h-[52px] sm:min-h-[58px] py-3.5 sm:py-4 px-4 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-black text-xs min-[360px]:text-sm sm:text-base md:text-lg lg:text-xl tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
+              className="w-full min-h-[52px] sm:min-h-[56px] py-3.5 sm:py-4 px-4 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-xs min-[360px]:text-sm sm:text-base md:text-lg tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
             >
-              <Download className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
+              <Download className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
               <span className="whitespace-nowrap">COMPRAR AGORA • R$ 19,90</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
             </button>
 
             {/* Payment security badges */}
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-[#6B533E] font-medium pt-1">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs sm:text-[13px] text-[#6B533E] font-normal pt-1">
               <span className="inline-flex items-center gap-1">
                 <Zap className="w-3.5 h-3.5 text-[#C79801]" /> PIX com Liberação Instantânea
               </span>
@@ -99,13 +99,13 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
           {/* 7 Days Guarantee Box */}
           <div className="mt-8 pt-6 border-t border-[#E8DFD5] flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
             <div className="w-14 h-14 rounded-2xl bg-[#2E7D32]/10 border border-[#2E7D32]/30 flex items-center justify-center text-[#2E7D32] shrink-0">
-              <ShieldCheck className="w-8 h-8" />
+              <ShieldCheck className="w-7 h-7" />
             </div>
             <div>
-              <h5 className="font-bold text-sm text-[#2B1D12] flex items-center justify-center sm:justify-start gap-1.5">
+              <h5 className="font-sans font-semibold text-sm sm:text-base text-[#2B1D12] flex items-center justify-center sm:justify-start gap-1.5">
                 Garantia Incondicional de 7 Dias
               </h5>
-              <p className="text-xs text-[#5A422D] max-w-sm mt-0.5 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#5A422D] max-w-md mt-0.5 leading-relaxed">
                 Não gostou? Devolvemos 100% do seu dinheiro em até 7 dias, sem perguntas.
               </p>
             </div>

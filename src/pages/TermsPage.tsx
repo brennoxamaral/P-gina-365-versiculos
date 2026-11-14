@@ -72,7 +72,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({
             <span className="truncate sm:whitespace-normal">Documento Legal Oficial • Atualizado para 2026</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-[#2B1D12] tracking-tight leading-tight break-words">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-medium text-[#2B1D12] tracking-tight leading-tight break-words">
             Termos de Uso & Condições Gerais
           </h1>
 

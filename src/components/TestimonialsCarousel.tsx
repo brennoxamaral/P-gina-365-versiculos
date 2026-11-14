@@ -64,21 +64,21 @@ export const TestimonialsCarousel: React.FC = () => {
   const currentPrint = customerFeedbackPrints[activeIndex];
 
   return (
-    <section id="depoimentos" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#FAF6F0]">
+    <section id="depoimentos" className="py-16 sm:py-20 md:py-24 px-5 sm:px-6 lg:px-8 border-t border-[#E8DFD5] bg-[#F2EBE3]">
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F2EBE3] border border-[#E8DFD5] text-xs font-semibold text-[#8A6700] mb-4 shadow-xs">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] text-xs font-medium text-[#8A6700] mb-3.5 shadow-2xs">
             <MessageCircleHeart className="w-3.5 h-3.5 text-[#C79801]" />
             <span>REAÇÃO DOS CLIENTES</span>
           </div>
 
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B1D12] tracking-tight mb-3">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-[#2B1D12] tracking-tight mb-3">
             Quem recebe, se emociona e volta
           </h2>
 
-          <p className="text-sm sm:text-base text-[#5A422D] leading-relaxed">
+          <p className="text-sm sm:text-base md:text-[17px] text-[#5A422D] leading-relaxed">
             Mensagens reais recebidas no WhatsApp do nosso delivery.
           </p>
         </div>
@@ -90,14 +90,14 @@ export const TestimonialsCarousel: React.FC = () => {
           <button
             type="button"
             onClick={prevSlide}
-            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#F2EBE3] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
+            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#FAF6F0] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
             aria-label="Print anterior"
           >
             <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
           </button>
 
           {/* Main Card Viewport */}
-          <div className="w-full max-w-lg">
+          <div className="w-full max-w-lg sm:max-w-[420px] md:max-w-[440px]">
             
             {/* Native Slider Card (Zero nested boxes, edge-to-edge screenshot) */}
             <div 
@@ -120,7 +120,7 @@ export const TestimonialsCarousel: React.FC = () => {
                     <img
                       src={print.image}
                       alt={print.alt}
-                      className="w-full h-auto object-contain block select-none pointer-events-none"
+                      className="w-full h-auto sm:max-h-[580px] md:max-h-[620px] object-contain block select-none pointer-events-none"
                       loading="eager"
                       decoding="async"
                     />
@@ -141,13 +141,13 @@ export const TestimonialsCarousel: React.FC = () => {
             </div>
 
             {/* Bottom Controls (Dots & Mobile Arrows) */}
-            <div className="flex items-center justify-between sm:justify-center gap-4 mt-5 px-2">
+            <div className="flex items-center justify-between sm:justify-center gap-4 mt-6 px-2">
               
               {/* Mobile Prev Button */}
               <button
                 type="button"
                 onClick={prevSlide}
-                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#F2EBE3] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
                 aria-label="Print anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -163,14 +163,14 @@ export const TestimonialsCarousel: React.FC = () => {
                       onClick={() => setActiveIndex(idx)}
                       className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                         activeIndex === idx 
-                          ? 'w-8 bg-[#C79801] shadow-xs' 
+                          ? 'w-8 bg-[#C79801] shadow-2xs' 
                           : 'w-2.5 bg-[#D3C5B4] hover:bg-[#B5A89B]'
                       }`}
                       aria-label={`Ir para print ${idx + 1}`}
                     />
                   ))}
                 </div>
-                <span className="text-[11px] font-bold text-[#8A6700] uppercase tracking-wider">
+                <span className="text-[11px] font-medium text-[#8A6700] uppercase tracking-wider">
                   Print {activeIndex + 1} de {customerFeedbackPrints.length}
                 </span>
               </div>
@@ -179,7 +179,7 @@ export const TestimonialsCarousel: React.FC = () => {
               <button
                 type="button"
                 onClick={nextSlide}
-                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#F2EBE3] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
+                className="sm:hidden flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#FAF6F0] active:bg-[#E1AD01] border border-[#E8DFD5] text-[#4B3621] active:text-[#2B1D12] shadow-craft active:scale-95 transition-all cursor-pointer"
                 aria-label="Próximo print"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -193,7 +193,7 @@ export const TestimonialsCarousel: React.FC = () => {
           <button
             type="button"
             onClick={nextSlide}
-            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#F2EBE3] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
+            className="hidden sm:flex shrink-0 w-11 h-11 rounded-full bg-[#FAF6F0] hover:bg-[#E1AD01] active:scale-95 border border-[#E8DFD5] hover:border-[#C79801] text-[#4B3621] hover:text-[#2B1D12] shadow-craft hover:shadow-gold items-center justify-center transition-all duration-300 cursor-pointer group"
             aria-label="Próximo print"
           >
             <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />

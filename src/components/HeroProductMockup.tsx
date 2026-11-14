@@ -5,19 +5,19 @@ export const HeroProductMockup: React.FC = () => {
   const [activeSheet, setActiveSheet] = useState<'all' | 'kraft' | 'blue' | 'pink'>('all');
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto pt-4 pb-3 sm:pt-6 sm:pb-4 px-2 sm:px-4 select-none">
+    <div className="relative w-full max-w-4xl mx-auto px-0 sm:px-4 select-none">
       {/* Visual filter / paper preview selector pill */}
-      <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-        <span className="text-xs text-[#6B533E] font-semibold uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 mb-6 sm:mb-7">
+        <span className="text-xs md:text-[13px] text-[#6B533E] font-medium uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap">
           <Sparkles className="w-3.5 h-3.5 text-[#C79801]" />
           Visualizar papéis de impressão:
         </span>
-        <div className="inline-flex items-center p-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-xs whitespace-nowrap max-w-full">
+        <div className="inline-flex items-center justify-center p-1 sm:p-1.5 gap-0.5 sm:gap-1 rounded-full bg-[#FAF6F0] border border-[#E8DFD5] shadow-2xs whitespace-nowrap">
           <button
             type="button"
             onClick={() => setActiveSheet('all')}
-            className={`px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all cursor-pointer whitespace-nowrap ${activeSheet === 'all'
-                ? 'bg-[#2B1D12] text-white shadow-xs'
+            className={`px-2 min-[390px]:px-2.5 sm:px-3.5 md:px-4 py-1.5 text-[9.5px] min-[360px]:text-[10px] min-[390px]:text-[11px] sm:text-xs md:text-[13px] font-medium leading-none rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${activeSheet === 'all'
+                ? 'bg-[#2B1D12] text-white shadow-2xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
           >
@@ -26,46 +26,46 @@ export const HeroProductMockup: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveSheet('kraft')}
-            className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${activeSheet === 'kraft'
-                ? 'bg-[#E1AD01] text-[#2B1D12] shadow-xs'
+            className={`px-1.5 min-[390px]:px-2 sm:px-3.5 md:px-4 py-1.5 text-[9.5px] min-[360px]:text-[10px] min-[390px]:text-[11px] sm:text-xs md:text-[13px] font-medium leading-none rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${activeSheet === 'kraft'
+                ? 'bg-[#E1AD01] text-[#2B1D12] shadow-2xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
           >
-            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FAF6F0] border border-[#D3C5B4]"></span>
+            <span className="w-1.5 h-1.5 min-[390px]:w-2 min-[390px]:h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FAF6F0] border border-[#D3C5B4] shrink-0"></span>
             Kraft / Creme
           </button>
           <button
             type="button"
             onClick={() => setActiveSheet('pink')}
-            className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${activeSheet === 'pink'
-                ? 'bg-[#F9A8D4] text-[#831843] shadow-xs'
+            className={`px-1.5 min-[390px]:px-2 sm:px-3.5 md:px-4 py-1.5 text-[9.5px] min-[360px]:text-[10px] min-[390px]:text-[11px] sm:text-xs md:text-[13px] font-medium leading-none rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${activeSheet === 'pink'
+                ? 'bg-[#F9A8D4] text-[#831843] shadow-2xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
           >
-            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FCE7F3] border border-[#F472B6]"></span>
+            <span className="w-1.5 h-1.5 min-[390px]:w-2 min-[390px]:h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FCE7F3] border border-[#F472B6] shrink-0"></span>
             Rosa Pastel
           </button>
           <button
             type="button"
             onClick={() => setActiveSheet('blue')}
-            className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap ${activeSheet === 'blue'
-                ? 'bg-[#93C5FD] text-[#1E3A8A] shadow-xs'
+            className={`px-1.5 min-[390px]:px-2 sm:px-3.5 md:px-4 py-1.5 text-[9.5px] min-[360px]:text-[10px] min-[390px]:text-[11px] sm:text-xs md:text-[13px] font-medium leading-none rounded-full transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${activeSheet === 'blue'
+                ? 'bg-[#93C5FD] text-[#1E3A8A] shadow-2xs'
                 : 'text-[#6B533E] hover:text-[#2B1D12]'
               }`}
           >
-            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#E0F2FE] border border-[#60A5FA]"></span>
+            <span className="w-1.5 h-1.5 min-[390px]:w-2 min-[390px]:h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#E0F2FE] border border-[#60A5FA] shrink-0"></span>
             Azul Suave
           </button>
         </div>
       </div>
 
       {/* Main Composition: Centered and Enlarged Fan of 3 A4 Sheets */}
-      <div className="relative w-full max-w-3xl lg:max-w-4xl h-[350px] sm:h-[450px] md:h-[500px] flex items-center justify-center mx-auto">
+      <div className="relative w-full max-w-3xl lg:max-w-4xl h-[350px] sm:h-[430px] md:h-[460px] flex items-center justify-center mx-auto">
 
         {/* SHEET 1: Pink Paper (Left Tilt) */}
         <div
           onClick={() => setActiveSheet('pink')}
-          className={`absolute w-[215px] min-[390px]:w-[245px] sm:w-[290px] md:w-[330px] h-[320px] min-[390px]:h-[350px] sm:h-[420px] md:h-[470px] rounded-xl p-2.5 sm:p-4 bg-[#FCE7F3] border border-[#F472B6]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'pink'
+          className={`absolute w-[215px] min-[390px]:w-[245px] sm:w-[285px] md:w-[320px] h-[320px] min-[390px]:h-[350px] sm:h-[405px] md:h-[445px] rounded-xl p-2.5 sm:p-4 bg-[#FCE7F3] border border-[#F472B6]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'pink'
               ? 'rotate-0 translate-x-0 scale-100 sm:scale-105 z-30 opacity-100 shadow-2xl'
               : activeSheet === 'all'
                 ? '-rotate-6 sm:-rotate-8 -translate-x-10 min-[390px]:-translate-x-14 sm:-translate-x-28 md:-translate-x-44 scale-95 opacity-100 z-10 hover:z-30 hover:scale-100 shadow-xl'
@@ -117,7 +117,7 @@ export const HeroProductMockup: React.FC = () => {
         {/* SHEET 2: Blue Pastel Paper (Right Tilt) */}
         <div
           onClick={() => setActiveSheet('blue')}
-          className={`absolute w-[215px] min-[390px]:w-[245px] sm:w-[290px] md:w-[330px] h-[320px] min-[390px]:h-[350px] sm:h-[420px] md:h-[470px] rounded-xl p-2.5 sm:p-4 bg-[#E0F2FE] border border-[#60A5FA]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'blue'
+          className={`absolute w-[215px] min-[390px]:w-[245px] sm:w-[285px] md:w-[320px] h-[320px] min-[390px]:h-[350px] sm:h-[405px] md:h-[445px] rounded-xl p-2.5 sm:p-4 bg-[#E0F2FE] border border-[#60A5FA]/50 transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'blue'
               ? 'rotate-0 translate-x-0 scale-100 sm:scale-105 z-30 opacity-100 shadow-2xl'
               : activeSheet === 'all'
                 ? 'rotate-6 sm:rotate-8 translate-x-10 min-[390px]:translate-x-14 sm:translate-x-28 md:translate-x-44 scale-95 opacity-100 z-10 hover:z-30 hover:scale-100 shadow-xl'
@@ -167,7 +167,7 @@ export const HeroProductMockup: React.FC = () => {
         {/* SHEET 3: Main Kraft / Cream Paper (Center Stage - Prominent) */}
         <div
           onClick={() => setActiveSheet('kraft')}
-          className={`absolute w-[230px] min-[390px]:w-[260px] sm:w-[310px] md:w-[350px] h-[335px] min-[390px]:h-[370px] sm:h-[440px] md:h-[490px] rounded-xl p-2.5 sm:p-4 bg-[#FAF6F0] border-2 border-[#E8DFD5] transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'kraft'
+          className={`absolute w-[230px] min-[390px]:w-[260px] sm:w-[305px] md:w-[340px] h-[335px] min-[390px]:h-[370px] sm:h-[420px] md:h-[460px] rounded-xl p-2.5 sm:p-4 bg-[#FAF6F0] border-2 border-[#E8DFD5] transition-all duration-500 ease-out transform cursor-pointer ${activeSheet === 'kraft'
               ? 'rotate-0 translate-x-0 scale-100 sm:scale-105 z-30 opacity-100 shadow-2xl'
               : activeSheet === 'all'
                 ? 'rotate-0 translate-x-0 scale-100 z-20 hover:scale-102 shadow-2xl'
@@ -181,11 +181,11 @@ export const HeroProductMockup: React.FC = () => {
           <div className="flex justify-between items-center pb-2 border-b border-[#D3C5B4] mb-2 sm:mb-3">
             <div className="flex items-center gap-1.5">
               <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#C79801]"></span>
-              <span className="text-[10px] sm:text-[11.5px] font-extrabold text-[#2B1D12] uppercase tracking-wider font-serif">
+              <span className="text-[10px] sm:text-[11px] font-semibold text-[#2B1D12] uppercase tracking-wider font-sans">
                 PDF 365 VERSÍCULOS • IMPRESSÃO A4
               </span>
             </div>
-            <span className="text-[8.5px] sm:text-[10px] text-[#8A6700] font-bold bg-[#E1AD01]/20 px-2 py-0.5 rounded-md">
+            <span className="text-[8.5px] sm:text-[10px] text-[#8A6700] font-semibold bg-[#E1AD01]/20 px-2 py-0.5 rounded-md">
               Pronto p/ Imprimir
             </span>
           </div>

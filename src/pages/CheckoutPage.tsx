@@ -280,40 +280,44 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
       </header>
 
       {/* Área Principal em Tela Cheia Focada na Conversão */}
-      <main className="flex-1 flex flex-col items-center px-4 pt-5 pb-12 sm:py-10 lg:py-14">
+      <main className="flex-1 flex flex-col items-center px-3.5 sm:px-6 pt-4 pb-10 sm:py-10 lg:py-14">
         <div className="w-full max-w-[520px] my-auto">
-          <div className="bg-[#FAF6F0] rounded-2xl sm:rounded-3xl border border-[#E8DFD5] shadow-craft-lg p-5 sm:p-8 text-[#4B3621]">
+          <div className="bg-[#FAF6F0] rounded-2xl sm:rounded-3xl border border-[#E8DFD5] shadow-craft-lg p-4 sm:p-8 text-[#4B3621]">
             {/* ------------------------------------------------------------------ */}
             {/* ETAPA 1: FORMULÁRIO DE DADOS DO COMPRADOR                          */}
             {/* ------------------------------------------------------------------ */}
             {step === 'FORM' && (
               <div className="animate-fadeIn">
                 {/* Cabeçalho */}
-                <div className="text-center mb-6">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E1AD01]/20 text-[10px] min-[370px]:text-[11px] sm:text-xs font-bold text-[#8A6700] mb-2.5">
+                <div className="text-center mb-5 sm:mb-6">
+                  <div className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E1AD01]/20 text-[10px] min-[375px]:text-[11px] sm:text-xs font-semibold tracking-wide text-[#8A6700] mb-3 whitespace-nowrap">
                     <Lock className="w-3 h-3 text-[#2E7D32] shrink-0" />
-                    <span>CHECKOUT SEGURO SSL 256-BIT • ABACATEPAY</span>
+                    <span>CHECKOUT SEGURO SSL 256-BIT</span>
                   </div>
                   <h1
                     ref={stepHeadingRef}
                     tabIndex={-1}
-                    className="font-serif text-2xl sm:text-3xl font-bold text-[#2B1D12] focus:outline-none"
+                    className="font-serif text-[1.75rem] sm:text-3xl font-medium text-[#2B1D12] tracking-tight leading-tight focus:outline-none"
                   >
                     Finalize seu Pedido
                   </h1>
-                  <p className="text-xs sm:text-sm text-[#6B533E] mt-1">
+                  <p className="text-xs sm:text-sm text-[#6B533E] mt-1.5 max-w-[270px] sm:max-w-none mx-auto text-balance leading-relaxed">
                     Kit 365 Versículos + Bônus Cartão de Agradecimento Canva
                   </p>
                 </div>
 
                 {/* Resumo do Pedido */}
-                <div className="p-4 rounded-xl bg-[#F2EBE3] border border-[#E8DFD5] mb-5 flex items-center justify-between gap-3">
-                  <div>
-                    <span className="text-xs font-bold text-[#2B1D12] block">Valor Total:</span>
-                    <span className="text-[11px] text-[#6B533E]">Acesso vitalício • Pagamento único</span>
+                <div className="p-3.5 sm:p-4 rounded-xl bg-[#F2EBE3] border border-[#E8DFD5] mb-3.5 sm:mb-4 flex items-center justify-between gap-2.5 sm:gap-3">
+                  <div className="min-w-0 space-y-0.5">
+                    <span className="text-xs font-semibold text-[#2B1D12] block">Valor Total:</span>
+                    <span className="text-[11px] sm:text-xs text-[#6B533E] block leading-snug">
+                      Acesso vitalício • Pagamento único
+                    </span>
                   </div>
                   <div className="text-right shrink-0">
-                    <span className="font-serif text-2xl font-extrabold text-[#2B1D12]">R$ 19,90</span>
+                    <span className="font-serif text-xl sm:text-2xl font-medium text-[#2B1D12] whitespace-nowrap">
+                      R$ 19,90
+                    </span>
                   </div>
                 </div>
 
@@ -324,7 +328,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                     <button
                       type="button"
                       onClick={() => setPaymentMethod('pix')}
-                      className={`min-h-[48px] py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-xs font-bold transition-all cursor-pointer ${
+                      className={`min-h-[48px] py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-xs font-semibold transition-all cursor-pointer ${
                         paymentMethod === 'pix'
                           ? 'bg-[#E1AD01] text-[#2B1D12] border-[#C79801] shadow-xs'
                           : 'bg-[#FAF6F0] text-[#6B533E] border-[#E8DFD5] hover:bg-[#F2EBE3]'
@@ -337,7 +341,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                     <button
                       type="button"
                       onClick={() => setPaymentMethod('card')}
-                      className={`min-h-[48px] py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-xs font-bold transition-all cursor-pointer ${
+                      className={`min-h-[48px] py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-xs font-semibold transition-all cursor-pointer ${
                         paymentMethod === 'card'
                           ? 'bg-[#E1AD01] text-[#2B1D12] border-[#C79801] shadow-xs'
                           : 'bg-[#FAF6F0] text-[#6B533E] border-[#E8DFD5] hover:bg-[#F2EBE3]'
@@ -349,18 +353,20 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                   </div>
                 ) : (
                   /* Destaque Exclusivo do PIX */
-                  <div className="mb-5 p-3.5 rounded-xl bg-[#FAF3E8] border border-[#E1AD01]/50 flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#E1AD01] text-[#2B1D12] flex items-center justify-center shrink-0 shadow-xs">
+                  <div className="mb-5 sm:mb-6 p-3.5 sm:p-4 rounded-xl bg-[#FAF3E8] border border-[#E1AD01]/50 flex items-start sm:items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#E1AD01] text-[#2B1D12] flex items-center justify-center shrink-0 shadow-2xs mt-0.5 sm:mt-0">
                       <QrCode className="w-5 h-5" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs font-bold text-[#2B1D12]">Pagamento via PIX</span>
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-[#2E7D32]/15 text-[#2E7D32]">
+                      <div className="flex items-center gap-x-2 gap-y-1 flex-wrap mb-1">
+                        <span className="text-xs sm:text-sm font-semibold text-[#2B1D12]">
+                          Pagamento via PIX
+                        </span>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#2E7D32]/15 text-[#2E7D32] tracking-wide whitespace-nowrap">
                           LIBERAÇÃO IMEDIATA
                         </span>
                       </div>
-                      <p className="text-[11px] text-[#6B533E]">
+                      <p className="text-xs text-[#6B533E] leading-snug text-pretty">
                         Gere o QR Code e copie a chave em 1 clique.
                       </p>
                     </div>
@@ -446,7 +452,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3.5">
                     <div>
                       <label
                         htmlFor="checkout-cpf"
@@ -581,16 +587,18 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                     </div>
                   )}
 
-                  <button
-                    type="submit"
-                    id="btn-confirm-payment"
-                    className="w-full min-h-[52px] py-3.5 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-black text-xs min-[360px]:text-[13px] min-[400px]:text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer mt-2 whitespace-nowrap"
-                  >
-                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0" />
-                    <span className="whitespace-nowrap">GERAR PIX PARA PAGAMENTO • R$ 19,90</span>
-                  </button>
+                  <div className="pt-1">
+                    <button
+                      type="submit"
+                      id="btn-confirm-payment"
+                      className="w-full min-h-[52px] py-3.5 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-xs min-[375px]:text-[13px] min-[400px]:text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap"
+                    >
+                      <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0" />
+                      <span className="whitespace-nowrap">GERAR PIX PARA PAGAMENTO • R$ 19,90</span>
+                    </button>
+                  </div>
 
-                  <div className="flex items-center justify-center gap-2 text-[11px] text-[#6B533E] pt-1">
+                  <div className="flex items-center justify-center gap-1.5 text-xs text-[#6B533E] pt-0.5 text-center">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#2E7D32] shrink-0" />
                     <span>Garantia de 7 dias com devolução integral</span>
                   </div>
@@ -696,17 +704,17 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                       <button
                         type="button"
                         onClick={handleCopyPix}
-                        className="w-full min-h-[48px] py-3 px-3 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-black text-xs min-[380px]:text-sm tracking-wide shadow-xs flex items-center justify-center gap-2 transition-all cursor-pointer whitespace-nowrap"
+                        className="w-full min-h-[48px] py-3 px-3 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] font-semibold text-[11px] min-[375px]:text-xs sm:text-sm tracking-wide shadow-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
                       >
                         {copiedPix ? (
                           <>
                             <Check className="w-4 h-4 text-[#2E7D32] shrink-0" />
-                            <span className="whitespace-nowrap">CHAVE PIX COPIADA COM SUCESSO!</span>
+                            <span>CHAVE PIX COPIADA COM SUCESSO!</span>
                           </>
                         ) : (
                           <>
                             <Copy className="w-4 h-4 shrink-0" />
-                            <span className="whitespace-nowrap">COPIAR CÓDIGO PIX (COPIA E COLA)</span>
+                            <span>COPIAR CÓDIGO PIX (COPIA E COLA)</span>
                           </>
                         )}
                       </button>
@@ -721,9 +729,9 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E1AD01] opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-[#C79801]"></span>
                     </span>
-                    <div className="min-w-0">
-                      <span className="font-bold text-[#2B1D12] block">Aguardando pagamento...</span>
-                      <span className="text-[10px] text-[#6B533E] truncate block">
+                    <div className="min-w-0 space-y-0.5">
+                      <span className="font-semibold text-[#2B1D12] block">Aguardando pagamento...</span>
+                      <span className="text-[11px] text-[#6B533E] leading-snug block">
                         A liberação dos arquivos é 100% automática após o pagamento.
                       </span>
                     </div>
@@ -806,27 +814,27 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                 </div>
 
                 {/* Caixa com os Materiais e Botões de Acesso Imediato */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] space-y-3 text-left">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-bold text-[#8A6700] uppercase tracking-wider block">
+                <div className="p-3.5 sm:p-5 rounded-2xl bg-[#F2EBE3] border border-[#E8DFD5] space-y-3 text-left">
+                  <div className="flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-1">
+                    <span className="text-xs font-semibold text-[#8A6700] uppercase tracking-wider block">
                       Acesso Imediato aos Materiais:
                     </span>
-                    <span className="text-[10px] text-[#6B533E] font-medium">
+                    <span className="text-[11px] text-[#6B533E] font-normal">
                       Clique para baixar ou acessar
                     </span>
                   </div>
 
                   {/* 1. PDF Kit 365 Versículos */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-white rounded-xl border border-[#E8DFD5] hover:border-[#E1AD01] transition-all gap-3 shadow-xs">
-                    <div className="flex items-center gap-3 min-w-0">
+                    <div className="flex items-start sm:items-center gap-3 min-w-0">
                       <div className="w-9 h-9 rounded-lg bg-[#FAF3E8] border border-[#E1AD01]/30 text-[#8A6700] flex items-center justify-center shrink-0">
                         <FileText className="w-5 h-5" />
                       </div>
-                      <div className="min-w-0">
-                        <h3 className="font-sans font-bold text-xs sm:text-sm text-[#2B1D12] truncate">
+                      <div className="min-w-0 space-y-0.5">
+                        <h3 className="font-sans font-semibold text-xs sm:text-sm text-[#2B1D12] leading-snug">
                           Kit 365 Versículos (PDF Alta Resolução)
                         </h3>
-                        <p className="text-[10px] sm:text-[11px] text-[#6B533E]">
+                        <p className="text-[11px] text-[#6B533E] leading-snug">
                           Arquivo PDF Vetorial em 300 DPI pronto para imprimir
                         </p>
                       </div>
@@ -835,7 +843,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                       href="https://drive.google.com/file/d/1Vz7G3yHps-yLjbbxvS6_NDMxvLntxhGX/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto min-h-[48px] px-4 py-2 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-black text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                      className="w-full sm:w-auto min-h-[48px] px-4 py-2 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>Baixar PDF</span>
@@ -845,15 +853,15 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
 
                   {/* 2. Template Cartão de Agradecimento Canva */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-white rounded-xl border border-[#E8DFD5] hover:border-[#E1AD01] transition-all gap-3 shadow-xs">
-                    <div className="flex items-center gap-3 min-w-0">
+                    <div className="flex items-start sm:items-center gap-3 min-w-0">
                       <div className="w-9 h-9 rounded-lg bg-[#FAF3E8] border border-[#E1AD01]/30 text-[#8A6700] flex items-center justify-center shrink-0">
                         <Sparkles className="w-5 h-5" />
                       </div>
-                      <div className="min-w-0">
-                        <h3 className="font-sans font-bold text-xs sm:text-sm text-[#2B1D12] truncate">
+                      <div className="min-w-0 space-y-0.5">
+                        <h3 className="font-sans font-semibold text-xs sm:text-sm text-[#2B1D12] leading-snug">
                           Template Cartão de Agradecimento
                         </h3>
-                        <p className="text-[10px] sm:text-[11px] text-[#6B533E]">
+                        <p className="text-[11px] text-[#6B533E] leading-snug">
                           Bônus oficial 100% editável no Canva gratuito ou Pro
                         </p>
                       </div>
@@ -862,7 +870,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                       href="https://canva.link/cartao-de-agradecimento-estrategico"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto min-h-[48px] px-4 py-2 rounded-xl bg-[#2B1D12] hover:bg-black active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                      className="w-full sm:w-auto min-h-[48px] px-4 py-2 rounded-xl bg-[#2B1D12] hover:bg-black active:scale-95 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
                     >
                       <Sparkles className="w-3.5 h-3.5 text-[#E1AD01]" />
                       <span>Abrir Template Canva</span>

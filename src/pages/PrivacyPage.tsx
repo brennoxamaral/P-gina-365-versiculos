@@ -72,7 +72,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({
             <span className="truncate sm:whitespace-normal">Conformidade LGPD • Lei Federal nº 13.709/2018</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-[#2B1D12] tracking-tight leading-tight break-words">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-medium text-[#2B1D12] tracking-tight leading-tight break-words">
             Política de Privacidade & Proteção de Dados
           </h1>
 
