@@ -216,7 +216,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({
               </h2>
             </div>
             <p className="text-[#6B533E]">
-              O valor da oferta atual é de <strong>R$ 19,90 em pagamento único</strong>, sem mensalidades ou taxas ocultas.
+              O valor da oferta atual é de <strong>R$ 37,00 em pagamento único</strong>, sem mensalidades ou taxas ocultas.
             </p>
             <p className="text-[#6B533E]">
               Os pagamentos são processados com tecnologia de criptografia de ponta a ponta através da integradora <strong>AbacatePay</strong>, instituição autorizada pelo Banco Central do Brasil.
@@ -404,7 +404,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({
                 onClick={onOpenCheckout}
                 className="inline-flex items-center justify-center gap-2 py-3 sm:py-2.5 px-5 sm:px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] text-xs sm:text-sm font-bold transition-all shadow-gold cursor-pointer w-full sm:w-auto min-h-[44px]"
               >
-                <span>Quero Garantir Meu Kit • R$ 19,90</span>
+                <span>Quero Garantir Meu Kit • R$ 37,00</span>
               </button>
             )}
           </div>

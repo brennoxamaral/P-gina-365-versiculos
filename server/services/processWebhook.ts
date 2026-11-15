@@ -202,7 +202,7 @@ export async function processAbacateWebhook(
       checkout.amount ||
       billing.amount ||
       data.amount ||
-      1990;
+      3700;
 
     const paymentMethod =
       payerInfo.method ||

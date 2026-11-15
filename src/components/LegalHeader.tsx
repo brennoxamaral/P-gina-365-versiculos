@@ -50,7 +50,7 @@ export const LegalHeader: React.FC<LegalHeaderProps> = ({
           >
             <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2B1D12] shrink-0" />
             <span className="hidden min-[380px]:inline">Adquirir • </span>
-            <span>R$ 19,90</span>
+            <span>R$ 37,00</span>
           </button>
         )}
       </div>

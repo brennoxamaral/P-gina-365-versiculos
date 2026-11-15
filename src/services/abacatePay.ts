@@ -11,11 +11,11 @@ const BASE_URL = 'https://api.abacatepay.com/v2';
 /**
  * Cria uma cobrança transparente via PIX no AbacatePay
  * @param customer Dados do comprador (Nome, Email, CPF, Celular)
- * @param amountInCents Valor em centavos (ex: 1990 para R$ 19,90)
+ * @param amountInCents Valor em centavos (ex: 3700 para R$ 37,00)
  */
 export async function createPixCharge(
   customer: AbacateCustomer,
-  amountInCents: number = 1990
+  amountInCents: number = 3700
 ): Promise<AbacatePixData> {
   const cleanTaxId = customer.taxId.replace(/\D/g, '');
   const cleanPhone = customer.cellphone.replace(/\D/g, '');

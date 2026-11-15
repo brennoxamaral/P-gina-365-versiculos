@@ -411,7 +411,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({
                 onClick={onOpenCheckout}
                 className="inline-flex items-center justify-center gap-2 py-3 sm:py-2.5 px-5 sm:px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] text-[#2B1D12] text-xs sm:text-sm font-bold transition-all shadow-gold cursor-pointer w-full sm:w-auto min-h-[44px]"
               >
-                <span>Quero Garantir Meu Kit • R$ 19,90</span>
+                <span>Quero Garantir Meu Kit • R$ 37,00</span>
               </button>
             )}
           </div>

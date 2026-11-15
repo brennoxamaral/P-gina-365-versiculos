@@ -209,7 +209,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
           taxId: formData.taxId,
           cellphone: formData.cellphone,
         },
-        1990 // R$ 19,90 em centavos
+        3700 // R$ 37,00 em centavos
       );
 
       setPixData(charge);
@@ -316,7 +316,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                   </div>
                   <div className="text-right shrink-0">
                     <span className="font-serif text-xl sm:text-2xl font-medium text-[#2B1D12] whitespace-nowrap">
-                      R$ 19,90
+                      R$ 37,00
                     </span>
                   </div>
                 </div>
@@ -594,7 +594,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                       className="w-full min-h-[52px] py-3.5 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-xs min-[375px]:text-[13px] min-[400px]:text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap"
                     >
                       <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0" />
-                      <span className="whitespace-nowrap">GERAR PIX PARA PAGAMENTO • R$ 19,90</span>
+                      <span className="whitespace-nowrap">GERAR PIX PARA PAGAMENTO • R$ 37,00</span>
                     </button>
                   </div>
 

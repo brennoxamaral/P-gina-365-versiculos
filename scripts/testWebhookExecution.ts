@@ -20,8 +20,8 @@ async function testFullWebhook() {
     data: {
       transparent: {
         id: `sim_charge_${Date.now()}`,
-        amount: 1990,
-        paidAmount: 1990,
+        amount: 3700,
+        paidAmount: 3700,
         status: 'PAID',
         frequency: 'ONE_TIME',
         devMode: true,

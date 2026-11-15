@@ -103,8 +103,8 @@ async function testLocalWebhook(targetEmail?: string) {
     data: {
       transparent: {
         id: `char_test_${Date.now()}`,
-        amount: 1990,
-        paidAmount: 1990,
+        amount: 3700,
+        paidAmount: 3700,
         status: 'PAID',
         frequency: 'ONE_TIME',
         devMode: true,
