@@ -97,7 +97,7 @@ export const StickyBottomCTA: React.FC<StickyBottomCTAProps> = ({ onOpenCheckout
           className="min-h-[48px] py-3 px-4 sm:px-7 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-95 text-[#2B1D12] font-semibold text-xs min-[360px]:text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ml-auto whitespace-nowrap group"
         >
           <Download className="w-4 h-4 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
-          <span className="whitespace-nowrap uppercase">GARANTIR POR R$ 37,00</span>
+          <span className="whitespace-nowrap">Garantir por R$ 37,00</span>
           <ArrowRight className="w-4 h-4 text-[#2B1D12] hidden min-[390px]:inline shrink-0 group-hover:translate-x-0.5 transition-transform" />
         </button>
       </div>

@@ -594,7 +594,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                       className="w-full min-h-[52px] py-3.5 px-4 rounded-xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-xs min-[375px]:text-[13px] min-[400px]:text-sm sm:text-base tracking-tight shadow-gold transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap"
                     >
                       <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0" />
-                      <span className="whitespace-nowrap">GERAR PIX PARA PAGAMENTO • R$ 37,00</span>
+                      <span className="whitespace-nowrap">Gerar PIX para pagamento • R$ 37,00</span>
                     </button>
                   </div>
 
@@ -709,12 +709,12 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack }) => {
                         {copiedPix ? (
                           <>
                             <Check className="w-4 h-4 text-[#2E7D32] shrink-0" />
-                            <span>CHAVE PIX COPIADA COM SUCESSO!</span>
+                            <span>Chave PIX copiada com sucesso!</span>
                           </>
                         ) : (
                           <>
                             <Copy className="w-4 h-4 shrink-0" />
-                            <span>COPIAR CÓDIGO PIX (COPIA E COLA)</span>
+                            <span>Copiar código PIX (Copia e Cola)</span>
                           </>
                         )}
                       </button>

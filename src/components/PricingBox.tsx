@@ -80,7 +80,7 @@ export const PricingBox: React.FC<PricingBoxProps> = ({ onOpenCheckout }) => {
               className="w-full min-h-[52px] sm:min-h-[56px] py-3.5 sm:py-4 px-4 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-xs min-[360px]:text-sm sm:text-base md:text-lg tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group whitespace-nowrap"
             >
               <Download className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
-              <span className="whitespace-nowrap">COMPRAR AGORA • R$ 37,00</span>
+              <span className="whitespace-nowrap">Comprar agora • R$ 37,00</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
             </button>
 

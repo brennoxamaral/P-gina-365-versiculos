@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
             className="w-full max-w-sm sm:w-auto sm:max-w-full min-h-[48px] sm:min-h-[54px] py-3.5 sm:py-4 px-5 sm:px-8 rounded-2xl bg-[#E1AD01] hover:bg-[#C79801] active:scale-98 text-[#2B1D12] font-semibold text-xs min-[360px]:text-sm sm:text-base md:text-[17px] tracking-tight shadow-gold hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center gap-2 sm:gap-3 cursor-pointer group"
           >
             <Download className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0 group-hover:-translate-y-0.5 transition-transform" />
-            <span className="whitespace-nowrap">QUERO O MEU PDF • R$ 37,00</span>
+            <span className="whitespace-nowrap">Quero o meu PDF • R$ 37,00</span>
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#2B1D12] shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
